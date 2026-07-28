@@ -1,25 +1,367 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * 7Band Financial Agency — Home Page
+ * Design: Dark navy hero, white content sections, green labels, orange CTAs.
+ * Fonts: Playfair Display (headings), Inter (body).
+ * Mirrors layout of buildalifeloc.com for 7Band Financial Agency.
  */
+import { useEffect, useRef, useState } from "react";
+import { Clock, Heart, TrendingUp, CheckCircle, ArrowRight, Phone } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { SevenBandsAccent, SevenBandsShield } from "@/components/SevenBands";
+
+// Simple scroll-reveal hook
+function useReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return { ref, visible };
+}
+
+function RevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  const { ref, visible } = useReveal();
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const scrollTo = (id: string) => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="min-h-screen flex flex-col bg-white">
+      <Navbar />
+
+      {/* ── HERO SECTION ─────────────────────────────────────────────── */}
+      <section
+        className="relative min-h-screen flex items-center overflow-hidden"
+        style={{ backgroundColor: "#0d1f2d" }}
+      >
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/manus-storage/7band-hero-bg_6c47a05e.png')`,
+            opacity: 0.35,
+          }}
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1f2d]/90 via-[#0d1f2d]/70 to-[#0d1f2d]/30" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Text */}
+          <div className="animate-fade-up">
+            <div className="inline-flex items-center gap-2 bg-[#22c55e]/20 border border-[#22c55e]/40 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#22c55e] inline-block" />
+              <span className="font-body text-[#22c55e] text-xs font-semibold tracking-wider uppercase">
+                Life Insurance & Generational Wealth
+              </span>
+            </div>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              Protect Your Family.{" "}
+              <em className="text-[#22c55e] not-italic">Build Their Future.</em>
+            </h1>
+            <p className="font-body text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
+              Life insurance designed the right way — not just a death benefit, but a living asset that protects your family today and builds generational wealth for tomorrow. Your legacy starts with one conversation.
+            </p>
+            <SevenBandsAccent className="w-32 text-[#22c55e] mb-6 opacity-60" />
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => scrollTo("#contact")}
+                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
+              >
+                Book My Free Consultation
+              </button>
+              <button
+                onClick={() => scrollTo("#how-it-works")}
+                className="border-2 border-white/60 hover:border-white text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
+              >
+                See How It Works
+              </button>
+            </div>
+          </div>
+
+          {/* Emblem */}
+          <div className="hidden lg:flex justify-center items-center animate-fade-up animate-fade-up-delay-2">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-[#22c55e]/10 blur-3xl scale-110" />
+              <SevenBandsShield className="w-72 h-72 drop-shadow-2xl relative z-10" />
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+          <div className="w-px h-12 bg-white/40 animate-pulse" />
+        </div>
+      </section>
+
+      {/* ── WHAT WE DO ───────────────────────────────────────────────── */}
+      <section id="services" className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <div className="max-w-3xl">
+              <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+                What We Do
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
+                An asset that protects and grows at the same time
+              </h2>
+              <SevenBandsAccent className="w-24 text-[#22c55e] mb-6 opacity-50" />
+              <p className="font-body text-lg text-gray-600 leading-relaxed mb-4">
+                At 7Band Financial Agency, we specialize in life insurance solutions that do more than pay a death benefit. When structured correctly, a life insurance policy becomes a living financial asset — one that grows tax-advantaged, can be borrowed against without a credit check, and passes wealth to your family income-tax-free.
+              </p>
+              <p className="font-body text-gray-600 leading-relaxed mb-8">
+                The difference between a policy that works for you and one that doesn't is entirely in how it's designed. That's why every client starts with a free needs analysis — so we build a plan around your life, not a generic product.
+              </p>
+              <blockquote className="border-l-4 border-[#f97316] pl-6 py-2 italic font-display text-xl text-[#0d1f2d]">
+                "The best time to protect your family was yesterday. The second best time is today."
+              </blockquote>
+              <div className="mt-8">
+                <button
+                  onClick={() => scrollTo("#contact")}
+                  className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
+                >
+                  Learn More — It's Free <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* ── WHY NOW — 3 CARDS ────────────────────────────────────────── */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+              Why Start Now
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-12">
+              Two things you can't buy back later
+            </h2>
+          </RevealSection>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Clock size={20} />,
+                label: "Time",
+                title: "Compounding needs a head start",
+                body: "Every year you wait is a year of tax-advantaged growth that never happens. The policy you start today beats the larger one you start five years from now — and the gap widens for the rest of your life. Start small if you have to. Start.",
+                delay: "delay-0",
+              },
+              {
+                icon: <Heart size={20} />,
+                label: "Insurability",
+                title: "Your health is the ticket in",
+                body: "You qualify for life insurance with your health, and health only moves one direction. Lock in your insurability while it's affordable, and it stays locked for life. This is doubly true if you have children — the younger they start, the better.",
+                delay: "delay-100",
+              },
+              {
+                icon: <TrendingUp size={20} />,
+                label: "The Alternative",
+                title: "Someone else is building wealth on your dollars",
+                body: "Every dollar sitting idle or flowing out as interest is already capitalizing someone else's financial system. Building your own doesn't take new money — mostly it re-routes money already in motion toward your family's future.",
+                delay: "delay-200",
+              },
+            ].map((card, i) => (
+              <RevealSection key={card.label}>
+                <div
+                  className={`bg-white rounded-xl border border-gray-200 p-7 h-full hover:shadow-lg transition-shadow duration-300`}
+                  style={{ transitionDelay: `${i * 100}ms` }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-[#22c55e]">{card.icon}</span>
+                    <span className="font-body text-[#22c55e] text-xs font-bold tracking-widest uppercase">
+                      {card.label}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-[#0d1f2d] mb-3">{card.title}</h3>
+                  <p className="font-body text-gray-600 text-sm leading-relaxed">{card.body}</p>
+                  <SevenBandsAccent className="w-16 text-[#22c55e] mt-4 opacity-30" />
+                </div>
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ─────────────────────────────────────────────── */}
+      <section id="how-it-works" className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+              The Path
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
+              What building generational wealth looks like
+            </h2>
+            <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
+              Your premiums feed a policy built for cash value. That cash value grows your family's financial foundation. The death benefit restarts the whole system for the next generation.
+            </p>
+          </RevealSection>
+
+          {/* Process Steps */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { step: "01", title: "Free Needs Analysis", desc: "We review your family's financial situation, goals, and budget — no obligation, no pressure." },
+              { step: "02", title: "Custom Policy Design", desc: "We design a policy built specifically for high cash value and your family's protection needs." },
+              { step: "03", title: "Your Policy Activates", desc: "Coverage begins immediately. Your cash value starts growing from day one, tax-advantaged." },
+              { step: "04", title: "Access Your Cash Value", desc: "Borrow against your policy with no credit check, no banker approval — it's your money." },
+              { step: "05", title: "Put Capital to Work", desc: "Use your line of credit for real estate, business, emergencies, or retirement income." },
+              { step: "06", title: "Generational Transfer", desc: "The death benefit passes income-tax-free to your family, recapitalizing the family bank." },
+            ].map((item, i) => (
+              <RevealSection key={item.step}>
+                <div
+                  className="relative bg-white border border-gray-200 rounded-xl p-6 hover:border-[#22c55e] hover:shadow-md transition-all duration-300"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="w-9 h-9 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 flex items-center justify-center font-display font-bold text-[#22c55e] text-sm shrink-0">
+                      {item.step}
+                    </span>
+                    <SevenBandsAccent className="w-10 text-[#22c55e] opacity-30" />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-[#0d1f2d] mb-2">{item.title}</h3>
+                  <p className="font-body text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES DETAIL ──────────────────────────────────────────── */}
+      <section className="py-24 bg-[#0d1f2d]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+              Our Products
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+              Coverage for every stage of life
+            </h2>
+            <p className="font-body text-white/60 text-lg leading-relaxed mb-12 max-w-2xl">
+              We work with top-rated carriers to find the right product for your family's unique situation and goals.
+            </p>
+          </RevealSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { title: "Term Life Insurance", desc: "Affordable, straightforward protection for a defined period. Ideal for income replacement and mortgage protection." },
+              { title: "Whole Life Insurance", desc: "Permanent coverage with guaranteed cash value growth. The foundation of generational wealth building." },
+              { title: "Indexed Universal Life", desc: "Growth tied to a market index with downside protection. Combines flexibility with upside potential." },
+              { title: "Final Expense Insurance", desc: "Covers end-of-life costs so your family isn't burdened. Simple approval, no medical exam required." },
+              { title: "Mortgage Protection", desc: "Ensures your family keeps the home if something happens to you. Peace of mind for your biggest asset." },
+              { title: "Children's Whole Life", desc: "Lock in your child's insurability and start their cash value growing today. The gift that compounds for life." },
+            ].map((product) => (
+              <RevealSection key={product.title}>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#22c55e]/40 transition-all duration-300 group">
+                  <CheckCircle size={20} className="text-[#22c55e] mb-3" />
+                  <h3 className="font-display text-lg font-bold text-white mb-2">{product.title}</h3>
+                  <p className="font-body text-sm text-white/60 leading-relaxed">{product.desc}</p>
+                </div>
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT ────────────────────────────────────────────────────── */}
+      <section id="about" className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <RevealSection>
+              <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+                Who You're Working With
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
+                7Band Financial Agency
+              </h2>
+              <SevenBandsAccent className="w-28 text-[#22c55e] mb-6 opacity-50" />
+              <p className="font-body text-gray-600 leading-relaxed mb-4">
+                We are a licensed life insurance agency dedicated to helping families — especially those who have been underserved by the traditional financial industry — understand and access the wealth-building tools that have protected affluent families for generations.
+              </p>
+              <p className="font-body text-gray-600 leading-relaxed mb-4">
+                We believe life insurance is not just about what happens when you die. It's about what happens while you're living — building a financial foundation your children and grandchildren can build on.
+              </p>
+              <p className="font-body text-gray-600 leading-relaxed mb-8">
+                Every client receives a personalized needs analysis. We don't sell products — we design solutions. If it's not the right fit, you'll hear that from us directly.
+              </p>
+              <button
+                onClick={() => scrollTo("#contact")}
+                className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95"
+              >
+                Talk With Us, Free <Phone size={16} />
+              </button>
+            </RevealSection>
+            <RevealSection>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-[#22c55e]/10 rounded-2xl -z-10" />
+                <img
+                  src="/manus-storage/7band-about-img_8eb249fc.png"
+                  alt="7Band Financial Agency Advisor"
+                  className="w-full rounded-xl shadow-2xl object-cover aspect-[3/4]"
+                />
+              </div>
+            </RevealSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
+      <section id="contact" className="py-24 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <RevealSection>
+            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6">
+              Get Started
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d1f2d] mb-6">
+              One conversation starts it all
+            </h2>
+            <p className="font-body text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+              The needs analysis is free and open to anyone. We'll look at your family's situation, your goals, and what a policy designed for you would look like. No obligation, no pressure — just answers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:info@7bandfinancial.com"
+                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
+              >
+                Book My Free Consultation <ArrowRight size={18} />
+              </a>
+              <a
+                href="tel:+1-800-000-0000"
+                className="border-2 border-[#0d1f2d] text-[#0d1f2d] hover:bg-[#0d1f2d] hover:text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
+              >
+                <Phone size={18} /> Call Us Today
+              </a>
+            </div>
+            <p className="font-body text-sm text-gray-400 mt-6">
+              No obligation · No chase-down calls · Just answers
+            </p>
+          </RevealSection>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
