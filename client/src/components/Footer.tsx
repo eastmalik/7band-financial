@@ -1,17 +1,46 @@
 /**
  * 7Band Financial Agency — Footer
- * Design: Dark navy background, 3-column layout matching reference site.
+ * Design: Dark navy background, 4-column layout with Our Ecosystem column.
  */
+import { ExternalLink, Youtube, Users, Heart, CreditCard } from "lucide-react";
+
 export default function Footer() {
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const ecosystem = [
+    {
+      label: "7Band Inc.",
+      sublabel: "Our Non-Profit",
+      href: "https://www.7bandinc.org",
+      icon: <Heart size={14} />,
+    },
+    {
+      label: "Arise Credit Pro",
+      sublabel: "Credit Education",
+      href: "https://www.arisecreditpro.com",
+      icon: <CreditCard size={14} />,
+    },
+    {
+      label: "The Real Ethical Agents",
+      sublabel: "Skool Community",
+      href: "https://www.skool.com/the-real-ethical-agents-4233",
+      icon: <Users size={14} />,
+    },
+    {
+      label: "Malik East",
+      sublabel: "YouTube Channel",
+      href: "https://www.youtube.com/@Malik_East",
+      icon: <Youtube size={14} />,
+    },
+  ];
+
   return (
     <footer className="bg-[#0d1f2d] text-white/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Column */}
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -53,6 +82,34 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Ecosystem Column */}
+          <div>
+            <h4 className="font-display font-semibold text-white text-base mb-4">Our Ecosystem</h4>
+            <ul className="space-y-3">
+              {ecosystem.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-2.5 font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors"
+                  >
+                    <span className="mt-0.5 text-white/30 group-hover:text-[#22c55e] transition-colors shrink-0">
+                      {item.icon}
+                    </span>
+                    <span>
+                      <span className="block font-medium text-white/80 group-hover:text-[#22c55e] transition-colors leading-tight">
+                        {item.label}
+                      </span>
+                      <span className="text-xs text-white/40">{item.sublabel}</span>
+                    </span>
+                    <ExternalLink size={11} className="mt-1 opacity-0 group-hover:opacity-60 transition-opacity shrink-0" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact Column */}
           <div>
             <h4 className="font-display font-semibold text-white text-base mb-4">Contact</h4>
@@ -71,6 +128,16 @@ export default function Footer() {
                   className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors"
                 >
                   info@7bandfinancial.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://calendly.com/malikeast/15-minute-quick-meeting-phone-call-via-zoom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors"
+                >
+                  Schedule on Calendly
                 </a>
               </li>
             </ul>
