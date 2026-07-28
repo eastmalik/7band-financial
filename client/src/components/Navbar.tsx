@@ -11,6 +11,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
+  const isLOCPage = location === "/lifetime-loc";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -18,18 +19,28 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { label: "Life Insurance", href: "#services" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "About", href: "#about" },
-    { label: "The Book", href: "#book" },
-  ];
-
   const scrollTo = (id: string) => {
     setMenuOpen(false);
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Nav links differ slightly between home and LOC page
+  const homeNavLinks = [
+    { label: "Products", href: "#services", type: "scroll" },
+    { label: "Our Approach", href: "#approach", type: "scroll" },
+    { label: "About", href: "#about", type: "scroll" },
+    { label: "The Book", href: "#book", type: "scroll" },
+    { label: "Lifetime LOC", href: "/lifetime-loc", type: "link" },
+  ];
+
+  const locNavLinks = [
+    { label: "How It Grows", href: "#how-it-grows", type: "scroll" },
+    { label: "Honest Answers", href: "#loc-contact", type: "scroll" },
+    { label: "← Back to 7Band", href: "/", type: "link" },
+  ];
+
+  const navLinks = isLOCPage ? locNavLinks : homeNavLinks;
 
   return (
     <header
@@ -42,7 +53,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href={isLOCPage ? "/" : "/"} className="flex items-center gap-3 group">
             <img
               src="/manus-storage/7band-logo-icon_d358cad1.png"
               alt="7Band Financial Agency"
@@ -54,14 +65,14 @@ export default function Navbar() {
                   scrolled ? "text-[#0d1f2d]" : "text-white"
                 }`}
               >
-                7Band Financial
+                {isLOCPage ? "Lifetime LOC" : "7Band Financial"}
               </span>
               <span
                 className={`font-body text-xs tracking-widest uppercase transition-colors ${
                   scrolled ? "text-[#22c55e]" : "text-[#22c55e]"
                 }`}
               >
-                Agency
+                {isLOCPage ? "by 7Band Financial" : "Agency"}
               </span>
             </div>
           </Link>
@@ -69,15 +80,27 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => scrollTo(link.href)}
-                className={`font-body text-sm font-medium transition-colors hover:text-[#22c55e] ${
-                  scrolled ? "text-[#0d1f2d]" : "text-white/90"
-                }`}
-              >
-                {link.label}
-              </button>
+              link.type === "link" ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`font-body text-sm font-medium transition-colors hover:text-[#22c55e] ${
+                    scrolled ? "text-[#0d1f2d]" : "text-white/90"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => scrollTo(link.href)}
+                  className={`font-body text-sm font-medium transition-colors hover:text-[#22c55e] ${
+                    scrolled ? "text-[#0d1f2d]" : "text-white/90"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              )
             ))}
           </nav>
 
@@ -108,13 +131,24 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-[#0d1f2d] border-t border-white/10 px-4 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <button
-              key={link.label}
-              onClick={() => scrollTo(link.href)}
-              className="font-body text-white/90 text-base font-medium text-left hover:text-[#22c55e] transition-colors"
-            >
-              {link.label}
-            </button>
+            link.type === "link" ? (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="font-body text-white/90 text-base font-medium text-left hover:text-[#22c55e] transition-colors"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <button
+                key={link.label}
+                onClick={() => scrollTo(link.href)}
+                className="font-body text-white/90 text-base font-medium text-left hover:text-[#22c55e] transition-colors"
+              >
+                {link.label}
+              </button>
+            )
           ))}
           <button
             onClick={() => scrollTo("#contact")}
