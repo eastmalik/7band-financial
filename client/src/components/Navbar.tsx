@@ -29,7 +29,7 @@ export default function Navbar() {
   const homeNavLinks = [
     { label: "Products", href: "#services", type: "scroll" },
     { label: "Our Approach", href: "#approach", type: "scroll" },
-    { label: "About", href: "#about", type: "scroll" },
+    { label: "About", href: "/about", type: "link" },
     { label: "The Book", href: "#book", type: "scroll" },
     { label: "Lifetime LOC", href: "/lifetime-loc", type: "link" },
   ];
