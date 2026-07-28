@@ -22,7 +22,7 @@ export default function Navbar() {
     { label: "Life Insurance", href: "#services" },
     { label: "How It Works", href: "#how-it-works" },
     { label: "About", href: "#about" },
-    { label: "Blog", href: "#blog" },
+    { label: "The Book", href: "#book" },
   ];
 
   const scrollTo = (id: string) => {
@@ -87,7 +87,7 @@ export default function Navbar() {
               onClick={() => scrollTo("#contact")}
               className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold text-sm px-5 py-2.5 rounded-md transition-all duration-150 active:scale-95"
             >
-              Free Consultation
+              Free Needs Analysis
             </button>
           </div>
 
@@ -120,7 +120,7 @@ export default function Navbar() {
             onClick={() => scrollTo("#contact")}
             className="mt-2 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold text-sm px-5 py-3 rounded-md transition-all active:scale-95 text-center"
           >
-            Free Consultation
+            Free Needs Analysis
           </button>
         </div>
       )}

@@ -26,7 +26,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="font-body text-sm text-white/60 leading-relaxed max-w-xs">
-              Helping families protect their loved ones and build generational wealth through smart life insurance solutions.
+              7Band Financial Agency is a licensed life insurance agency. "Lifetime line of credit" describes the practical use of properly designed high cash value life insurance — it is an insurance product, not a bank line of credit.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Footer() {
                   onClick={() => scrollTo("#contact")}
                   className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors text-left"
                 >
-                  Book a Free Consultation
+                  Book a Free Needs Analysis
                 </button>
               </li>
               <li>
@@ -79,7 +79,7 @@ export default function Footer() {
                 onClick={() => scrollTo("#contact")}
                 className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold text-sm px-5 py-2.5 rounded-md transition-all active:scale-95"
               >
-                Book Free Consultation
+                Book Free Needs Analysis
               </button>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Footer() {
             © {new Date().getFullYear()} 7Band Financial Agency. All rights reserved.
           </p>
           <p className="font-body text-xs text-white/40">
-            Licensed Life Insurance Agency
+            Licensed Life Insurance Agency · Policy loans reduce available cash value and death benefit. Guarantees backed by the financial strength of the issuing insurer.
           </p>
         </div>
       </div>

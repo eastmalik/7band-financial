@@ -77,11 +77,11 @@ export default function Home() {
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Protect Your Family.{" "}
-              <em className="text-[#22c55e] not-italic">Build Their Future.</em>
+              Build a line of credit{" "}
+              <em className="text-[#22c55e] not-italic">guaranteed for life.</em>
             </h1>
             <p className="font-body text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
-              Life insurance designed the right way — not just a death benefit, but a living asset that protects your family today and builds generational wealth for tomorrow. Your legacy starts with one conversation.
+              For yourself, or started young for your kids. It compounds safely every year, it can't be frozen or called, and it finances everything life asks of you while the balance keeps growing. The wealthy have built these for generations. Yours starts with one conversation.
             </p>
             <SevenBandsAccent className="w-32 text-[#22c55e] mb-6 opacity-60" />
             <div className="flex flex-col sm:flex-row gap-4">
@@ -89,13 +89,13 @@ export default function Home() {
                 onClick={() => scrollTo("#contact")}
                 className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
               >
-                Book My Free Consultation
+                Book My Free Needs Analysis
               </button>
               <button
                 onClick={() => scrollTo("#how-it-works")}
                 className="border-2 border-white/60 hover:border-white text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
               >
-                See How It Works
+                See the First 90 Days
               </button>
             </div>
           </div>
@@ -124,24 +124,24 @@ export default function Home() {
                 What We Do
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                An asset that protects and grows at the same time
+                An asset that answers before you ask
               </h2>
               <SevenBandsAccent className="w-24 text-[#22c55e] mb-6 opacity-50" />
               <p className="font-body text-lg text-gray-600 leading-relaxed mb-4">
-                At 7Band Financial Agency, we specialize in life insurance solutions that do more than pay a death benefit. When structured correctly, a life insurance policy becomes a living financial asset — one that grows tax-advantaged, can be borrowed against without a credit check, and passes wealth to your family income-tax-free.
+                Underneath the name is high cash value life insurance, designed a specific way, and we lead with that because this only works out in the open. Built right, the policy behaves like nothing else you own: a pool of capital that grows on guarantees, that you can borrow against with no application and no banker's mood, and that pays your family income-tax-free when you're done with it.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-8">
-                The difference between a policy that works for you and one that doesn't is entirely in how it's designed. That's why every client starts with a free needs analysis — so we build a plan around your life, not a generic product.
+                The catch is the phrase "built right." The same product built the default way earns every bit of its bad reputation. That's why the design conversation comes before any application, and why the education is free whether you ever work with us or not.
               </p>
               <blockquote className="border-l-4 border-[#f97316] pl-6 py-2 italic font-display text-xl text-[#0d1f2d]">
-                "The best time to protect your family was yesterday. The second best time is today."
+                "The system doesn't hand you a bank, it grows one. The best time to begin was twenty years ago. The second best time is today."
               </blockquote>
               <div className="mt-8">
                 <button
                   onClick={() => scrollTo("#contact")}
                   className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
                 >
-                  Learn More — It's Free <ArrowRight size={16} />
+                  Want the full education first? It's free <ArrowRight size={16} />
                 </button>
               </div>
             </div>
@@ -166,21 +166,21 @@ export default function Home() {
                 icon: <Clock size={20} />,
                 label: "Time",
                 title: "Compounding needs a head start",
-                body: "Every year you wait is a year of tax-advantaged growth that never happens. The policy you start today beats the larger one you start five years from now — and the gap widens for the rest of your life. Start small if you have to. Start.",
+                body: "Every year you wait is a year of growth that never happens, and the gap widens for the rest of your life. The policy you start at 35 beats the bigger one you start at 50, and it's not close. Start small if you have to. Start.",
                 delay: "delay-0",
               },
               {
                 icon: <Heart size={20} />,
                 label: "Insurability",
                 title: "Your health is the ticket in",
-                body: "You qualify for life insurance with your health, and health only moves one direction. Lock in your insurability while it's affordable, and it stays locked for life. This is doubly true if you have children — the younger they start, the better.",
+                body: "You qualify for this asset with your health, and health only moves one direction. The exam isn't the enemy — waiting is. Lock in insurability while it's cheap, and it stays locked for life. This is doubly true for kids.",
                 delay: "delay-100",
               },
               {
                 icon: <TrendingUp size={20} />,
                 label: "The Alternative",
-                title: "Someone else is building wealth on your dollars",
-                body: "Every dollar sitting idle or flowing out as interest is already capitalizing someone else's financial system. Building your own doesn't take new money — mostly it re-routes money already in motion toward your family's future.",
+                title: "Someone's building a bank on your dollars",
+                body: "Every dollar sitting idle or flowing out as interest is already capitalizing a banking system. It's just someone else's. Building your own doesn't take new money. Mostly it re-routes money already in motion.",
                 delay: "delay-200",
               },
             ].map((card, i) => (
@@ -213,10 +213,10 @@ export default function Home() {
               The Path
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
-              What building generational wealth looks like
+              What building it looks like
             </h2>
             <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
-              Your premiums feed a policy built for cash value. That cash value grows your family's financial foundation. The death benefit restarts the whole system for the next generation.
+              Cash flow feeds the policy. The policy grows the line. The line finances your life, and the death benefit restarts the whole system for the next generation. Here's the map, and the needs analysis is where we draw your version of it.
             </p>
           </RevealSection>
 
@@ -224,11 +224,11 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { step: "01", title: "Free Needs Analysis", desc: "We review your family's financial situation, goals, and budget — no obligation, no pressure." },
-              { step: "02", title: "Custom Policy Design", desc: "We design a policy built specifically for high cash value and your family's protection needs." },
-              { step: "03", title: "Your Policy Activates", desc: "Coverage begins immediately. Your cash value starts growing from day one, tax-advantaged." },
-              { step: "04", title: "Access Your Cash Value", desc: "Borrow against your policy with no credit check, no banker approval — it's your money." },
-              { step: "05", title: "Put Capital to Work", desc: "Use your line of credit for real estate, business, emergencies, or retirement income." },
-              { step: "06", title: "Generational Transfer", desc: "The death benefit passes income-tax-free to your family, recapitalizing the family bank." },
+              { step: "02", title: "Policy Built for Cash Value", desc: "We design it specifically for high cash value and low expense — not the default way the product is usually sold." },
+              { step: "03", title: "Your Line Activates", desc: "Coverage begins immediately. Your cash value starts growing from day one, guaranteed." },
+              { step: "04", title: "Borrow Against It", desc: "No application, no credit check, no banker's mood. It's your capital — access it on your terms." },
+              { step: "05", title: "Put Capital to Work", desc: "Real estate, business, emergencies, retirement income. The line finances your life while the balance keeps growing." },
+              { step: "06", title: "Recapitalize the Family Bank", desc: "The death benefit passes income-tax-free to your family and restarts the whole system for the next generation." },
             ].map((item, i) => (
               <RevealSection key={item.step}>
                 <div
@@ -261,7 +261,7 @@ export default function Home() {
               Coverage for every stage of life
             </h2>
             <p className="font-body text-white/60 text-lg leading-relaxed mb-12 max-w-2xl">
-              We work with top-rated carriers to find the right product for your family's unique situation and goals.
+              We work with top-rated carriers to find the right product for your situation. The design conversation comes first — always.
             </p>
           </RevealSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -298,19 +298,19 @@ export default function Home() {
               </h2>
               <SevenBandsAccent className="w-28 text-[#22c55e] mb-6 opacity-50" />
               <p className="font-body text-gray-600 leading-relaxed mb-4">
-                We are a licensed life insurance agency dedicated to helping families — especially those who have been underserved by the traditional financial industry — understand and access the wealth-building tools that have protected affluent families for generations.
+                We are a licensed life insurance agency dedicated to helping families — especially those who have been underserved by the traditional financial industry — understand and access the same wealth-building tools that affluent families have used for generations.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-4">
-                We believe life insurance is not just about what happens when you die. It's about what happens while you're living — building a financial foundation your children and grandchildren can build on.
+                We believe life insurance is not just about what happens when you die. It's about what happens while you're living — building a financial foundation your children and grandchildren can stand on.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-8">
-                Every client receives a personalized needs analysis. We don't sell products — we design solutions. If it's not the right fit, you'll hear that from us directly.
+                Every client receives a personalized needs analysis. We don't sell products — we design solutions. If it's not the right time yet, you'll hear that from us too.
               </p>
               <button
                 onClick={() => scrollTo("#contact")}
                 className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95"
               >
-                Talk With Us, Free <Phone size={16} />
+                Talk With Us, Free — No Obligation <Phone size={16} />
               </button>
             </RevealSection>
             <RevealSection>
@@ -335,17 +335,17 @@ export default function Home() {
               Get Started
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d1f2d] mb-6">
-              One conversation starts it all
+              One conversation starts it
             </h2>
             <p className="font-body text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-              The needs analysis is free and open to anyone. We'll look at your family's situation, your goals, and what a policy designed for you would look like. No obligation, no pressure — just answers.
+              The needs analysis is free and open to anyone, even if you're an agent. We'll look at your cash flow, whether your base is ready, and what a design built for you would look like. If it's not the right time yet, you'll hear that from us too. No obligation, no chase-down calls afterward. Just answers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:info@7bandfinancial.com"
                 className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
               >
-                Book My Free Consultation <ArrowRight size={18} />
+                Book My Free Needs Analysis <ArrowRight size={18} />
               </a>
               <a
                 href="tel:+1-800-000-0000"
@@ -355,7 +355,7 @@ export default function Home() {
               </a>
             </div>
             <p className="font-body text-sm text-gray-400 mt-6">
-              No obligation · No chase-down calls · Just answers
+              No obligation · No chase-down calls afterward · Just answers
             </p>
           </RevealSection>
         </div>
