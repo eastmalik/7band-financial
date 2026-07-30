@@ -8,7 +8,6 @@ import { ArrowRight, Phone, Music, Heart, Users } from "lucide-react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SevenBandsAccent, SevenBandsShield } from "@/components/SevenBands";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -95,7 +94,6 @@ export default function About() {
           <p className="font-body text-lg text-white/70 leading-relaxed max-w-2xl mx-auto mb-8">
             7Band Financial Agency was founded on a simple belief: every family deserves access to the same financial tools that wealthy families have used for generations — and the honest education to use them well.
           </p>
-          <SevenBandsAccent className="w-24 text-[#22c55e] mx-auto opacity-40" />
         </div>
       </section>
 
@@ -151,7 +149,6 @@ export default function About() {
               <p className="font-body text-[#22c55e] text-sm font-bold tracking-widest uppercase mb-6">
                 Owner · 7Band Financial Agency
               </p>
-              <SevenBandsAccent className="w-24 text-[#22c55e] mb-8 opacity-40" />
 
               <div className="space-y-5 font-body text-gray-600 leading-relaxed">
                 <p>
@@ -197,7 +194,6 @@ export default function About() {
                   </div>
                   <h3 className="font-display text-xl font-bold text-[#0d1f2d] mb-3">{v.title}</h3>
                   <p className="font-body text-gray-600 text-sm leading-relaxed">{v.body}</p>
-                  <SevenBandsAccent className="w-14 text-[#22c55e] mt-5 opacity-25" />
                 </div>
               </RevealSection>
             ))}
@@ -239,9 +235,6 @@ export default function About() {
       <section id="contact-section" className="py-24 bg-[#0d1f2d]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <RevealSection>
-            <div className="flex justify-center mb-6">
-              <SevenBandsShield className="w-20 h-20 opacity-60" />
-            </div>
             <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6">
               Get Started
             </span>

@@ -9,7 +9,6 @@ import { ArrowRight, CheckCircle, Phone, TrendingUp, Shield, Users, BookOpen } f
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SevenBandsAccent, SevenBandsShield } from "@/components/SevenBands";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -90,7 +89,6 @@ export default function Home() {
             <p className="font-body text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
               Usually the problem underneath is the same one: not enough in a safe growth asset you can reach when you need it most, or want it most. Close that gap and everything else gets easier. That's what we work on here.
             </p>
-            <SevenBandsAccent className="w-28 text-[#22c55e] mb-8 opacity-50" />
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => scrollTo("#contact")}
@@ -110,7 +108,6 @@ export default function Home() {
           <div className="hidden lg:flex justify-center items-center">
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-[#22c55e]/10 blur-3xl scale-110" />
-              <SevenBandsShield className="w-64 h-64 drop-shadow-2xl relative z-10" />
             </div>
           </div>
         </div>
@@ -163,7 +160,6 @@ export default function Home() {
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
                 Life insurance might be the answer. Slow down a beat anyway.
               </h2>
-              <SevenBandsAccent className="w-24 text-[#22c55e] mb-6 opacity-40" />
               <p className="font-body text-lg text-gray-600 leading-relaxed mb-4">
                 A lot of people come here ready to get started with a policy. They've done the research, they've run the numbers, and they're ready to go. I appreciate that. But a policy is one tool in a bigger picture, and the picture comes first.
               </p>
@@ -233,7 +229,6 @@ export default function Home() {
                   </div>
                   <h3 className="font-display text-xl font-bold text-[#0d1f2d] mb-3">{step.title}</h3>
                   <p className="font-body text-gray-600 text-sm leading-relaxed">{step.body}</p>
-                  <SevenBandsAccent className="w-16 text-[#22c55e] mt-5 opacity-25" />
                 </div>
               </RevealSection>
             ))}
@@ -253,7 +248,6 @@ export default function Home() {
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
                   The Lifetime LOC
                 </h2>
-                <SevenBandsAccent className="w-24 text-[#22c55e] mb-6 opacity-50" />
                 <p className="font-body text-white/70 text-lg leading-relaxed mb-4">
                   A line of credit that's guaranteed for life. It compounds safely every year, it can't be frozen or called, and it finances everything life asks of you while the balance keeps growing.
                 </p>
@@ -270,7 +264,6 @@ export default function Home() {
               <div className="flex justify-center">
                 <div className="relative">
                   <div className="absolute inset-0 rounded-full bg-[#22c55e]/10 blur-3xl scale-110" />
-                  <SevenBandsShield className="w-56 h-56 relative z-10 opacity-90" />
                 </div>
               </div>
             </div>
@@ -337,7 +330,6 @@ export default function Home() {
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
                 7Band Financial Agency
               </h2>
-              <SevenBandsAccent className="w-28 text-[#22c55e] mb-6 opacity-40" />
               <p className="font-body text-gray-600 leading-relaxed mb-4">
                 I started 7Band Financial Agency because I believe every family deserves access to the same financial tools that wealthy families have used for generations — not just the ones the industry defaults to selling.
               </p>

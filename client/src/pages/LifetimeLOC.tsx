@@ -8,7 +8,6 @@ import { ArrowRight, Phone, Shield, TrendingUp, DollarSign, RefreshCw, AlertCirc
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SevenBandsAccent, SevenBandsShield } from "@/components/SevenBands";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -158,7 +157,6 @@ export default function LifetimeLOC() {
             <p className="font-body text-lg text-white/75 leading-relaxed mb-6 max-w-xl">
               Your HELOC can be frozen. Your card limit can be cut. Your banker can say no. There's one line of credit that never gets called, never expires, and grows every year you own it — and the banks buy it for themselves by the billion.
             </p>
-            <SevenBandsAccent className="w-28 text-[#22c55e] mb-8 opacity-50" />
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => scrollTo("#loc-contact")}
@@ -175,12 +173,6 @@ export default function LifetimeLOC() {
             </div>
           </div>
 
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-[#22c55e]/10 blur-3xl scale-110" />
-              <SevenBandsShield className="w-64 h-64 drop-shadow-2xl relative z-10" />
-            </div>
-          </div>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-40">
@@ -198,8 +190,7 @@ export default function LifetimeLOC() {
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
                 What "Lifetime LOC" actually means
-              </h2>
-              <SevenBandsAccent className="w-24 text-[#22c55e] mb-6 opacity-40" />
+            </h2>
               <p className="font-body text-lg text-gray-600 leading-relaxed mb-4">
                 The asset underneath is high cash value life insurance — whole life or indexed universal life, designed a specific way. We lead with that because nothing here works as a secret. Once you see what a properly designed policy does, "a line of credit that's guaranteed for life" is simply the most accurate description of how it behaves.
               </p>
@@ -242,7 +233,6 @@ export default function LifetimeLOC() {
                     <span className="w-9 h-9 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 flex items-center justify-center font-display font-bold text-[#22c55e] text-sm shrink-0">
                       {item.step}
                     </span>
-                    <SevenBandsAccent className="w-10 text-[#22c55e] opacity-25" />
                   </div>
                   <h3 className="font-display text-lg font-bold text-[#0d1f2d] mb-2">{item.title}</h3>
                   <p className="font-body text-sm text-gray-600 leading-relaxed">{item.desc}</p>
@@ -284,7 +274,6 @@ export default function LifetimeLOC() {
                   </div>
                   <h3 className="font-display text-xl font-bold text-white mb-3">{lesson.title}</h3>
                   <p className="font-body text-sm text-white/60 leading-relaxed">{lesson.body}</p>
-                  <SevenBandsAccent className="w-14 text-[#22c55e] mt-5 opacity-20" />
                 </div>
               </RevealSection>
             ))}
