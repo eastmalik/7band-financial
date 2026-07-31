@@ -147,9 +147,12 @@ export default function LifetimeLOC() {
             <div className="inline-flex items-center gap-2 bg-[#22c55e]/20 border border-[#22c55e]/40 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 rounded-full bg-[#22c55e] inline-block" />
               <span className="font-body text-[#22c55e] text-xs font-semibold tracking-wider uppercase">
-                7Band Financial Agency · Flagship Product
+                7Band Financial Agency
               </span>
             </div>
+            <p className="font-body text-white/60 text-sm font-semibold tracking-widest uppercase mb-4">
+              Your Freedom Starts Now
+            </p>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Stop Funding Their Dreams.{" "}
               <em className="text-[#22c55e] not-italic">Start Funding Yours.</em>
