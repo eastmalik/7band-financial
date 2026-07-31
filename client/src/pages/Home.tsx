@@ -1,11 +1,11 @@
 /**
  * 7Band Financial Agency — Main Homepage
  * Design: Dark navy hero, white content sections, green labels, orange CTAs.
- * Modeled after oregoncashflowpro.com structure — "front of the store" for a life insurance agency.
+ * StoryBrand framework: Hero = Be Your Own Bank, Villain = banks/interest, Guide = Malik, Plan = 3 steps, Stakes = success/failure.
  * Fonts: Playfair Display (headings), Inter (body).
  */
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, CheckCircle, Phone, TrendingUp, Shield, Users, BookOpen } from "lucide-react";
+import { ArrowRight, CheckCircle, Phone, TrendingUp, Shield, BookOpen, AlertTriangle, Download } from "lucide-react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -41,11 +41,11 @@ function RevealSection({ children, className = "" }: { children: React.ReactNode
 }
 
 const problems = [
-  { label: "I need death benefit coverage", href: "#approach" },
-  { label: "Debt is eating my paycheck", href: "#approach" },
-  { label: "My savings barely grow", href: "#approach" },
-  { label: "I want a safe growth asset I can access", href: "/lifetime-loc" },
-  { label: "Will I have enough to retire?", href: "#approach" },
+  { label: "I'm paying too much interest to banks", href: "#villain" },
+  { label: "My dollars are sitting idle", href: "#villain" },
+  { label: "I missed an investment — no capital", href: "#villain" },
+  { label: "I want to be my own bank", href: "/lifetime-loc" },
+  { label: "I need life insurance coverage", href: "#services" },
   { label: "Something else? Let's talk →", href: "#contact" },
 ];
 
@@ -82,12 +82,11 @@ export default function Home() {
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Money problems{" "}
-              <em className="text-[#22c55e] not-italic">have solutions.</em>{" "}
-              Let's find yours.
+              Be Your{" "}
+              <em className="text-[#22c55e] not-italic">Own Bank.</em>
             </h1>
             <p className="font-body text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
-              Usually the problem underneath is the same one: not enough in a safe growth asset you can reach when you need it most, or want it most. Close that gap and everything else gets easier. That's what we work on here.
+              Stop losing money to high-interest bank loans. Build a private line of credit you control — one that grows every year, can't be frozen, and funds your life while your balance keeps compounding.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
@@ -100,14 +99,8 @@ export default function Home() {
                 href="/lifetime-loc"
                 className="border-2 border-white/60 hover:border-white text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base text-center"
               >
-                See Our Main Product →
+                See How It Works →
               </Link>
-            </div>
-          </div>
-
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-[#22c55e]/10 blur-3xl scale-110" />
             </div>
           </div>
         </div>
@@ -117,12 +110,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHAT'S THE MONEY PROBLEM? ─────────────────────────────────── */}
+      {/* ── ONE-LINER / STORY GAP ────────────────────────────────────── */}
       <section className="py-16 bg-gray-50 border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
-            <p className="font-body text-xs font-bold tracking-widest uppercase text-gray-400 mb-5">
-              What's the money problem?
+            <p className="font-body text-sm text-gray-500 leading-relaxed max-w-3xl mb-5">
+              Most business owners and families lose thousands in interest by "renting" money from banks. We help you build a private line of credit through life insurance — so you can fund your own investments and keep your wealth growing while you use it.
+            </p>
+            <p className="font-body text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
+              What's your situation?
             </p>
             <div className="flex flex-wrap gap-3">
               {problems.map((p) =>
@@ -149,49 +145,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BEFORE ANYTHING ELSE ─────────────────────────────────────── */}
-      <section id="approach" className="py-24 bg-white">
+      {/* ── THE VILLAIN ──────────────────────────────────────────────── */}
+      <section id="villain" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
             <div className="max-w-3xl">
               <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                Before Anything Else
+                The Problem
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                Life insurance might be the answer. Slow down a beat anyway.
+                Banks are getting rich off your money. You don't have to let them.
               </h2>
-              <p className="font-body text-lg text-gray-600 leading-relaxed mb-4">
-                A lot of people come here ready to get started with a policy. They've done the research, they've run the numbers, and they're ready to go. I appreciate that. But a policy is one tool in a bigger picture, and the picture comes first.
-              </p>
-              <p className="font-body text-gray-600 leading-relaxed mb-4">
-                Is your money moving efficiently? How much risk is your current situation carrying? Sometimes cash value life insurance improves that picture a lot. Sometimes it's not the right fit yet — and you'd want to know that before you commit to premiums.
-              </p>
-              <p className="font-body text-gray-600 leading-relaxed mb-8">
-                Yes, I sell life insurance. It's my main source of income. But it only gets recommended when it solves a real problem or meets a genuine need in your plan. Finding that out is what the needs analysis is for, and it's free.
-              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
+                  <p className="font-body text-gray-600 leading-relaxed"><strong>The External Problem:</strong> You lack quick access to capital when a business opportunity or emergency hits — banks move too slow, charge too much, or say no entirely.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
+                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Internal Problem:</strong> You feel controlled — watching great opportunities pass by because your dollars are sitting idle or locked up somewhere you can't reach them.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
+                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Real Problem:</strong> You shouldn't have to rent money from a bank when you could be your own lender — keeping the interest for yourself instead of giving it away.</p>
+                </div>
+              </div>
+              <blockquote className="border-l-4 border-[#f97316] pl-6 py-2 italic font-display text-xl text-[#0d1f2d] mb-8">
+                "We understand how frustrating it is to watch a great investment opportunity pass by because a bank wouldn't move fast enough."
+              </blockquote>
               <button
                 onClick={() => scrollTo("#contact")}
                 className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
               >
-                Book the Free Needs Analysis <ArrowRight size={16} />
+                Book My Free Needs Analysis <ArrowRight size={16} />
               </button>
             </div>
           </RevealSection>
         </div>
       </section>
 
-      {/* ── HOW WE LOOK AT YOUR MONEY ────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      {/* ── THE 3-STEP PLAN ──────────────────────────────────────────── */}
+      <section id="approach" className="py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
             <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-              How We Look at Your Money
+              The Plan
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
-              The whole picture first. Then the policy.
+              Three steps to your private bank.
             </h2>
             <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
-              Start with the problem most families actually have: not enough in a safe growth asset that can be reached when it's needed or wanted most. Almost everything else in a financial plan gets easier once that asset exists.
+              Simple process. Powerful result. Here's exactly how we build it.
             </p>
           </RevealSection>
 
@@ -200,20 +204,20 @@ export default function Home() {
               {
                 num: "1",
                 icon: <TrendingUp size={22} />,
-                title: "Move your money efficiently",
-                body: "We find the leaks first. Interest going out, dollars sitting idle, money doing one job when it could do two. Fixing the flow costs nothing, and it funds everything that comes after.",
+                title: "Design Your Bank",
+                body: "We build a custom high-cash-value life insurance policy engineered for maximum cash accumulation — not just a death benefit.",
               },
               {
                 num: "2",
                 icon: <Shield size={22} />,
-                title: "Check your risk",
-                body: "How much of your situation rides the market? We look at the downsides and restrictions honestly — contribution caps, lock-ups, and what a bad year at the wrong time does to your plan.",
+                title: "Fund Your Future",
+                body: "Deposit capital into your policy to create an immediate line of credit. Your money is working — growing guaranteed — from day one.",
               },
               {
                 num: "3",
                 icon: <CheckCircle size={22} />,
-                title: "Test the fit",
-                body: "Then, and only then: would a high cash value policy make your plan stronger? If yes, we design it right. If no, you'll hear that from us too.",
+                title: "Borrow on Your Terms",
+                body: "Access capital for any investment, expense, or opportunity — no application, no credit check, no banker's opinion. Your balance keeps compounding the whole time.",
               },
             ].map((step, i) => (
               <RevealSection key={step.num}>
@@ -232,6 +236,50 @@ export default function Home() {
                 </div>
               </RevealSection>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── STAKES: SUCCESS VS FAILURE ───────────────────────────────── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+              The Stakes
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-12">
+              What happens if you act — and if you don't.
+            </h2>
+          </RevealSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <RevealSection>
+              <div className="bg-red-50 border border-red-200 rounded-xl p-8 h-full">
+                <span className="inline-block bg-red-100 text-red-700 font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+                  Without a Private Bank
+                </span>
+                <h3 className="font-display text-2xl font-bold text-red-800 mb-4">Every day you wait costs you.</h3>
+                <ul className="space-y-3 font-body text-red-700 text-sm leading-relaxed">
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Idle dollars earning next to nothing while inflation erodes their value</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Paying banks thousands in interest — money that could stay in your pocket</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Missing investment opportunities because capital isn't accessible fast enough</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Leaving your family exposed with no guaranteed protection in place</li>
+                </ul>
+              </div>
+            </RevealSection>
+            <RevealSection>
+              <div className="bg-green-50 border border-green-200 rounded-xl p-8 h-full">
+                <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+                  With Your Private Bank
+                </span>
+                <h3 className="font-display text-2xl font-bold text-[#0d1f2d] mb-4">Financial independence on your terms.</h3>
+                <ul className="space-y-3 font-body text-gray-700 text-sm leading-relaxed">
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Capital available instantly — fund deals, cover emergencies, seize opportunities</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Interest you "pay" goes back to you — not to a bank</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Guaranteed growth every year, safe from market crashes</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />A tax-free death benefit that transfers generational wealth to your family</li>
+                </ul>
+              </div>
+            </RevealSection>
           </div>
         </div>
       </section>
@@ -260,11 +308,6 @@ export default function Home() {
                 >
                   Learn About the Lifetime LOC <ArrowRight size={16} />
                 </Link>
-              </div>
-              <div className="flex justify-center">
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-full bg-[#22c55e]/10 blur-3xl scale-110" />
-                </div>
               </div>
             </div>
           </RevealSection>
@@ -309,7 +352,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ABOUT ────────────────────────────────────────────────────── */}
+      {/* ── LEAD GEN: FREE PDF ───────────────────────────────────────── */}
+      <section className="py-16 bg-[#22c55e]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center shrink-0">
+                <Download size={28} className="text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-display text-2xl font-bold text-white mb-2">
+                  Free Download: "5 Ways Banks Steal Your Interest (and How to Take It Back)"
+                </h3>
+                <p className="font-body text-white/80 text-sm leading-relaxed">
+                  Not ready to book a call yet? Start here. This free PDF breaks down exactly how the banking system profits from your idle money — and what you can do about it today.
+                </p>
+              </div>
+              <button
+                onClick={() => scrollTo("#contact")}
+                className="bg-white text-[#22c55e] hover:bg-white/90 font-body font-bold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 shrink-0 whitespace-nowrap"
+              >
+                Get the Free PDF
+              </button>
+            </div>
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* ── ABOUT / GUIDE ────────────────────────────────────────────── */}
       <section id="about" className="py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -325,19 +395,19 @@ export default function Home() {
             </RevealSection>
             <RevealSection>
               <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                My Story
+                Your Guide
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                7Band Financial Agency
+                Your guide to becoming your own bank.
               </h2>
               <p className="font-body text-gray-600 leading-relaxed mb-4">
-                I started 7Band Financial Agency because I believe every family deserves access to the same financial tools that wealthy families have used for generations — not just the ones the industry defaults to selling.
+                I'm Malik East — founder of 7Band Financial Agency and a licensed life insurance agent. I built this agency because I believe every family deserves access to the same financial tools that wealthy families and major banks have used for generations.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-4">
-                I'm a licensed life insurance agent dedicated to helping families protect what they've built and grow what they're building. I own the policies I recommend. If it's good enough to teach, it's what I use myself.
+                I own the policies I recommend. If it's good enough to teach, it's what I use myself. That's not a tagline — it's how I operate every single day.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-8">
-                Every client starts with a free needs analysis. We don't sell products — we design solutions. If it's not the right fit yet, you'll hear that from me directly.
+                Every client starts with a free needs analysis. No pressure. No chase-down calls. Just an honest look at your situation and a clear answer on whether this is the right fit for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -346,6 +416,12 @@ export default function Home() {
                 >
                   Talk With Me, Free <Phone size={16} />
                 </button>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
+                >
+                  Read My Full Story <ArrowRight size={16} />
+                </Link>
               </div>
             </RevealSection>
           </div>
@@ -390,10 +466,10 @@ export default function Home() {
               Get Started
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d1f2d] mb-6">
-              Start with a free needs analysis
+              Ready to stop renting money from banks?
             </h2>
             <p className="font-body text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Not a sales appointment. We'll look at how your money is moving, what risk your situation is carrying, and whether a properly designed policy would actually improve things. If it would, you'll see exactly how and why. If it wouldn't, you'll leave knowing that too. No obligation, no chase-down calls afterward. Just answers.
+              Book your free needs analysis. We'll look at your situation, show you exactly how a private banking strategy would work for you, and give you a straight answer — no pressure, no obligation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -410,7 +486,7 @@ export default function Home() {
               </a>
             </div>
             <p className="font-body text-sm text-gray-400 mt-6">
-              No obligation · No chase-down calls afterward · Just answers
+              No obligation · No pressure · Straight answers only
             </p>
           </RevealSection>
         </div>
