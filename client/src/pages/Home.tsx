@@ -41,10 +41,10 @@ function RevealSection({ children, className = "" }: { children: React.ReactNode
 }
 
 const problems = [
-  { label: "I'm paying too much interest to banks", href: "#villain" },
-  { label: "My dollars are sitting idle", href: "#villain" },
-  { label: "I missed an investment — no capital", href: "#villain" },
-  { label: "I want to be my own bank", href: "/lifetime-loc" },
+  { label: "I'm funding a bank's growth, not mine", href: "#villain" },
+  { label: "My money is sitting idle", href: "#villain" },
+  { label: "I keep missing opportunities — no capital", href: "#villain" },
+  { label: "I want to fund my own dreams", href: "/lifetime-loc" },
   { label: "I need life insurance coverage", href: "#services" },
   { label: "Something else? Let's talk →", href: "#contact" },
 ];
@@ -82,11 +82,11 @@ export default function Home() {
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Be Your{" "}
-              <em className="text-[#22c55e] not-italic">Own Bank.</em>
+              Stop Funding Their Dreams.{" "}
+              <em className="text-[#22c55e] not-italic">Start Funding Yours.</em>
             </h1>
             <p className="font-body text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
-              Stop losing money to high-interest bank loans. Build a private line of credit you control — one that grows every year, can't be frozen, and funds your life while your balance keeps compounding.
+              Every dollar you hand to a bank in interest funded their expansion, their bonuses, their buildings — not yours. We help you redirect that money back into your own life, your own investments, and your own legacy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
@@ -115,10 +115,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
             <p className="font-body text-sm text-gray-500 leading-relaxed max-w-3xl mb-5">
-              Most business owners and families lose thousands in interest by "renting" money from banks. We help you build a private line of credit through life insurance — so you can fund your own investments and keep your wealth growing while you use it.
+              Every year you pay interest to a bank, you're funding someone else's dream. We help families and business owners build a private line of credit through life insurance — so the interest you pay comes back to you, and your money grows while you use it.
             </p>
             <p className="font-body text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
-              What's your situation?
+              Which one sounds like you?
             </p>
             <div className="flex flex-wrap gap-3">
               {problems.map((p) =>
@@ -154,24 +154,24 @@ export default function Home() {
                 The Problem
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                Banks are getting rich off your money. You don't have to let them.
+                Every dollar you pay in interest is funding someone else's dream. Here's what that actually costs you.
               </h2>
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
                   <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
-                  <p className="font-body text-gray-600 leading-relaxed"><strong>The External Problem:</strong> You lack quick access to capital when a business opportunity or emergency hits — banks move too slow, charge too much, or say no entirely.</p>
+                  <p className="font-body text-gray-600 leading-relaxed"><strong>The External Problem:</strong> When a real opportunity shows up — a deal, an investment, an emergency — you don't have fast access to capital. Banks are too slow, too expensive, or they just say no.</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
-                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Internal Problem:</strong> You feel controlled — watching great opportunities pass by because your dollars are sitting idle or locked up somewhere you can't reach them.</p>
+                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Internal Problem:</strong> You feel like you're working hard but still falling behind — watching opportunities pass while your money sits idle, locked up, or quietly funding someone else's growth.</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
-                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Real Problem:</strong> You shouldn't have to rent money from a bank when you could be your own lender — keeping the interest for yourself instead of giving it away.</p>
+                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Real Problem:</strong> It's not just money — it's your dreams being deferred while someone else's get funded. You deserve a system that works for you, not against you.</p>
                 </div>
               </div>
               <blockquote className="border-l-4 border-[#f97316] pl-6 py-2 italic font-display text-xl text-[#0d1f2d] mb-8">
-                "We understand how frustrating it is to watch a great investment opportunity pass by because a bank wouldn't move fast enough."
+                "Every time you pay a bank interest, you're funding their next branch, their next bonus, their next dream. It's time to redirect that money toward yours."
               </blockquote>
               <button
                 onClick={() => scrollTo("#contact")}
@@ -192,10 +192,10 @@ export default function Home() {
               The Plan
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
-              Three steps to your private bank.
+              Three steps to funding your own dreams.
             </h2>
             <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
-              Simple process. Powerful result. Here's exactly how we build it.
+              Stop sending interest to a bank. Here's how we redirect it back to you.
             </p>
           </RevealSection>
 
@@ -248,7 +248,7 @@ export default function Home() {
               The Stakes
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-12">
-              What happens if you act — and if you don't.
+              Two futures. One choice.
             </h2>
           </RevealSection>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -257,12 +257,12 @@ export default function Home() {
                 <span className="inline-block bg-red-100 text-red-700 font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
                   Without a Private Bank
                 </span>
-                <h3 className="font-display text-2xl font-bold text-red-800 mb-4">Every day you wait costs you.</h3>
+                <h3 className="font-display text-2xl font-bold text-red-800 mb-4">You keep funding their dreams.</h3>
                 <ul className="space-y-3 font-body text-red-700 text-sm leading-relaxed">
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Idle dollars earning next to nothing while inflation erodes their value</li>
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Paying banks thousands in interest — money that could stay in your pocket</li>
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Missing investment opportunities because capital isn't accessible fast enough</li>
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Leaving your family exposed with no guaranteed protection in place</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Your interest payments fund bank expansions, bonuses, and buildings — not your life</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Idle dollars losing ground to inflation while someone else puts them to work</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Deals and opportunities pass you by because capital isn't accessible when it counts</li>
+                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Your family has no guaranteed safety net if something happens to you</li>
                 </ul>
               </div>
             </RevealSection>
@@ -271,12 +271,12 @@ export default function Home() {
                 <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
                   With Your Private Bank
                 </span>
-                <h3 className="font-display text-2xl font-bold text-[#0d1f2d] mb-4">Financial independence on your terms.</h3>
+                <h3 className="font-display text-2xl font-bold text-[#0d1f2d] mb-4">You start funding yours.</h3>
                 <ul className="space-y-3 font-body text-gray-700 text-sm leading-relaxed">
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Capital available instantly — fund deals, cover emergencies, seize opportunities</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Interest you "pay" goes back to you — not to a bank</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Guaranteed growth every year, safe from market crashes</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />A tax-free death benefit that transfers generational wealth to your family</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Capital on your terms — fund your deals, your goals, your life</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />The interest you "pay" recycles back to you — not a bank's bottom line</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Guaranteed growth every year, completely shielded from market crashes</li>
+                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />A tax-free death benefit that passes your dream — and your wealth — to the next generation</li>
                 </ul>
               </div>
             </RevealSection>
@@ -362,10 +362,10 @@ export default function Home() {
               </div>
               <div className="flex-1">
                 <h3 className="font-display text-2xl font-bold text-white mb-2">
-                  Free Download: "5 Ways Banks Steal Your Interest (and How to Take It Back)"
+                  Free Download: "5 Ways You're Funding a Bank's Dream Instead of Your Own"
                 </h3>
                 <p className="font-body text-white/80 text-sm leading-relaxed">
-                  Not ready to book a call yet? Start here. This free PDF breaks down exactly how the banking system profits from your idle money — and what you can do about it today.
+                  Not ready to book a call yet? Start here. This free PDF breaks down exactly how banks profit from your hard-earned money — and the simple strategy to redirect that flow back toward your own dreams.
                 </p>
               </div>
               <button
@@ -398,16 +398,16 @@ export default function Home() {
                 Your Guide
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                Your guide to becoming your own bank.
+                Your guide to funding your own dreams.
               </h2>
               <p className="font-body text-gray-600 leading-relaxed mb-4">
-                I'm Malik East — founder of 7Band Financial Agency and a licensed life insurance agent. I built this agency because I believe every family deserves access to the same financial tools that wealthy families and major banks have used for generations.
+                I'm Malik East — founder of 7Band Financial Agency and a licensed life insurance agent. I started this agency because I got tired of watching hardworking families hand their money to banks and institutions that used it to build their own empires.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-4">
-                I own the policies I recommend. If it's good enough to teach, it's what I use myself. That's not a tagline — it's how I operate every single day.
+                You deserve the same tools the wealthy use to fund their own lives — not a watered-down version, not a sales pitch. I own the policies I recommend. If it's good enough to teach, it's what I use myself.
               </p>
               <p className="font-body text-gray-600 leading-relaxed mb-8">
-                Every client starts with a free needs analysis. No pressure. No chase-down calls. Just an honest look at your situation and a clear answer on whether this is the right fit for you.
+                Every client starts with a free needs analysis. We look at where your money is going, who's benefiting from it, and whether we can redirect more of it toward your goals. No pressure. No chase-down calls. Just a straight answer.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -466,10 +466,10 @@ export default function Home() {
               Get Started
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d1f2d] mb-6">
-              Ready to stop renting money from banks?
+              Ready to stop funding their dreams and start funding yours?
             </h2>
             <p className="font-body text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Book your free needs analysis. We'll look at your situation, show you exactly how a private banking strategy would work for you, and give you a straight answer — no pressure, no obligation.
+              Book your free needs analysis. We'll show you exactly where your money is going, who's benefiting from it right now, and how to redirect it toward your own life, your own goals, and your own legacy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

@@ -92,7 +92,7 @@ export default function About() {
             <em className="text-[#22c55e] not-italic">Working With</em>
           </h1>
           <p className="font-body text-lg text-white/70 leading-relaxed max-w-2xl mx-auto mb-8">
-            7Band Financial Agency was founded on a simple belief: every family deserves access to the same financial tools that wealthy families have used for generations — and the honest education to use them well.
+            7Band Financial Agency was founded on one conviction: hardworking families should be funding their own dreams — not handing their money to banks and institutions that use it to build their own empires. Every client deserves the same tools the wealthy use, and the honest education to put them to work.
           </p>
         </div>
       </section>
@@ -239,7 +239,7 @@ export default function About() {
               Get Started
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Contact us today for a no-obligation consultation
+              Stop funding their dreams. Start funding yours.
             </h2>
             <p className="font-body text-lg text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto">
               No obligation, no chase-down calls afterward. We'll look at your situation honestly and tell you exactly what we think — whether that's a policy or something else entirely.

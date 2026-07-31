@@ -151,11 +151,11 @@ export default function LifetimeLOC() {
               </span>
             </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              A line of credit{" "}
-              <em className="text-[#22c55e] not-italic">guaranteed for life.</em>
+            Stop Funding Their Dreams.{" "}
+              <em className="text-[#22c55e] not-italic">Start Funding Yours.</em>
             </h1>
             <p className="font-body text-lg text-white/75 leading-relaxed mb-6 max-w-xl">
-              Your HELOC can be frozen. Your card limit can be cut. Your banker can say no. There's one line of credit that never gets called, never expires, and grows every year you own it — and the banks buy it for themselves by the billion.
+              Banks hold over $200 billion of this product in their own vaults — because it works. Every dollar you've paid them in interest has been funding their dreams. The Lifetime LOC is how you redirect that money back toward yours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
