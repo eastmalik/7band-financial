@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Shield, Zap, TrendingUp, Lock, Users, ChevronRight,
   AlertTriangle, Star, Target, Layers, Building2, TreePine,
@@ -33,14 +33,40 @@ type LevelData = {
 };
 function QuestLevelCard({ lvl, index }: { lvl: LevelData; index: number }) {
   const [unlocked, setUnlocked] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), index * 90);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [index]);
+
   const handleUnlock = useCallback(() => {
     setUnlocked(true);
     setTimeout(() => setUnlocked(false), 500);
   }, []);
+
   return (
     <div
+      ref={ref}
       onClick={handleUnlock}
-      className={`quest-level-card p-5 bg-[#0a0800]/80 flex flex-col gap-3 animate-fade-up animate-fade-up-delay-${Math.min(index + 1, 6)}`}
+      className="quest-level-card p-5 bg-[#0a0800]/80 flex flex-col gap-3"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0) scale(1)" : "translateY(28px) scale(0.97)",
+        transition: `opacity 0.55s cubic-bezier(0.23,1,0.32,1), transform 0.55s cubic-bezier(0.23,1,0.32,1)`,
+      }}
     >
       <div className="flex items-center gap-3">
         <div className={`level-badge flex-shrink-0 w-10 h-10 text-sm ${unlocked ? "level-badge-unlock" : ""}`}>{lvl.level}</div>
@@ -90,76 +116,164 @@ function HudFrame({ children, className = "", danger = false }: { children: Reac
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const navItems = [
+    { label: "Lifetime LOC", href: "/lifetime-loc", desc: "The core wealth engine" },
+    { label: "Pricing", href: "/pricing", desc: "Expansion Packs — Bronze / Silver / Gold" },
+    { label: "About", href: "/about", desc: "Meet your guide, TheFlow" },
+    { label: "The Book", href: "/the-book", desc: "The Generational Wealth Blueprint" },
+  ];
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-[#050400]/95 backdrop-blur-xl border-b border-[#c9a84c]/20" : "bg-transparent"
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center group-hover:bg-[#c9a84c]/20 transition-colors">
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#050400]/95 backdrop-blur-xl border-b border-[#c9a84c]/20" : "bg-transparent"
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center group-hover:bg-[#c9a84c]/20 transition-colors">
+                <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
+              </div>
+              <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
+                7Band <span className="text-[#c9a84c]">Financial</span>
+              </span>
+            </Link>
+            {/* Desktop nav */}
+            <div className="hidden md:flex items-center gap-6">
+              {navItems.map((item) => (
+                <Link key={item.href} href={item.href}
+                  className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
+                  {item.label}
+                </Link>
+              ))}
+              <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+                className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
+                Begin Quest
+              </a>
+            </div>
+            {/* Mobile HUD hamburger button */}
+            <button
+              className="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 border border-[#c9a84c]/40 bg-[#0a0800]/80 hover:border-[#c9a84c]/80 transition-colors z-50"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              <span className={`block w-5 h-0.5 bg-[#c9a84c] transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-5 h-0.5 bg-[#c9a84c] transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`block w-5 h-0.5 bg-[#c9a84c] transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* ── FULL-SCREEN HUD MOBILE MENU ── */}
+      <div
+        className="fixed inset-0 z-40 md:hidden circuit-bg flex flex-col"
+        style={{
+          background: "linear-gradient(160deg, #050400 0%, #0a0800 60%, #050400 100%)",
+          opacity: menuOpen ? 1 : 0,
+          pointerEvents: menuOpen ? "auto" : "none",
+          transform: menuOpen ? "translateY(0)" : "translateY(-12px)",
+          transition: "opacity 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1)",
+        }}
+      >
+        {/* Top accent line */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
+
+        {/* HUD header row */}
+        <div className="flex items-center justify-between px-6 h-16 border-b border-[#c9a84c]/15">
+          <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center">
               <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
             </div>
-            <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
+            <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase">
               7Band <span className="text-[#c9a84c]">Financial</span>
             </span>
           </Link>
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
-            {[
-              { label: "Lifetime LOC", href: "/lifetime-loc" },
-              { label: "Pricing", href: "/pricing" },
-              { label: "About", href: "/about" },
-              { label: "The Book", href: "/the-book" },
-            ].map((item) => (
-              <Link key={item.href} href={item.href}
-                className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
-                {item.label}
-              </Link>
-            ))}
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
-              className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
-              Begin Quest
-            </a>
-          </div>
-          {/* Mobile menu button */}
-          <button className="md:hidden text-[#c9a84c] p-2" onClick={() => setMenuOpen(!menuOpen)}>
-            <div className="w-5 h-0.5 bg-current mb-1" />
-            <div className="w-5 h-0.5 bg-current mb-1" />
-            <div className="w-5 h-0.5 bg-current" />
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="w-10 h-10 flex items-center justify-center border border-[#c9a84c]/40 bg-[#0a0800]/80 text-[#c9a84c] font-tactical text-xs tracking-widest"
+            aria-label="Close menu"
+          >
+            ✕
           </button>
         </div>
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-[#050400]/98 border-t border-[#c9a84c]/20 py-4 px-4 flex flex-col gap-4">
-            {[
-              { label: "Lifetime LOC", href: "/lifetime-loc" },
-              { label: "Pricing", href: "/pricing" },
-              { label: "About", href: "/about" },
-              { label: "The Book", href: "/the-book" },
-            ].map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
-                className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/80 hover:text-[#c9a84c] uppercase">
-                {item.label}
-              </Link>
-            ))}
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
-              className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-3 bg-[#c9a84c] text-black text-center">
-              Begin Quest
-            </a>
-          </div>
-        )}
+
+        {/* Status bar */}
+        <div className="px-6 py-3 flex items-center gap-3 border-b border-[#c9a84c]/10">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse" />
+          <span className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-[0.2em] uppercase">Navigation System Active</span>
+          <span className="ml-auto font-tactical text-[10px] text-[#c9a84c]/30 tracking-widest uppercase">7Band GWQ v4.5.4</span>
+        </div>
+
+        {/* Nav items */}
+        <div className="flex-1 flex flex-col justify-center px-6 gap-1">
+          {navItems.map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              className="group relative flex items-center gap-4 py-5 border-b border-[#c9a84c]/10 hover:border-[#c9a84c]/30 transition-all"
+              style={{
+                opacity: menuOpen ? 1 : 0,
+                transform: menuOpen ? "translateX(0)" : "translateX(-20px)",
+                transition: `opacity 0.4s cubic-bezier(0.23,1,0.32,1) ${0.1 + i * 0.07}s, transform 0.4s cubic-bezier(0.23,1,0.32,1) ${0.1 + i * 0.07}s`,
+              }}
+            >
+              <div className="w-9 h-9 rounded-sm border border-[#c9a84c]/40 bg-[#c9a84c]/5 flex items-center justify-center flex-shrink-0 group-hover:border-[#c9a84c]/80 group-hover:bg-[#c9a84c]/15 transition-all">
+                <span className="font-display font-black text-[#c9a84c] text-xs">{i + 1}</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-tactical font-bold text-white text-base tracking-wider uppercase group-hover:text-[#c9a84c] transition-colors">{item.label}</div>
+                <div className="font-tactical text-[11px] text-[#c9a84c]/40 tracking-wide mt-0.5">{item.desc}</div>
+              </div>
+              <ChevronRight size={16} className="text-[#c9a84c]/30 group-hover:text-[#c9a84c] group-hover:translate-x-1 transition-all flex-shrink-0" />
+            </Link>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div
+          className="px-6 pb-10 pt-4"
+          style={{
+            opacity: menuOpen ? 1 : 0,
+            transform: menuOpen ? "translateY(0)" : "translateY(12px)",
+            transition: "opacity 0.4s cubic-bezier(0.23,1,0.32,1) 0.42s, transform 0.4s cubic-bezier(0.23,1,0.32,1) 0.42s",
+          }}
+        >
+          <a
+            href="https://calendly.com/malikeast7band"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="w-full py-4 bg-[#c9a84c] text-black font-tactical font-black text-sm tracking-widest uppercase text-center block gold-pulse"
+          >
+            ▶ BEGIN YOUR QUEST
+          </a>
+          <p className="font-tactical text-[10px] text-[#c9a84c]/30 tracking-widest uppercase text-center mt-3">
+            Free strategy call · No obligation
+          </p>
+        </div>
+
+        {/* Bottom accent line */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#c9a84c]/40 to-transparent" />
       </div>
-    </nav>
+    </>
   );
 }
-
 // ─── MAIN HOME PAGE ──────────────────────────────────────────
 export default function Home() {
   return (
