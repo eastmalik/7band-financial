@@ -123,8 +123,7 @@ export default function LifetimeLOC() {
           </div>
         </div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
-          <SectionLabel text="7Band Financial Agency — Flagship Product" />
-          <p className="font-tactical text-sm text-[#c9a84c] tracking-widest uppercase mb-4 font-bold">Your Freedom Starts Now</p>
+          <p className="font-tactical text-sm text-[#c9a84c] tracking-widest uppercase mb-6 font-bold">Your Freedom Starts Now</p>
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             The Lifetime<br />
             <span className="text-[#c9a84c]">Line of Credit</span>
