@@ -605,7 +605,7 @@ export default function Home() {
             {/* Bronze */}
             <div className="pack-card p-8 bg-[#0a0800]/80 flex flex-col">
               <div className="pack-tier-label font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-2">Bronze</div>
-              <div className="font-display text-xl font-bold text-white mb-1">The Starter Kit</div>
+              <div className="font-display text-xl font-bold text-white mb-1">The Foundational Campaign</div>
               <div className="pack-price font-display text-4xl font-black text-[#c9a84c] gold-text-glow my-4">$750</div>
               <div className="font-tactical text-xs text-white/40 tracking-wider uppercase mb-6">Investment</div>
               <div className="w-full h-px bg-[#c9a84c]/20 mb-6" />
@@ -630,7 +630,7 @@ export default function Home() {
             {/* Silver */}
             <div className="pack-card p-8 bg-[#0a0800]/80 flex flex-col">
               <div className="pack-tier-label font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-2">Silver</div>
-              <div className="font-display text-xl font-bold text-white mb-1">The Engine Upgrade</div>
+              <div className="font-display text-xl font-bold text-white mb-1">The Acceleration Campaign</div>
               <div className="pack-price font-display text-4xl font-black text-[#c9a84c] gold-text-glow my-4">$1,500</div>
               <div className="font-tactical text-xs text-white/40 tracking-wider uppercase mb-6">Investment</div>
               <div className="w-full h-px bg-[#c9a84c]/20 mb-6" />
@@ -661,7 +661,7 @@ export default function Home() {
                   God-Tier
                 </div>
                 <div className="pack-tier-label font-tactical text-xs text-[#c9a84c]/70 tracking-widest uppercase mb-2 mt-2">Gold</div>
-                <div className="font-display text-xl font-bold text-white mb-1">The God-Tier Loadout</div>
+                <div className="font-display text-xl font-bold text-white mb-1">The Legacy Campaign</div>
                 <div className="pack-price font-display text-4xl font-black text-[#c9a84c] gold-text-glow-intense my-4">$5,000</div>
                 <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-wider uppercase mb-6">Investment</div>
                 <div className="w-full h-px bg-[#c9a84c]/40 mb-6" />

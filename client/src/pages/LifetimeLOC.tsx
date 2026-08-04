@@ -283,6 +283,47 @@ export default function LifetimeLOC() {
         </div>
       </section>
 
+      {/* THE MANUAL */}
+      <section className="relative py-24 bg-[#050400] circuit-bg overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <SectionLabel text="The Manual — Level 4 Deep Dives" />
+            <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
+              Four Lessons. <span className="text-[#c9a84c]">Complete Mastery.</span>
+            </h2>
+            <p className="font-tactical text-white/60 text-base max-w-2xl mx-auto tracking-wide">
+              The wealthy don't just own these policies — they understand them. Read the manual before you build your engine.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { num: "01", href: "/lesson-1", title: "Uninterrupted Compounding", body: "Your money performs two jobs at once — earning returns while acting as collateral for your next deal.", icon: <TrendingUp size={20} className="text-[#c9a84c]" /> },
+              { num: "02", href: "/lesson-2", title: "Design Decides Everything", body: "Off-the-shelf vs. high-cash-value design. The difference is who wins — you or the agent.", icon: <Zap size={20} className="text-[#c9a84c]" /> },
+              { num: "03", href: "/lesson-3", title: "Using the Line", body: "The Two Doors and the Honest Banker Rule — the discipline that turns a line of credit into a generational engine.", icon: <RefreshCw size={20} className="text-[#c9a84c]" /> },
+              { num: "04", href: "/lesson-4", title: "Honest Answers", body: "Every objection addressed directly. No spin. The Fair Kernel method — acknowledge the truth, then explain what's missing.", icon: <Shield size={20} className="text-[#c9a84c]" /> },
+            ].map((lesson) => (
+              <Link key={lesson.num} href={lesson.href}>
+                <HudFrame className="p-6 bg-[#0a0800]/80 h-full flex flex-col gap-4 cursor-pointer hover:bg-[#0f0c02] transition-colors group">
+                  <div className="flex items-center justify-between">
+                    <div className="level-badge w-9 h-9 text-xs">{lesson.num}</div>
+                    <ChevronRight size={14} className="text-[#c9a84c]/40 group-hover:text-[#c9a84c] transition-colors" />
+                  </div>
+                  <div className="flex-shrink-0">{lesson.icon}</div>
+                  <div>
+                    <div className="font-display text-sm font-bold text-white mb-2 leading-snug">{lesson.title}</div>
+                    <p className="font-tactical text-xs text-white/55 tracking-wide leading-relaxed">{lesson.body}</p>
+                  </div>
+                  <div className="mt-auto font-tactical text-xs text-[#c9a84c]/60 group-hover:text-[#c9a84c] uppercase tracking-widest transition-colors">
+                    Read Lesson →
+                  </div>
+                </HudFrame>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="relative py-24 bg-gradient-to-b from-[#060500] to-[#050400] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.10)_0%,transparent_70%)]" />
