@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Shield, Zap, TrendingUp, Lock, Users, ChevronRight,
   AlertTriangle, Star, Target, Layers, Building2, TreePine,
@@ -22,6 +22,45 @@ function SectionLabel({ text, danger = false }: { text: string; danger?: boolean
 }
 
 // ─── HUD CORNER BRACKETS (inline) ────────────────────────────
+// ─── QUEST LEVEL CARD (with click-to-unlock animation) ───────
+type LevelData = {
+  level: number;
+  title: string;
+  concept: string;
+  action: string;
+  result: string;
+  icon: React.ReactNode;
+};
+function QuestLevelCard({ lvl, index }: { lvl: LevelData; index: number }) {
+  const [unlocked, setUnlocked] = useState(false);
+  const handleUnlock = useCallback(() => {
+    setUnlocked(true);
+    setTimeout(() => setUnlocked(false), 500);
+  }, []);
+  return (
+    <div
+      onClick={handleUnlock}
+      className={`quest-level-card p-5 bg-[#0a0800]/80 flex flex-col gap-3 animate-fade-up animate-fade-up-delay-${Math.min(index + 1, 6)}`}
+    >
+      <div className="flex items-center gap-3">
+        <div className={`level-badge flex-shrink-0 w-10 h-10 text-sm ${unlocked ? "level-badge-unlock" : ""}`}>{lvl.level}</div>
+        <div>
+          <div className="quest-concept-label font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase">{lvl.concept}</div>
+          <div className="font-display text-sm font-bold text-white leading-tight">{lvl.title}</div>
+        </div>
+      </div>
+      <div className="w-full h-px bg-gradient-to-r from-[#c9a84c]/30 to-transparent" />
+      <div>
+        <span className="font-tactical text-xs text-[#c9a84c] font-semibold tracking-wider uppercase">Action: </span>
+        <span className="font-tactical text-xs text-white/60 leading-relaxed">{lvl.action}</span>
+      </div>
+      <div>
+        <span className="font-tactical text-xs text-[#c9a84c] font-semibold tracking-wider uppercase">Result: </span>
+        <span className="font-tactical text-xs text-white/60 leading-relaxed">{lvl.result}</span>
+      </div>
+    </div>
+  );
+}
 function HudFrame({ children, className = "", danger = false }: { children: React.ReactNode; className?: string; danger?: boolean }) {
   const borderColor = danger ? "rgba(220,38,38,0.7)" : "rgba(201,168,76,0.7)";
   return (
@@ -353,24 +392,7 @@ export default function Home() {
               { level: 6, title: "Design the Transfer", concept: "Beneficiary Architecture", action: "Name the Trust as the primary beneficiary of the IUL. Set the exact rules for how wealth is distributed to heirs.", result: "Wealth passes tax-free, bypassing probate entirely and keeping capital out of the government's reach.", icon: <Target size={20} className="text-[#c9a84c]" /> },
               { level: 7, title: "The Generational Tree", concept: "Multi-Generation Banking", action: "The death benefit recapitalizes the Family Bank. Generation 2 finances their businesses and lives from this pool, funding Generation 3.", result: "The capital pool never resets to zero. It compounds across lifetimes.", icon: <TreePine size={20} className="text-[#c9a84c]" /> },
             ].map((lvl, i) => (
-              <HudFrame key={lvl.level} className={`p-5 bg-[#0a0800]/80 flex flex-col gap-3 animate-fade-up animate-fade-up-delay-${Math.min(i + 1, 6)}`}>
-                <div className="flex items-center gap-3">
-                  <div className="level-badge flex-shrink-0 w-10 h-10 text-sm">{lvl.level}</div>
-                  <div>
-                    <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase">{lvl.concept}</div>
-                    <div className="font-display text-sm font-bold text-white leading-tight">{lvl.title}</div>
-                  </div>
-                </div>
-                <div className="w-full h-px bg-gradient-to-r from-[#c9a84c]/30 to-transparent" />
-                <div>
-                  <span className="font-tactical text-xs text-[#c9a84c] font-semibold tracking-wider uppercase">Action: </span>
-                  <span className="font-tactical text-xs text-white/60 leading-relaxed">{lvl.action}</span>
-                </div>
-                <div>
-                  <span className="font-tactical text-xs text-[#c9a84c] font-semibold tracking-wider uppercase">Result: </span>
-                  <span className="font-tactical text-xs text-white/60 leading-relaxed">{lvl.result}</span>
-                </div>
-              </HudFrame>
+              <QuestLevelCard key={lvl.level} lvl={lvl} index={i} />
             ))}
             {/* CTA card */}
             <HudFrame className="p-5 bg-[#c9a84c]/10 flex flex-col items-center justify-center gap-4 text-center border-[#c9a84c]/50">
@@ -467,10 +489,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             {/* Bronze */}
-            <HudFrame className="p-8 bg-[#0a0800]/80 flex flex-col">
-              <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-2">Bronze</div>
+            <div className="pack-card p-8 bg-[#0a0800]/80 flex flex-col">
+              <div className="pack-tier-label font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-2">Bronze</div>
               <div className="font-display text-xl font-bold text-white mb-1">The Starter Kit</div>
-              <div className="font-display text-4xl font-black text-[#c9a84c] gold-text-glow my-4">$750</div>
+              <div className="pack-price font-display text-4xl font-black text-[#c9a84c] gold-text-glow my-4">$750</div>
               <div className="font-tactical text-xs text-white/40 tracking-wider uppercase mb-6">Investment</div>
               <div className="w-full h-px bg-[#c9a84c]/20 mb-6" />
               <ul className="space-y-3 flex-1">
@@ -488,14 +510,14 @@ export default function Home() {
               </ul>
               <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
                 className="mt-8 w-full py-3 border border-[#c9a84c]/50 text-[#c9a84c] font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#c9a84c]/10 transition-all text-center block">
-                Select Bronze
+                Select Bronze ›
               </a>
-            </HudFrame>
+            </div>
             {/* Silver */}
-            <HudFrame className="p-8 bg-[#0a0800]/80 flex flex-col">
-              <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-2">Silver</div>
+            <div className="pack-card p-8 bg-[#0a0800]/80 flex flex-col">
+              <div className="pack-tier-label font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-2">Silver</div>
               <div className="font-display text-xl font-bold text-white mb-1">The Engine Upgrade</div>
-              <div className="font-display text-4xl font-black text-[#c9a84c] gold-text-glow my-4">$1,500</div>
+              <div className="pack-price font-display text-4xl font-black text-[#c9a84c] gold-text-glow my-4">$1,500</div>
               <div className="font-tactical text-xs text-white/40 tracking-wider uppercase mb-6">Investment</div>
               <div className="w-full h-px bg-[#c9a84c]/20 mb-6" />
               <ul className="space-y-3 flex-1">
@@ -514,19 +536,19 @@ export default function Home() {
               </ul>
               <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
                 className="mt-8 w-full py-3 border border-[#c9a84c]/50 text-[#c9a84c] font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#c9a84c]/10 transition-all text-center block">
-                Select Silver
+                Select Silver ›
               </a>
-            </HudFrame>
+            </div>
             {/* Gold — featured */}
             <div className="relative">
               <div className="absolute -inset-px bg-gradient-to-b from-[#c9a84c] via-[#c9a84c]/60 to-[#c9a84c]/20 rounded-sm" />
-              <HudFrame className="relative p-8 bg-[#0f0c02] flex flex-col gold-glow-intense">
+              <div className="pack-card pack-card-gold relative p-8 bg-[#0f0c02] flex flex-col">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#c9a84c] text-black font-tactical font-black text-xs tracking-widest uppercase">
                   God-Tier
                 </div>
-                <div className="font-tactical text-xs text-[#c9a84c]/70 tracking-widest uppercase mb-2 mt-2">Gold</div>
+                <div className="pack-tier-label font-tactical text-xs text-[#c9a84c]/70 tracking-widest uppercase mb-2 mt-2">Gold</div>
                 <div className="font-display text-xl font-bold text-white mb-1">The God-Tier Loadout</div>
-                <div className="font-display text-4xl font-black text-[#c9a84c] gold-text-glow-intense my-4">$5,000</div>
+                <div className="pack-price font-display text-4xl font-black text-[#c9a84c] gold-text-glow-intense my-4">$5,000</div>
                 <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-wider uppercase mb-6">Investment</div>
                 <div className="w-full h-px bg-[#c9a84c]/40 mb-6" />
                 <ul className="space-y-3 flex-1">
@@ -547,9 +569,9 @@ export default function Home() {
                 </ul>
                 <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
                   className="mt-8 w-full py-3 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all text-center block gold-pulse">
-                  Select Gold — Lock In Now
+                  ⚡ Select Gold — Lock In Now
                 </a>
-              </HudFrame>
+              </div>
             </div>
           </div>
           <p className="text-center font-tactical text-xs text-white/30 tracking-wide mt-8">
