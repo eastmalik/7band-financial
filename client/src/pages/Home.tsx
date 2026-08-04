@@ -1,13 +1,13 @@
 import { Link } from "wouter";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
-  Shield, Zap, TrendingUp, Lock, Users, ChevronRight,
-  AlertTriangle, Star, Target, Layers, Building2, TreePine,
+  Shield, Zap, Lock, Users, ChevronRight,
+  AlertTriangle, Star, Target, Building2, TreePine,
   ArrowRight, Play, CheckCircle, XCircle, DollarSign,
-  Cpu, Radio, Wifi
+  Cpu, Wifi
 } from "lucide-react";
 
-// ─── SECTION DIVIDER ─────────────────────────────────────────
+// ─── SECTION LABEL ───────────────────────────────────────────
 function SectionLabel({ text, danger = false }: { text: string; danger?: boolean }) {
   return (
     <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-sm mb-6 font-tactical text-xs font-semibold tracking-[0.2em] uppercase ${
@@ -21,72 +21,6 @@ function SectionLabel({ text, danger = false }: { text: string; danger?: boolean
   );
 }
 
-// ─── HUD CORNER BRACKETS (inline) ────────────────────────────
-// ─── QUEST LEVEL CARD (with click-to-unlock animation) ───────
-type LevelData = {
-  level: number;
-  title: string;
-  concept: string;
-  action: string;
-  result: string;
-  icon: React.ReactNode;
-};
-function QuestLevelCard({ lvl, index }: { lvl: LevelData; index: number }) {
-  const [unlocked, setUnlocked] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), index * 90);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [index]);
-
-  const handleUnlock = useCallback(() => {
-    setUnlocked(true);
-    setTimeout(() => setUnlocked(false), 500);
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      onClick={handleUnlock}
-      className="quest-level-card p-5 bg-[#0a0800]/80 flex flex-col gap-3"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(28px) scale(0.97)",
-        transition: `opacity 0.55s cubic-bezier(0.23,1,0.32,1), transform 0.55s cubic-bezier(0.23,1,0.32,1)`,
-      }}
-    >
-      <div className="flex items-center gap-3">
-        <div className={`level-badge flex-shrink-0 w-10 h-10 text-sm ${unlocked ? "level-badge-unlock" : ""}`}>{lvl.level}</div>
-        <div>
-          <div className="quest-concept-label font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase">{lvl.concept}</div>
-          <div className="font-display text-sm font-bold text-white leading-tight">{lvl.title}</div>
-        </div>
-      </div>
-      <div className="w-full h-px bg-gradient-to-r from-[#c9a84c]/30 to-transparent" />
-      <div>
-        <span className="font-tactical text-xs text-[#c9a84c] font-semibold tracking-wider uppercase">Action: </span>
-        <span className="font-tactical text-xs text-white/60 leading-relaxed">{lvl.action}</span>
-      </div>
-      <div>
-        <span className="font-tactical text-xs text-[#c9a84c] font-semibold tracking-wider uppercase">Result: </span>
-        <span className="font-tactical text-xs text-white/60 leading-relaxed">{lvl.result}</span>
-      </div>
-    </div>
-  );
-}
 function HudFrame({ children, className = "", danger = false }: { children: React.ReactNode; className?: string; danger?: boolean }) {
   const borderColor = danger ? "rgba(220,38,38,0.7)" : "rgba(201,168,76,0.7)";
   return (
@@ -131,7 +65,7 @@ function Navbar() {
 
   const navItems = [
     { label: "Lifetime LOC", href: "/lifetime-loc", desc: "The core wealth engine" },
-    { label: "Pricing", href: "/pricing", desc: "Expansion Packs — Bronze / Silver / Gold" },
+    { label: "Game Map", href: "/game-map", desc: "The 7-Level Generational Wealth Blueprint" },
     { label: "About", href: "/about", desc: "Meet your guide, TheFlow" },
     { label: "The Book", href: "/the-book", desc: "The Generational Wealth Blueprint" },
   ];
@@ -468,57 +402,35 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4 — CAMPAIGN MAP: 7 LEVELS OF MASTERY
+          SECTION 5 — DIAGNOSTIC MATRIX: NPC vs PLAYER 1
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-24 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.05)_0%,transparent_70%)]" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <SectionLabel text="Campaign Map — The 7 Levels of Mastery" />
-            <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
-              The <span className="text-[#c9a84c]">Generational Wealth</span> Blueprint
-            </h2>
-            <p className="font-tactical text-white/60 text-lg max-w-2xl mx-auto tracking-wide">
-              A proven, sequential system. Each level unlocks the next. Every level builds on the last.
-            </p>
-          </div>
-          {/* Phase labels */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <SectionLabel text="Campaign Map — The 7 Levels of Mastery" />
+          <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
+            The <span className="text-[#c9a84c]">Generational Wealth</span> Blueprint
+          </h2>
+          <p className="font-tactical text-white/60 text-lg max-w-2xl mx-auto tracking-wide mb-10">
+            A proven, sequential system. Three phases. Seven levels. Each one unlocks the next — from credit restoration to multi-generational banking.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {[
-              { phase: "Phase I", label: "Foundation", levels: "Levels 1–2", color: "border-[#c9a84c]/40" },
-              { phase: "Phase II", label: "Acceleration", levels: "Levels 3–5", color: "border-[#c9a84c]/60" },
-              { phase: "Phase III", label: "Legacy", levels: "Levels 6–7", color: "border-[#c9a84c]/80" },
+              { phase: "Phase I", label: "Foundation", levels: "Levels 1–2", desc: "Credit + LLC", color: "border-[#c9a84c]/40" },
+              { phase: "Phase II", label: "Acceleration", levels: "Levels 3–5", desc: "Capital + IUL + Trust", color: "border-[#c9a84c]/70" },
+              { phase: "Phase III", label: "Legacy", levels: "Levels 6–7", desc: "Transfer + Family Bank", color: "border-[#c9a84c]" },
             ].map((p) => (
-              <div key={p.phase} className={`text-center py-3 px-4 border-b-2 ${p.color}`}>
-                <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase">{p.phase} — {p.levels}</div>
-                <div className="font-display text-lg font-bold text-white mt-1">{p.label}</div>
-              </div>
+              <HudFrame key={p.phase} className={`p-5 bg-[#0a0800]/70 border-b-2 ${p.color}`}>
+                <div className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase mb-1">{p.phase} — {p.levels}</div>
+                <div className="font-display text-xl font-bold text-white mb-1">{p.label}</div>
+                <div className="font-tactical text-xs text-white/40 tracking-wide">{p.desc}</div>
+              </HudFrame>
             ))}
           </div>
-          {/* 7 Level cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-8">
-            {[
-              { level: 1, title: "Restore Your Shield", concept: "Credit Optimization", action: "Erase derogatory marks, remove penalties, and optimize your personal credit profile.", result: "Drop your debt-to-income ratio and build the ultimate defense against high retail interest rates.", icon: <Shield size={20} className="text-[#c9a84c]" /> },
-              { level: 2, title: "Build Your Base", concept: "LLC Structuring", action: "Establish a formal corporate entity to create a structural firewall between personal and business liabilities.", result: "Unlocks Business-Level Play, ensuring future high-capacity borrowing does not affect your personal credit.", icon: <Building2 size={20} className="text-[#c9a84c]" /> },
-              { level: 3, title: "Gather Resources", concept: "Capital Access", action: "Tap into high-limit business and personal funding lines to create immediate liquidity.", result: "You now have the capital required to fund the core engine.", icon: <DollarSign size={20} className="text-[#c9a84c]" /> },
-              { level: 4, title: "Unlock the Engine", concept: "IUL / Lifetime LOC", action: "Fund an Indexed Universal Life policy and activate the Lifetime Line of Credit mechanic.", result: "Borrow against your cash value to buy assets while your baseline capital continues to compound uninterrupted.", icon: <Zap size={20} className="text-[#c9a84c]" /> },
-              { level: 5, title: "Construct the Fortress", concept: "Trust & Holding Company", action: "Move assets out of your personal name and into a legal fortress. Shield your estate from lawsuits, liabilities, and immediate taxation.", result: "Your assets are now protected at the entity level.", icon: <Lock size={20} className="text-[#c9a84c]" /> },
-              { level: 6, title: "Design the Transfer", concept: "Beneficiary Architecture", action: "Name the Trust as the primary beneficiary of the IUL. Set the exact rules for how wealth is distributed to heirs.", result: "Wealth passes tax-free, bypassing probate entirely and keeping capital out of the government's reach.", icon: <Target size={20} className="text-[#c9a84c]" /> },
-              { level: 7, title: "The Generational Tree", concept: "Multi-Generation Banking", action: "The death benefit recapitalizes the Family Bank. Generation 2 finances their businesses and lives from this pool, funding Generation 3.", result: "The capital pool never resets to zero. It compounds across lifetimes.", icon: <TreePine size={20} className="text-[#c9a84c]" /> },
-            ].map((lvl, i) => (
-              <QuestLevelCard key={lvl.level} lvl={lvl} index={i} />
-            ))}
-            {/* CTA card */}
-            <HudFrame className="p-5 bg-[#c9a84c]/10 flex flex-col items-center justify-center gap-4 text-center border-[#c9a84c]/50">
-              <Star size={28} className="text-[#c9a84c]" />
-              <div className="font-display text-sm font-bold text-white">Ready to Begin?</div>
-              <p className="font-tactical text-xs text-white/60 tracking-wide">Select your Expansion Pack and schedule your onboarding session.</p>
-              <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
-                className="w-full py-2 bg-[#c9a84c] text-black font-tactical font-bold text-xs tracking-widest uppercase hover:bg-[#e8c97a] transition-all text-center">
-                Lock In Now
-              </a>
-            </HudFrame>
-          </div>
+          <Link href="/game-map"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
+            View the Full Game Map <ArrowRight size={14} />
+          </Link>
         </div>
       </section>
 

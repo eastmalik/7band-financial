@@ -49,7 +49,7 @@ function Navbar() {
             {[
               { label: "← Home", href: "/" },
               { label: "Lifetime LOC", href: "/lifetime-loc" },
-              { label: "Pricing", href: "/pricing" },
+              { label: "Game Map", href: "/game-map" },
               { label: "The Book", href: "/the-book" },
             ].map((item) => (
               <Link key={item.href} href={item.href}
@@ -73,7 +73,7 @@ function Navbar() {
             {[
               { label: "← Home", href: "/" },
               { label: "Lifetime LOC", href: "/lifetime-loc" },
-              { label: "Pricing", href: "/pricing" },
+              { label: "Game Map", href: "/game-map" },
               { label: "The Book", href: "/the-book" },
             ].map((item) => (
               <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
