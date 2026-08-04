@@ -206,3 +206,139 @@
     }
   }
 }
+
+/* ============================================================
+   7Band GWQ — HUD / Game-Interface Design System
+   ============================================================ */
+
+/* Tactical font */
+.font-tactical {
+  font-family: 'Rajdhani', system-ui, sans-serif;
+}
+
+/* Intense gold glow */
+.gold-glow-intense {
+  box-shadow: 0 0 30px rgba(201,168,76,0.6), 0 0 80px rgba(201,168,76,0.25), 0 0 120px rgba(201,168,76,0.1);
+}
+.gold-text-glow-intense {
+  text-shadow: 0 0 20px rgba(201,168,76,0.8), 0 0 60px rgba(201,168,76,0.4);
+}
+
+/* HUD Panel — core game-interface card */
+.hud-panel {
+  background: linear-gradient(135deg, rgba(20,16,8,0.95) 0%, rgba(12,10,4,0.98) 100%);
+  border: 1px solid rgba(201,168,76,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.hud-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.8), transparent);
+}
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+}
+
+/* HUD corner brackets */
+.hud-corners {
+  position: relative;
+}
+.hud-corners::before,
+.hud-corners::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  border-color: rgba(201,168,76,0.8);
+  border-style: solid;
+}
+.hud-corners::before {
+  top: -1px; left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.hud-corners::after {
+  bottom: -1px; right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Danger / Error state panel */
+.danger-panel {
+  background: linear-gradient(135deg, rgba(30,4,4,0.97) 0%, rgba(15,2,2,0.99) 100%);
+  border: 1px solid rgba(220,38,38,0.45);
+  position: relative;
+  overflow: hidden;
+}
+.danger-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(220,38,38,0.9), transparent);
+}
+.red-glow {
+  box-shadow: 0 0 20px rgba(220,38,38,0.35), 0 0 60px rgba(220,38,38,0.1);
+}
+.red-text-glow {
+  text-shadow: 0 0 20px rgba(220,38,38,0.7);
+}
+
+/* Circuit line background texture */
+.circuit-bg {
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Status badge */
+.status-active {
+  font-family: 'Rajdhani', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.6);
+}
+
+/* Quest level badge */
+.level-badge {
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, rgba(201,168,76,0.05) 70%);
+  border: 2px solid rgba(201,168,76,0.7);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #c9a84c;
+  box-shadow: 0 0 12px rgba(201,168,76,0.3);
+}
+
+/* Glitch text animation for danger sections */
+@keyframes glitch {
+  0%, 100% { text-shadow: -2px 0 rgba(255,32,32,0.7), 2px 0 rgba(255,200,0,0.3); }
+  25% { text-shadow: 2px 0 rgba(255,32,32,0.7), -2px 0 rgba(255,200,0,0.3); }
+  50% { text-shadow: -1px 0 rgba(255,32,32,0.5), 1px 0 rgba(0,200,255,0.3); }
+  75% { text-shadow: 1px 0 rgba(255,32,32,0.5), -1px 0 rgba(0,200,255,0.3); }
+}
+.glitch-text {
+  animation: glitch 3s infinite;
+}
+
+/* Pulse glow for CTA buttons */
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(201,168,76,0.4), 0 0 40px rgba(201,168,76,0.1); }
+  50% { box-shadow: 0 0 25px rgba(201,168,76,0.7), 0 0 60px rgba(201,168,76,0.2); }
+}
+.gold-pulse {
+  animation: goldPulse 2.5s ease-in-out infinite;
+}
+
+/* Extra fade-up delays */
+.animate-fade-up-delay-4 { animation-delay: 0.4s; }
+.animate-fade-up-delay-5 { animation-delay: 0.5s; }
+.animate-fade-up-delay-6 { animation-delay: 0.6s; }

@@ -1,379 +1,333 @@
-/**
- * 7Band Financial Agency — Lifetime LOC Product Page
- * Design: Same brand system — dark navy hero, white sections, green labels, orange CTAs.
- * Modeled after lifetimeloc.com structure — deep-dive into the cash value life insurance product.
- */
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Phone, Shield, TrendingUp, DollarSign, RefreshCw, AlertCircle, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
+import {
+  Zap, TrendingUp, Lock, ChevronRight, ArrowRight,
+  Play, CheckCircle, DollarSign, RefreshCw, Shield,
+  Building2, TreePine, ArrowDown, Wifi, Star
+} from "lucide-react";
 
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, visible };
+function SectionLabel({ text, danger = false }: { text: string; danger?: boolean }) {
+  return (
+    <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-sm mb-6 font-tactical text-xs font-semibold tracking-[0.2em] uppercase ${
+      danger
+        ? "bg-red-950/60 border border-red-600/40 text-red-400"
+        : "bg-[#c9a84c]/10 border border-[#c9a84c]/30 text-[#c9a84c]"
+    }`}>
+      <span className={`w-1.5 h-1.5 rounded-full ${danger ? "bg-red-500 animate-pulse" : "bg-[#c9a84c]"}`} />
+      {text}
+    </div>
+  );
 }
 
-function RevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const { ref, visible } = useReveal();
+function HudFrame({ children, className = "", danger = false }: { children: React.ReactNode; className?: string; danger?: boolean }) {
+  const borderColor = danger ? "rgba(220,38,38,0.7)" : "rgba(201,168,76,0.7)";
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-      } ${className}`}
-    >
+    <div className={`relative ${className}`}>
+      <span className="absolute top-0 left-0 w-4 h-4 pointer-events-none" style={{ borderTop: `2px solid ${borderColor}`, borderLeft: `2px solid ${borderColor}` }} />
+      <span className="absolute top-0 right-0 w-4 h-4 pointer-events-none" style={{ borderTop: `2px solid ${borderColor}`, borderRight: `2px solid ${borderColor}` }} />
+      <span className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none" style={{ borderBottom: `2px solid ${borderColor}`, borderLeft: `2px solid ${borderColor}` }} />
+      <span className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none" style={{ borderBottom: `2px solid ${borderColor}`, borderRight: `2px solid ${borderColor}` }} />
       {children}
     </div>
   );
 }
 
-const lessons = [
-  {
-    num: "01",
-    icon: <TrendingUp size={22} />,
-    title: "How It Grows",
-    body: "The two flavors: whole life, the reliable engine, and indexed universal life, the flexible alternative. We cover guarantees, dividends, floors, and where the risk actually lives — in plain language.",
-  },
-  {
-    num: "02",
-    icon: <Shield size={22} />,
-    title: "Why Design Decides Everything",
-    body: "The same product built two different ways produces opposite results. Not all whole life policies are created equal. This is the most important thing to understand before you ever sign an application.",
-  },
-  {
-    num: "03",
-    icon: <DollarSign size={22} />,
-    title: "Using the Line",
-    body: "How borrowing against the policy actually works, the three phases of the system, and the rules that keep you an honest banker to yourself.",
-  },
-  {
-    num: "04",
-    icon: <AlertCircle size={22} />,
-    title: "Honest Answers",
-    body: '"Buy term and invest the difference." "You\'re borrowing your own money." The objections deserve real answers, and each one gets its fair point conceded first before we address it.',
-  },
-];
-
-const howItWorks = [
-  {
-    step: "01",
-    title: "Cash Flow Feeds the Policy",
-    desc: "Your premiums go into a policy designed specifically for high cash value — not the default way the product is usually sold. The design matters more than the carrier.",
-  },
-  {
-    step: "02",
-    title: "Cash Value Grows Guaranteed",
-    desc: "The cash value compounds safely every year, guaranteed by the insurer. It doesn't drop when markets fall. It doesn't get frozen when the economy turns.",
-  },
-  {
-    step: "03",
-    title: "Borrow Against It — No Application",
-    desc: "You can borrow against your cash value for anything: real estate, business, emergencies, opportunity. No credit check, no banker's approval, no questions asked.",
-  },
-  {
-    step: "04",
-    title: "The Balance Keeps Compounding",
-    desc: "Here's what makes this different from a savings account: the full balance inside the policy keeps compounding as if you never touched it, even while the loan is outstanding.",
-  },
-  {
-    step: "05",
-    title: "Pay Yourself Back on Your Schedule",
-    desc: "You set the repayment terms. There's no bank calling the loan. You pay back what you borrowed and the cycle continues — your own personal banking system.",
-  },
-  {
-    step: "06",
-    title: "The Death Benefit Restarts Everything",
-    desc: "When you're done, the death benefit passes income-tax-free to your family and recapitalizes the whole system for the next generation. The family bank lives on.",
-  },
-];
-
-const objections = [
-  {
-    q: "Isn't whole life insurance a bad investment?",
-    a: "That's fair — and it's true of whole life built the default way. The same product designed for high cash value and low commission behaves completely differently. The design is the difference. We show you both side by side.",
-  },
-  {
-    q: "Aren't I just borrowing my own money?",
-    a: "Technically, you're borrowing from the insurer using your cash value as collateral — and your full cash value keeps compounding inside the policy the whole time. That's the part most people miss.",
-  },
-  {
-    q: "Why not just use a HELOC?",
-    a: "HELOCs are great and we teach people to use them. The difference: a HELOC can be frozen or called when the economy gets ugly — exactly when you need capital most. This line can't be. Have both if you can.",
-  },
-  {
-    q: "What if I can't keep paying the premiums?",
-    a: "There are options: reduced paid-up, paid-up additions, policy loans to cover premiums. A well-designed policy has flexibility built in. We walk through the scenarios before you ever apply.",
-  },
-];
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? "bg-[#050400]/95 backdrop-blur-xl border-b border-[#c9a84c]/20" : "bg-transparent"
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center group-hover:bg-[#c9a84c]/20 transition-colors">
+              <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
+            </div>
+            <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
+              7Band <span className="text-[#c9a84c]">Financial</span>
+            </span>
+          </Link>
+          <div className="hidden md:flex items-center gap-6">
+            {[
+              { label: "← Home", href: "/" },
+              { label: "Pricing", href: "/pricing" },
+              { label: "About", href: "/about" },
+              { label: "The Book", href: "/the-book" },
+            ].map((item) => (
+              <Link key={item.href} href={item.href}
+                className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
+                {item.label}
+              </Link>
+            ))}
+            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+              className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
+              Begin Quest
+            </a>
+          </div>
+          <button className="md:hidden text-[#c9a84c] p-2" onClick={() => setMenuOpen(!menuOpen)}>
+            <div className="w-5 h-0.5 bg-current mb-1" />
+            <div className="w-5 h-0.5 bg-current mb-1" />
+            <div className="w-5 h-0.5 bg-current" />
+          </button>
+        </div>
+        {menuOpen && (
+          <div className="md:hidden bg-[#050400]/98 border-t border-[#c9a84c]/20 py-4 px-4 flex flex-col gap-4">
+            {[
+              { label: "← Home", href: "/" },
+              { label: "Pricing", href: "/pricing" },
+              { label: "About", href: "/about" },
+              { label: "The Book", href: "/the-book" },
+            ].map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+                className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/80 hover:text-[#c9a84c] uppercase">
+                {item.label}
+              </Link>
+            ))}
+            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+              className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-3 bg-[#c9a84c] text-black text-center">
+              Begin Quest
+            </a>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
 
 export default function LifetimeLOC() {
-  const scrollTo = (id: string) => {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#0a0a0a" }}>
+    <div className="min-h-screen bg-[#050400] text-white overflow-x-hidden">
       <Navbar />
 
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: "#0a0a0a" }}
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/manus-storage/7band-hero-bg_6c47a05e.png')`,
-            opacity: 0.22,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]/50" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-[#c9a84c]/12 border border-[#c9a84c]/35 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "#c9a84c" }} />
-              <span className="font-body text-[#c9a84c] text-xs font-semibold tracking-wider uppercase">
-                7Band Financial Agency
-              </span>
-            </div>
-            <p className="font-body text-white/60 text-sm font-semibold tracking-widest uppercase mb-4">
-              Your Freedom Starts Now
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-            Stop Funding Their Dreams.{" "}
-              <em className="text-[#c9a84c] not-italic">Start Funding Yours.</em>
-            </h1>
-            <p className="font-body text-lg text-[#e8d5a3]/70 leading-relaxed mb-6 max-w-xl">
-              Banks hold over $200 billion of this product in their own vaults — because it works. Every dollar you've paid them in interest has been funding their dreams. The Lifetime LOC is how you redirect that money back toward yours.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => scrollTo("#loc-contact")}
-                className="bg-[#c9a84c] hover:bg-[#b8943e] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
-              >
-                Build Mine — Free Needs Analysis
-              </button>
-              <button
-                onClick={() => scrollTo("#how-it-grows")}
-                className="border-2 border-white/60 hover:border-white text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
-              >
-                Start Learning
-              </button>
-            </div>
-          </div>
-
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden circuit-bg">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/80 via-[#050400]/40 to-[#050400]" />
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[700px] h-[700px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-40">
-          <div className="w-px h-12 bg-white/40 animate-pulse" />
-        </div>
-      </section>
-
-      {/* ── WHAT IT ACTUALLY IS ──────────────────────────────────────── */}
-      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <div className="max-w-3xl">
-              <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
-                Plain Language First
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f5f0e8] mb-6">
-                What "Lifetime LOC" actually means
-            </h2>
-              <p className="font-body text-lg text-[#e8d5a3]/70 leading-relaxed mb-4">
-                The asset underneath is high cash value life insurance — whole life or indexed universal life, designed a specific way. We lead with that because nothing here works as a secret. Once you see what a properly designed policy does, "a line of credit that's guaranteed for life" is simply the most accurate description of how it behaves.
-              </p>
-              <p className="font-body text-[#e8d5a3]/70 leading-relaxed mb-4">
-                The cash value compounds safely every year, guaranteed. You can borrow against it for anything — no application, no credit check, no banker's opinion — while the full balance keeps compounding inside as if it never left. You pay yourself back on a schedule you set.
-              </p>
-              <p className="font-body text-[#e8d5a3]/70 leading-relaxed mb-8">
-                And unlike a HELOC, it can't be frozen or called when the economy gets ugly — which is exactly when you need capital most.
-              </p>
-              <blockquote className="border-l-4 border-[#c9a84c] pl-6 py-2 italic font-display text-xl text-[#f5f0e8]">
-                "Banks held $205.7 billion of cash value in bank-owned life insurance across more than 3,000 institutions as of late 2024, per FDIC filings. The lobby sells you free checking. The vault buys something else."
-              </blockquote>
-            </div>
-          </RevealSection>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS — 6 STEPS ───────────────────────────────────── */}
-      <section id="how-it-grows" className="py-24" style={{ backgroundColor: "#0a0a0a" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
-              The Whole System
+        <div className="absolute top-20 left-0 right-0 flex justify-center">
+          <div className="flex items-center gap-6 px-6 py-2 border-b border-[#c9a84c]/20">
+            <span className="status-active flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />Level 4 Unlocked
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f5f0e8] mb-4">
-              Where the Lifetime LOC fits
-            </h2>
-            <p className="font-body text-[#e8d5a3]/70 text-lg leading-relaxed mb-12 max-w-2xl">
-              The line of credit isn't the whole plan — it's the engine in the middle of one. Cash flow feeds it, the line puts capital to work when life asks for it, and the death benefit recapitalizes everything for the next generation.
-            </p>
-          </RevealSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {howItWorks.map((item, i) => (
-              <RevealSection key={item.step}>
-                <div
-                  className="rounded-xl p-6 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300 h-full" style={{  background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)", transitionDelay: `${i * 80}ms` }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="w-9 h-9 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 flex items-center justify-center font-display font-bold text-[#c9a84c] text-sm shrink-0">
-                      {item.step}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-bold text-[#f5f0e8] mb-2">{item.title}</h3>
-                  <p className="font-body text-sm text-[#e8d5a3]/70 leading-relaxed">{item.desc}</p>
-                </div>
-              </RevealSection>
-            ))}
+            <span className="status-active flex items-center gap-1.5">
+              <Wifi size={10} className="text-[#c9a84c]/60" />IUL Engine — Online
+            </span>
+          </div>
+        </div>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
+          <SectionLabel text="7Band Financial Agency — Flagship Product" />
+          <p className="font-tactical text-sm text-[#c9a84c] tracking-widest uppercase mb-4 font-bold">Your Freedom Starts Now</p>
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
+            The Lifetime<br />
+            <span className="text-[#c9a84c]">Line of Credit</span>
+          </h1>
+          <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
+            A permanent, tax-advantaged line of credit built inside a life insurance policy — guaranteed to grow, guaranteed to be there, and guaranteed to pass to the next generation. This is Level 4 of the 7-Level Generational Wealth Blueprint.
+          </p>
+          <p className="font-tactical text-sm text-[#c9a84c]/60 tracking-widest uppercase mb-10">
+            The tool wealthy families have used for over 100 years. Now available to yours.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
+              <Play size={14} fill="currentColor" /> Build My Lifetime LOC
+            </a>
+            <Link href="/"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-[#c9a84c]/50 text-[#c9a84c] font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#c9a84c]/10 transition-all">
+              Back to Campaign Map
+            </Link>
+          </div>
+        </div>
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+          <div className="flex flex-col items-center gap-2 opacity-50">
+            <span className="status-active">Scroll to Learn the Mechanics</span>
+            <div className="w-px h-8 bg-gradient-to-b from-[#c9a84c]/60 to-transparent" />
           </div>
         </div>
       </section>
 
-      {/* ── THREE LESSONS ────────────────────────────────────────────── */}
-      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
+      {/* WHAT IT IS */}
+      <section className="relative py-24 bg-[#050400] circuit-bg overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
-              Learn It in Order
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-              Four lessons, then the honest pushback
-            </h2>
-            <p className="font-body text-white/60 text-lg leading-relaxed mb-12 max-w-2xl">
-              The education is free whether you ever work with us or not. Start here.
-            </p>
-          </RevealSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {lessons.map((lesson, i) => (
-              <RevealSection key={lesson.num}>
-                <div
-                  className="border rounded-xl p-7 hover:bg-[#c9a84c]/5 hover:border-[#c9a84c]/35 transition-all duration-300 group h-full" style={{  background: "rgba(201,168,76,0.04)", borderColor: "rgba(201,168,76,0.15)", transitionDelay: `${i * 80}ms` }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="w-10 h-10 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c] shrink-0">
-                      {lesson.icon}
-                    </span>
-                    <span className="font-body text-[#c9a84c] text-xs font-bold tracking-widest uppercase">
-                      Lesson {lesson.num}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-white mb-3">{lesson.title}</h3>
-                  <p className="font-body text-sm text-white/60 leading-relaxed">{lesson.body}</p>
-                </div>
-              </RevealSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── HONEST ANSWERS / OBJECTIONS ──────────────────────────────── */}
-      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
-              Honest Answers
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f5f0e8] mb-4">
-              The objections deserve real answers
-            </h2>
-            <p className="font-body text-[#e8d5a3]/70 text-lg leading-relaxed mb-12 max-w-2xl">
-              Each one gets its fair point conceded first. We're not here to sell you past your doubts — we're here to give you the full picture.
-            </p>
-          </RevealSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {objections.map((item, i) => (
-              <RevealSection key={i}>
-                <div
-                  className="rounded-xl p-7 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300 h-full" style={{  background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)", transitionDelay: `${i * 80}ms` }}
-                >
-                  <div className="flex items-start gap-3 mb-4">
-                    <AlertCircle size={18} className="text-[#c9a84c] mt-0.5 shrink-0" />
-                    <h3 className="font-display text-lg font-bold text-[#f5f0e8]">{item.q}</h3>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <SectionLabel text="What Is It — Plain Language" />
+              <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
+                A Policy That Doubles as<br />
+                <span className="text-[#c9a84c]">Your Private Bank.</span>
+              </h2>
+              <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide mb-5">
+                An Indexed Universal Life (IUL) policy is a permanent life insurance contract with a cash value component that grows based on a stock market index — but with a floor of zero, meaning you never lose principal to a market crash.
+              </p>
+              <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide mb-5">
+                The Lifetime LOC is the borrowing mechanic built into that policy. Once your cash value reaches a threshold, you can borrow against it — with no credit check, no approval process, and no mandatory repayment schedule. Your baseline capital keeps compounding as if the loan never happened.
+              </p>
+              <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide">
+                Banks hold billions in these policies. Wealthy families have used this mechanic for over a century to finance businesses, real estate, and education — while keeping their capital working simultaneously.
+              </p>
+            </div>
+            <div className="space-y-4">
+              {[
+                { icon: <TrendingUp size={18} className="text-[#c9a84c]" />, label: "Growth", value: "Indexed to the S&P 500 with a 0% floor — you participate in market gains, never market losses." },
+                { icon: <Lock size={18} className="text-[#c9a84c]" />, label: "Protection", value: "Guaranteed death benefit passes to your beneficiaries income-tax-free, bypassing probate entirely." },
+                { icon: <DollarSign size={18} className="text-[#c9a84c]" />, label: "Access", value: "Borrow against your cash value with no credit check, no approval, and no mandatory repayment." },
+                { icon: <RefreshCw size={18} className="text-[#c9a84c]" />, label: "Recapture", value: "When you repay the loan, the interest goes back into your policy — not to a bank." },
+                { icon: <TreePine size={18} className="text-[#c9a84c]" />, label: "Legacy", value: "The death benefit recapitalizes the Family Bank, ensuring Generation 2 starts at Level 4, not Level 1." },
+              ].map((row) => (
+                <HudFrame key={row.label} className="p-4 bg-[#0a0800]/70">
                   <div className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-[#c9a84c] mt-0.5 shrink-0" />
-                    <p className="font-body text-sm text-[#e8d5a3]/70 leading-relaxed">{item.a}</p>
+                    <div className="mt-0.5">{row.icon}</div>
+                    <div>
+                      <div className="font-tactical text-xs text-[#c9a84c]/60 tracking-widest uppercase mb-0.5">{row.label}</div>
+                      <div className="font-tactical text-sm text-white/75 tracking-wide leading-relaxed">{row.value}</div>
+                    </div>
                   </div>
+                </HudFrame>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ENGINE LOOP */}
+      <section className="relative py-24 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <SectionLabel text="The IUL Engine Loop — How It Works" />
+            <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
+              Your Money Works <span className="text-[#c9a84c]">Two Jobs at Once.</span>
+            </h2>
+            <p className="font-tactical text-white/60 text-base max-w-2xl mx-auto tracking-wide">
+              This is the core mechanic that separates the 7-Level Blueprint from every other financial strategy.
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            {[
+              { step: "01", title: "Fund the Policy", body: "You contribute premium payments into your IUL. These build your cash value, indexed to the S&P 500 with a 0% floor.", icon: <DollarSign size={20} className="text-[#c9a84c]" /> },
+              { step: "02", title: "Cash Value Grows", body: "Your cash value compounds tax-deferred. In strong market years it captures index gains. In down years, the floor protects your principal.", icon: <TrendingUp size={20} className="text-[#c9a84c]" /> },
+              { step: "03", title: "Borrow Against It", body: "You take a policy loan against your cash value. No credit check. No approval. No mandatory repayment schedule. Funds arrive in days.", icon: <Zap size={20} className="text-[#c9a84c]" /> },
+              { step: "04", title: "Deploy the Capital", body: "You use the loan to buy assets: real estate, business inventory, a vehicle, your child's education — any capital deployment that generates a return.", icon: <Building2 size={20} className="text-[#c9a84c]" /> },
+              { step: "05", title: "Baseline Keeps Compounding", body: "While your loan is deployed, your full cash value continues to grow as if the loan never happened. Your money is doing two jobs simultaneously.", icon: <RefreshCw size={20} className="text-[#c9a84c]" /> },
+              { step: "06", title: "Repay Yourself", body: "When you repay the loan, the interest goes back into your policy — not to a bank. You recapture every dollar of interest that would have leaked to a third party.", icon: <Shield size={20} className="text-[#c9a84c]" /> },
+            ].map((item, i) => (
+              <div key={item.step} className="w-full max-w-2xl">
+                <HudFrame className="p-5 bg-[#0a0800]/80">
+                  <div className="flex items-start gap-4">
+                    <div className="level-badge flex-shrink-0 w-10 h-10 text-sm">{item.step}</div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        {item.icon}
+                        <h3 className="font-display text-base font-bold text-white">{item.title}</h3>
+                      </div>
+                      <p className="font-tactical text-sm text-white/65 leading-relaxed tracking-wide">{item.body}</p>
+                    </div>
+                  </div>
+                </HudFrame>
+                {i < 5 && (
+                  <div className="flex justify-center py-2">
+                    <ArrowDown size={16} className="text-[#c9a84c]/40" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <div className="inline-flex items-center gap-3 px-6 py-3 border border-[#c9a84c]/40 bg-[#c9a84c]/10">
+              <RefreshCw size={14} className="text-[#c9a84c]" />
+              <span className="font-tactical text-sm text-[#c9a84c] font-bold tracking-widest uppercase">Loop Repeats Indefinitely — Across Generations</span>
+              <RefreshCw size={14} className="text-[#c9a84c]" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HONEST ANSWERS */}
+      <section className="relative py-24 bg-[#060500] circuit-bg overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <SectionLabel text="Honest Answers — No Sales Pitch" />
+            <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-4">
+              Questions You Should Ask<br />
+              <span className="text-[#c9a84c]">Before You Commit.</span>
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {[
+              { q: "Is this the right product for everyone?", a: "No. The Lifetime LOC mechanic requires patience — cash value takes 3–5 years to build to a meaningful borrowing threshold. If you need liquidity in the next 12 months, this is not the right starting point. We'll tell you that in our first session." },
+              { q: "What if I can't keep up with premium payments?", a: "IUL policies have flexibility built in. If your income changes, premium payments can be reduced or paused using accumulated cash value. We design every policy with this flexibility in mind from day one." },
+              { q: "How is this different from whole life insurance?", a: "Whole life has fixed, guaranteed growth. IUL is indexed — it captures market upside with a floor protecting your downside. IUL also offers more premium flexibility. The right choice depends on your specific situation, which is why we do a needs analysis first." },
+              { q: "What if I borrow against the policy and the market crashes?", a: "Your floor protects your cash value from market losses. However, if your loan balance grows faster than your cash value, the policy can lapse. We design policies with loan management built into the strategy to prevent this." },
+              { q: "Do I need to qualify medically?", a: "Yes. Life insurance requires underwriting. Your health, age, and lifestyle affect your premium rates. We work with multiple carriers to find the most competitive rates for your specific profile." },
+            ].map((item) => (
+              <HudFrame key={item.q} className="p-6 bg-[#0a0800]/70">
+                <div className="mb-3">
+                  <span className="font-tactical text-xs text-[#c9a84c] font-bold tracking-widest uppercase">&gt; Q: </span>
+                  <span className="font-display text-base font-bold text-white">{item.q}</span>
                 </div>
-              </RevealSection>
+                <div>
+                  <span className="font-tactical text-xs text-[#c9a84c]/50 font-bold tracking-widest uppercase">&gt; A: </span>
+                  <span className="font-tactical text-sm text-white/65 leading-relaxed tracking-wide">{item.a}</span>
+                </div>
+              </HudFrame>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── RECIRCULATION — BACK TO MAIN SITE ───────────────────────── */}
-      <section className="py-16" style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div>
-                <p className="font-body text-sm text-[#e8d5a3]/50 mb-1">Looking for other coverage options?</p>
-                <p className="font-display text-xl font-bold text-[#f5f0e8]">
-                  See everything 7Band Financial Agency offers.
-                </p>
-              </div>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 font-body text-[#f5f0e8] font-semibold border border-[#c9a84c]/40 text-[#c9a84c] px-6 py-3 rounded-md transition-all duration-150 active:scale-95 shrink-0"
-              >
-                Back to Main Site <ArrowRight size={16} />
-              </Link>
-            </div>
-          </RevealSection>
+      {/* FINAL CTA */}
+      <section className="relative py-24 bg-gradient-to-b from-[#060500] to-[#050400] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.10)_0%,transparent_70%)]" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <SectionLabel text="Lock In Your Character" />
+          <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
+            Ready to Build Your<br />Lifetime LOC?
+          </h2>
+          <p className="font-tactical text-white/60 text-lg max-w-xl mx-auto tracking-wide mb-10">
+            Schedule a free needs analysis. We'll review your current financial position, determine if an IUL is the right fit, and design a policy structure built around your specific goals — before you commit to anything.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
+              <Star size={14} fill="currentColor" /> Schedule Free Needs Analysis
+            </a>
+            <Link href="/"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-[#c9a84c]/50 text-[#c9a84c] font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#c9a84c]/10 transition-all">
+              View Full Blueprint <ArrowRight size={14} />
+            </Link>
+          </div>
+          <p className="font-tactical text-xs text-white/30 tracking-wide">No pressure. No obligation. Just a clear picture of what's possible.</p>
         </div>
       </section>
 
-      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
-      <section id="loc-contact" className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <RevealSection>
-            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
-              Build Yours
+      {/* FOOTER */}
+      <footer className="bg-[#030200] border-t border-[#c9a84c]/15 py-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center">
+              <span className="font-display font-black text-[#c9a84c] text-xs">7B</span>
+            </div>
+            <span className="font-tactical font-bold text-white tracking-wider text-xs uppercase">
+              7Band <span className="text-[#c9a84c]">Financial Agency</span>
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              See it with your own numbers
-            </h2>
-            <p className="font-body text-lg text-[#e8d5a3]/65 leading-relaxed mb-10 max-w-2xl mx-auto">
-              The needs analysis is free and open to anyone, even if you're an agent. We'll look at your cash flow and whether this asset actually fits your plan. If it doesn't yet, you'll hear that from us too. No obligation, no chase-down calls afterward. Just answers.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:info@7bandfinancial.com"
-                className="bg-[#c9a84c] hover:bg-[#b8943e] text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
-              >
-                Book My Free Needs Analysis <ArrowRight size={18} />
-              </a>
-              <a
-                href="tel:+1-800-000-0000"
-                className="border-2 border-white/40 hover:border-white text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
-              >
-                <Phone size={18} /> Call Us Today
-              </a>
-            </div>
-            <p className="font-body text-sm text-white/30 mt-6">
-              No obligation · No chase-down calls afterward · Just answers
-            </p>
-          </RevealSection>
+          </div>
+          <p className="font-tactical text-xs text-white/25 tracking-wide text-center max-w-lg">
+            Life insurance products are subject to underwriting. Results vary. This is not financial, legal, or tax advice.
+          </p>
+          <p className="font-tactical text-xs text-white/25 tracking-wide">
+            © {new Date().getFullYear()} 7Band Financial Agency
+          </p>
         </div>
-      </section>
-
-      <Footer />
+      </footer>
     </div>
   );
 }
