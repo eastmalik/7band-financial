@@ -297,17 +297,17 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[600px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
-        {/* Status bar */}
-        <div className="absolute top-20 left-0 right-0 flex justify-center">
-          <div className="flex items-center gap-6 px-6 py-2 border-b border-[#c9a84c]/20">
-            <span className="status-active flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />System Active</span>
-            <span className="status-active">Obsidian Quest Log v4.5.4</span>
-            <span className="status-active flex items-center gap-1.5"><Wifi size={10} className="text-[#c9a84c]/60" />Secure Connection Established</span>
-          </div>
-        </div>
         {/* Hero content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
-          <SectionLabel text="Player 1 — Initiate Sequence" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-28 pb-16">
+          {/* HUD status bar + Player 1 badge — unified block */}
+          <div className="flex flex-col items-center gap-3 mb-8">
+            <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
+              <span className="status-active flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />System Active</span>
+              <span className="status-active hidden sm:inline">Obsidian Quest Log v4.5.4</span>
+              <span className="status-active flex items-center gap-1.5"><Wifi size={10} className="text-[#c9a84c]/60" />Secure Connection Established</span>
+            </div>
+            <SectionLabel text="Player 1 — Initiate Sequence" />
+          </div>
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             Stop Funding<br />
             <span className="text-[#c9a84c]">Their Dreams.</span><br />
