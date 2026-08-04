@@ -125,13 +125,13 @@ export default function LifetimeLOC() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#0a0a0a" }}>
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: "#0d1f2d" }}
+        style={{ backgroundColor: "#0a0a0a" }}
       >
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -140,13 +140,13 @@ export default function LifetimeLOC() {
             opacity: 0.22,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1f2d]/95 via-[#0d1f2d]/80 to-[#0d1f2d]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]/50" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 bg-[#22c55e]/20 border border-[#22c55e]/40 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#22c55e] inline-block" />
-              <span className="font-body text-[#22c55e] text-xs font-semibold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 bg-[#c9a84c]/12 border border-[#c9a84c]/35 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "#c9a84c" }} />
+              <span className="font-body text-[#c9a84c] text-xs font-semibold tracking-wider uppercase">
                 7Band Financial Agency
               </span>
             </div>
@@ -155,15 +155,15 @@ export default function LifetimeLOC() {
             </p>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
             Stop Funding Their Dreams.{" "}
-              <em className="text-[#22c55e] not-italic">Start Funding Yours.</em>
+              <em className="text-[#c9a84c] not-italic">Start Funding Yours.</em>
             </h1>
-            <p className="font-body text-lg text-white/75 leading-relaxed mb-6 max-w-xl">
+            <p className="font-body text-lg text-[#e8d5a3]/70 leading-relaxed mb-6 max-w-xl">
               Banks hold over $200 billion of this product in their own vaults — because it works. Every dollar you've paid them in interest has been funding their dreams. The Lifetime LOC is how you redirect that money back toward yours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => scrollTo("#loc-contact")}
-                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
+                className="bg-[#c9a84c] hover:bg-[#b8943e] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
               >
                 Build Mine — Free Needs Analysis
               </button>
@@ -184,26 +184,26 @@ export default function LifetimeLOC() {
       </section>
 
       {/* ── WHAT IT ACTUALLY IS ──────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
             <div className="max-w-3xl">
-              <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+              <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
                 Plain Language First
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f5f0e8] mb-6">
                 What "Lifetime LOC" actually means
             </h2>
-              <p className="font-body text-lg text-gray-600 leading-relaxed mb-4">
+              <p className="font-body text-lg text-[#e8d5a3]/70 leading-relaxed mb-4">
                 The asset underneath is high cash value life insurance — whole life or indexed universal life, designed a specific way. We lead with that because nothing here works as a secret. Once you see what a properly designed policy does, "a line of credit that's guaranteed for life" is simply the most accurate description of how it behaves.
               </p>
-              <p className="font-body text-gray-600 leading-relaxed mb-4">
+              <p className="font-body text-[#e8d5a3]/70 leading-relaxed mb-4">
                 The cash value compounds safely every year, guaranteed. You can borrow against it for anything — no application, no credit check, no banker's opinion — while the full balance keeps compounding inside as if it never left. You pay yourself back on a schedule you set.
               </p>
-              <p className="font-body text-gray-600 leading-relaxed mb-8">
+              <p className="font-body text-[#e8d5a3]/70 leading-relaxed mb-8">
                 And unlike a HELOC, it can't be frozen or called when the economy gets ugly — which is exactly when you need capital most.
               </p>
-              <blockquote className="border-l-4 border-[#f97316] pl-6 py-2 italic font-display text-xl text-[#0d1f2d]">
+              <blockquote className="border-l-4 border-[#c9a84c] pl-6 py-2 italic font-display text-xl text-[#f5f0e8]">
                 "Banks held $205.7 billion of cash value in bank-owned life insurance across more than 3,000 institutions as of late 2024, per FDIC filings. The lobby sells you free checking. The vault buys something else."
               </blockquote>
             </div>
@@ -212,16 +212,16 @@ export default function LifetimeLOC() {
       </section>
 
       {/* ── HOW IT WORKS — 6 STEPS ───────────────────────────────────── */}
-      <section id="how-it-grows" className="py-24 bg-gray-50">
+      <section id="how-it-grows" className="py-24" style={{ backgroundColor: "#0a0a0a" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
               The Whole System
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f5f0e8] mb-4">
               Where the Lifetime LOC fits
             </h2>
-            <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
+            <p className="font-body text-[#e8d5a3]/70 text-lg leading-relaxed mb-12 max-w-2xl">
               The line of credit isn't the whole plan — it's the engine in the middle of one. Cash flow feeds it, the line puts capital to work when life asks for it, and the death benefit recapitalizes everything for the next generation.
             </p>
           </RevealSection>
@@ -229,16 +229,15 @@ export default function LifetimeLOC() {
             {howItWorks.map((item, i) => (
               <RevealSection key={item.step}>
                 <div
-                  className="bg-white border border-gray-200 rounded-xl p-6 hover:border-[#22c55e] hover:shadow-md transition-all duration-300 h-full"
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="rounded-xl p-6 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300 h-full" style={{  background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)", transitionDelay: `${i * 80}ms` }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-9 h-9 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 flex items-center justify-center font-display font-bold text-[#22c55e] text-sm shrink-0">
+                    <span className="w-9 h-9 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 flex items-center justify-center font-display font-bold text-[#c9a84c] text-sm shrink-0">
                       {item.step}
                     </span>
                   </div>
-                  <h3 className="font-display text-lg font-bold text-[#0d1f2d] mb-2">{item.title}</h3>
-                  <p className="font-body text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                  <h3 className="font-display text-lg font-bold text-[#f5f0e8] mb-2">{item.title}</h3>
+                  <p className="font-body text-sm text-[#e8d5a3]/70 leading-relaxed">{item.desc}</p>
                 </div>
               </RevealSection>
             ))}
@@ -247,10 +246,10 @@ export default function LifetimeLOC() {
       </section>
 
       {/* ── THREE LESSONS ────────────────────────────────────────────── */}
-      <section className="py-24 bg-[#0d1f2d]">
+      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
               Learn It in Order
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -264,14 +263,13 @@ export default function LifetimeLOC() {
             {lessons.map((lesson, i) => (
               <RevealSection key={lesson.num}>
                 <div
-                  className="bg-white/5 border border-white/10 rounded-xl p-7 hover:bg-white/10 hover:border-[#22c55e]/40 transition-all duration-300 group h-full"
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="border rounded-xl p-7 hover:bg-[#c9a84c]/5 hover:border-[#c9a84c]/35 transition-all duration-300 group h-full" style={{  background: "rgba(201,168,76,0.04)", borderColor: "rgba(201,168,76,0.15)", transitionDelay: `${i * 80}ms` }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="w-10 h-10 rounded-full bg-[#22c55e]/15 border border-[#22c55e]/30 flex items-center justify-center text-[#22c55e] shrink-0">
+                    <span className="w-10 h-10 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c] shrink-0">
                       {lesson.icon}
                     </span>
-                    <span className="font-body text-[#22c55e] text-xs font-bold tracking-widest uppercase">
+                    <span className="font-body text-[#c9a84c] text-xs font-bold tracking-widest uppercase">
                       Lesson {lesson.num}
                     </span>
                   </div>
@@ -285,16 +283,16 @@ export default function LifetimeLOC() {
       </section>
 
       {/* ── HONEST ANSWERS / OBJECTIONS ──────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
               Honest Answers
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#f5f0e8] mb-4">
               The objections deserve real answers
             </h2>
-            <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
+            <p className="font-body text-[#e8d5a3]/70 text-lg leading-relaxed mb-12 max-w-2xl">
               Each one gets its fair point conceded first. We're not here to sell you past your doubts — we're here to give you the full picture.
             </p>
           </RevealSection>
@@ -302,16 +300,15 @@ export default function LifetimeLOC() {
             {objections.map((item, i) => (
               <RevealSection key={i}>
                 <div
-                  className="bg-gray-50 border border-gray-200 rounded-xl p-7 hover:border-[#22c55e] hover:shadow-md transition-all duration-300 h-full"
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="rounded-xl p-7 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300 h-full" style={{  background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)", transitionDelay: `${i * 80}ms` }}
                 >
                   <div className="flex items-start gap-3 mb-4">
-                    <AlertCircle size={18} className="text-[#f97316] mt-0.5 shrink-0" />
-                    <h3 className="font-display text-lg font-bold text-[#0d1f2d]">{item.q}</h3>
+                    <AlertCircle size={18} className="text-[#c9a84c] mt-0.5 shrink-0" />
+                    <h3 className="font-display text-lg font-bold text-[#f5f0e8]">{item.q}</h3>
                   </div>
                   <div className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-[#22c55e] mt-0.5 shrink-0" />
-                    <p className="font-body text-sm text-gray-600 leading-relaxed">{item.a}</p>
+                    <CheckCircle size={18} className="text-[#c9a84c] mt-0.5 shrink-0" />
+                    <p className="font-body text-sm text-[#e8d5a3]/70 leading-relaxed">{item.a}</p>
                   </div>
                 </div>
               </RevealSection>
@@ -321,19 +318,19 @@ export default function LifetimeLOC() {
       </section>
 
       {/* ── RECIRCULATION — BACK TO MAIN SITE ───────────────────────── */}
-      <section className="py-16 bg-gray-50 border-t border-gray-200">
+      <section className="py-16" style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealSection>
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
-                <p className="font-body text-sm text-gray-500 mb-1">Looking for other coverage options?</p>
-                <p className="font-display text-xl font-bold text-[#0d1f2d]">
+                <p className="font-body text-sm text-[#e8d5a3]/50 mb-1">Looking for other coverage options?</p>
+                <p className="font-display text-xl font-bold text-[#f5f0e8]">
                   See everything 7Band Financial Agency offers.
                 </p>
               </div>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95 shrink-0"
+                className="inline-flex items-center gap-2 font-body text-[#f5f0e8] font-semibold border border-[#c9a84c]/40 text-[#c9a84c] px-6 py-3 rounded-md transition-all duration-150 active:scale-95 shrink-0"
               >
                 Back to Main Site <ArrowRight size={16} />
               </Link>
@@ -343,22 +340,22 @@ export default function LifetimeLOC() {
       </section>
 
       {/* ── FINAL CTA ────────────────────────────────────────────────── */}
-      <section id="loc-contact" className="py-24 bg-[#0d1f2d]">
+      <section id="loc-contact" className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6">
+            <span className="inline-block font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6" style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
               Build Yours
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               See it with your own numbers
             </h2>
-            <p className="font-body text-lg text-white/70 leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="font-body text-lg text-[#e8d5a3]/65 leading-relaxed mb-10 max-w-2xl mx-auto">
               The needs analysis is free and open to anyone, even if you're an agent. We'll look at your cash flow and whether this asset actually fits your plan. If it doesn't yet, you'll hear that from us too. No obligation, no chase-down calls afterward. Just answers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:info@7bandfinancial.com"
-                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
+                className="bg-[#c9a84c] hover:bg-[#b8943e] text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
               >
                 Book My Free Needs Analysis <ArrowRight size={18} />
               </a>

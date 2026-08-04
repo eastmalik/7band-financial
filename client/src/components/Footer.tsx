@@ -1,166 +1,133 @@
 /**
  * 7Band Financial Agency — Footer
- * Design: Dark navy background, 4-column layout with Our Ecosystem column.
+ * Theme: Gold & Dark RPG — consistent with homepage
  */
-import { ExternalLink, Youtube, Users, Heart, CreditCard } from "lucide-react";
+import { Link } from "wouter";
+import { Youtube, ExternalLink, Heart, CreditCard, Users } from "lucide-react";
 
 export default function Footer() {
-  const scrollTo = (id: string) => {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const ecosystem = [
-    {
-      label: "7Band Inc.",
-      sublabel: "Our Non-Profit",
-      href: "https://www.7bandinc.org",
-      icon: <Heart size={14} />,
-    },
-    {
-      label: "Arise Credit Pro",
-      sublabel: "Credit Education",
-      href: "https://www.arisecreditpro.com",
-      icon: <CreditCard size={14} />,
-    },
-    {
-      label: "The Real Ethical Agents",
-      sublabel: "Skool Community",
-      href: "https://www.skool.com/the-real-ethical-agents-4233",
-      icon: <Users size={14} />,
-    },
-    {
-      label: "Malik East",
-      sublabel: "YouTube Channel",
-      href: "https://www.youtube.com/@Malik_East",
-      icon: <Youtube size={14} />,
-    },
-  ];
-
   return (
-    <footer className="bg-[#0d1f2d] text-white/80">
+    <footer style={{ backgroundColor: "#080808", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand Column */}
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+
+          {/* Brand */}
+          <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img
-                src="/manus-storage/7band-logo-icon_d358cad1.png"
-                alt="7Band Financial Agency"
-                className="w-10 h-10 object-contain"
-              />
+              <div className="w-8 h-8 rounded-md flex items-center justify-center font-display font-bold text-sm"
+                style={{ background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.4)", color: "#c9a84c" }}>
+                7B
+              </div>
               <div>
-                <div className="font-display font-bold text-white text-lg leading-none">7Band Financial</div>
-                <div className="font-body text-[#22c55e] text-xs tracking-widest uppercase">Agency</div>
+                <p className="font-display font-bold text-sm" style={{ color: "#f5f0e8" }}>7Band Financial</p>
+                <p className="font-body tracking-widest uppercase" style={{ color: "#c9a84c", fontSize: "0.6rem" }}>Agency</p>
               </div>
             </div>
-            <p className="font-body text-sm text-white/60 leading-relaxed max-w-xs">
-              7Band Financial Agency is a licensed life insurance agency. "Lifetime line of credit" describes the practical use of properly designed high cash value life insurance — it is an insurance product, not a bank line of credit.
+            <p className="font-body text-xs leading-relaxed mb-4" style={{ color: "rgba(232,213,163,0.45)" }}>
+              Stop Funding Their Dreams. Start Funding Yours.
+            </p>
+            <p className="font-body text-xs" style={{ color: "rgba(232,213,163,0.3)" }}>
+              Licensed Life Insurance Agent<br />Jackson, Mississippi
             </p>
           </div>
 
-          {/* Services Column */}
+          {/* Services */}
           <div>
-            <h4 className="font-display font-semibold text-white text-base mb-4">Our Services</h4>
+            <h4 className="font-body text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#c9a84c" }}>
+              Our Services
+            </h4>
             <ul className="space-y-2.5">
               {[
-                "Term Life Insurance",
-                "Whole Life Insurance",
-                "Indexed Universal Life",
-                "Final Expense Insurance",
-                "Mortgage Protection",
+                { label: "Lifetime LOC", href: "/lifetime-loc" },
+                { label: "Credit Restoration", href: "/#quest-map" },
+                { label: "LLC Structure", href: "/#quest-map" },
+                { label: "IUL Engine", href: "/lifetime-loc" },
+                { label: "Trust & Legacy", href: "/#quest-map" },
               ].map((item) => (
-                <li key={item}>
-                  <button
-                    onClick={() => scrollTo("#services")}
-                    className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors text-left"
-                  >
-                    {item}
-                  </button>
+                <li key={item.label}>
+                  <Link href={item.href} className="font-body text-sm transition-colors duration-150 hover:text-[#c9a84c]"
+                    style={{ color: "rgba(232,213,163,0.55)" }}>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Ecosystem Column */}
+          {/* Ecosystem */}
           <div>
-            <h4 className="font-display font-semibold text-white text-base mb-4">Our Ecosystem</h4>
+            <h4 className="font-body text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#c9a84c" }}>
+              Our Ecosystem
+            </h4>
             <ul className="space-y-3">
-              {ecosystem.map((item) => (
+              {[
+                { label: "7Band Inc.", sub: "Non-Profit", href: "https://www.7bandinc.org", icon: <Heart size={12} /> },
+                { label: "Arise Credit Pro", sub: "Credit Education", href: "https://www.arisecreditpro.com", icon: <CreditCard size={12} /> },
+                { label: "Skool Community", sub: "The Real Ethical Agents", href: "https://www.skool.com/the-real-ethical-agents-4233", icon: <Users size={12} /> },
+                { label: "YouTube", sub: "@Malik_East", href: "https://www.youtube.com/@Malik_East", icon: <Youtube size={12} /> },
+              ].map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-start gap-2.5 font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors"
-                  >
-                    <span className="mt-0.5 text-white/30 group-hover:text-[#22c55e] transition-colors shrink-0">
-                      {item.icon}
-                    </span>
-                    <span>
-                      <span className="block font-medium text-white/80 group-hover:text-[#22c55e] transition-colors leading-tight">
+                  <a href={item.href} target="_blank" rel="noopener noreferrer"
+                    className="group flex items-start gap-2 transition-colors duration-150">
+                    <span className="mt-0.5 shrink-0" style={{ color: "rgba(201,168,76,0.4)" }}>{item.icon}</span>
+                    <div>
+                      <p className="font-body text-sm group-hover:text-[#c9a84c] transition-colors duration-150 flex items-center gap-1"
+                        style={{ color: "rgba(232,213,163,0.55)" }}>
                         {item.label}
-                      </span>
-                      <span className="text-xs text-white/40">{item.sublabel}</span>
-                    </span>
-                    <ExternalLink size={11} className="mt-1 opacity-0 group-hover:opacity-60 transition-opacity shrink-0" />
+                        <ExternalLink size={10} className="opacity-0 group-hover:opacity-60 transition-opacity" />
+                      </p>
+                      <p className="font-body text-xs" style={{ color: "rgba(232,213,163,0.3)" }}>{item.sub}</p>
+                    </div>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold text-white text-base mb-4">Contact</h4>
+            <h4 className="font-body text-xs font-bold tracking-widest uppercase mb-4" style={{ color: "#c9a84c" }}>
+              Contact
+            </h4>
             <ul className="space-y-3">
               <li>
-                <button
-                  onClick={() => scrollTo("#contact")}
-                  className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors text-left"
-                >
+                <a href="https://calendly.com/malikeast/15-minute-quick-meeting-phone-call-via-zoom"
+                  target="_blank" rel="noopener noreferrer"
+                  className="font-body text-sm transition-colors duration-150 hover:text-[#c9a84c]"
+                  style={{ color: "rgba(232,213,163,0.55)" }}>
                   Book a Free Needs Analysis
-                </button>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@7bandfinancial.com"
-                  className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors"
-                >
-                  info@7bandfinancial.com
                 </a>
               </li>
               <li>
-                <a
-                  href="https://calendly.com/malikeast/15-minute-quick-meeting-phone-call-via-zoom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-sm text-white/60 hover:text-[#22c55e] transition-colors"
-                >
-                  Schedule on Calendly
+                <a href="mailto:info@7bandfinancialagency.com"
+                  className="font-body text-sm transition-colors duration-150 hover:text-[#c9a84c]"
+                  style={{ color: "rgba(232,213,163,0.55)" }}>
+                  info@7bandfinancialagency.com
                 </a>
+              </li>
+              <li>
+                <Link href="/about"
+                  className="font-body text-sm transition-colors duration-150 hover:text-[#c9a84c]"
+                  style={{ color: "rgba(232,213,163,0.55)" }}>
+                  Meet the Team
+                </Link>
               </li>
             </ul>
-            <div className="mt-6">
-              <button
-                onClick={() => scrollTo("#contact")}
-                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold text-sm px-5 py-2.5 rounded-md transition-all active:scale-95"
-              >
-                Book Free Needs Analysis
-              </button>
-            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-xs text-white/40">
+        {/* Bottom bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
+          style={{ borderTop: "1px solid rgba(201,168,76,0.1)" }}>
+          <p className="font-body text-xs" style={{ color: "rgba(232,213,163,0.3)" }}>
             © {new Date().getFullYear()} 7Band Financial Agency. All rights reserved.
           </p>
-          <p className="font-body text-xs text-white/40">
-            Licensed Life Insurance Agency · Policy loans reduce available cash value and death benefit. Guarantees backed by the financial strength of the issuing insurer.
+          <p className="font-body text-xs text-center" style={{ color: "rgba(232,213,163,0.25)" }}>
+            Life insurance products and services offered through 7Band Financial Agency. Licensed in Mississippi. Not financial advice.
           </p>
         </div>
       </div>
     </footer>
   );
 }
+

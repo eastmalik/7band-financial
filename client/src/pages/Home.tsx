@@ -1,12 +1,16 @@
 /**
- * 7Band Financial Agency — Main Homepage
- * Design: Dark navy hero, white content sections, green labels, orange CTAs.
- * StoryBrand framework: Hero = Be Your Own Bank, Villain = banks/interest, Guide = Malik, Plan = 3 steps, Stakes = success/failure.
- * Fonts: Playfair Display (headings), Inter (body).
+ * 7Band Financial Agency — Homepage
+ * Theme: High-end Gold & Dark RPG gamified SB7 framework
+ * Layout: Z-pattern — grunt-test header, villain, 7 Levels quest map, pricing tiers, stakes
+ * Core Message: "Stop Funding Their Dreams. Start Funding Yours."
+ * Brand One-Liner: 7-Level Generational Wealth Blueprint
  */
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, CheckCircle, Phone, TrendingUp, Shield, BookOpen, AlertTriangle, Download } from "lucide-react";
 import { Link } from "wouter";
+import {
+  Shield, Building2, Coins, Zap, Lock, GitBranch, TreePine,
+  ArrowRight, ChevronDown, AlertTriangle, Trophy, Download, Star
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -18,7 +22,7 @@ function useReveal() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -26,28 +30,142 @@ function useReveal() {
   return { ref, visible };
 }
 
-function RevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, visible } = useReveal();
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-      } ${className}`}
+      className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>
   );
 }
 
-const problems = [
-  { label: "I'm funding a bank's growth, not mine", href: "#villain" },
-  { label: "My money is sitting idle", href: "#villain" },
-  { label: "I keep missing opportunities — no capital", href: "#villain" },
-  { label: "I want to fund my own dreams", href: "/lifetime-loc" },
-  { label: "I need life insurance coverage", href: "#services" },
-  { label: "Something else? Let's talk →", href: "#contact" },
+const levels = [
+  {
+    num: "01",
+    phase: "Foundation",
+    icon: <Shield size={28} />,
+    title: "Restore Your Shield",
+    sub: "Credit Restoration",
+    desc: "Your credit score is your financial passport. We restore it so every door opens.",
+    color: "#c9a84c",
+  },
+  {
+    num: "02",
+    phase: "Foundation",
+    icon: <Building2 size={28} />,
+    title: "Build Your Base",
+    sub: "LLC Structure",
+    desc: "Separate your personal wealth from liability. Build the legal foundation that protects everything you earn.",
+    color: "#c9a84c",
+  },
+  {
+    num: "03",
+    phase: "Foundation",
+    icon: <Coins size={28} />,
+    title: "Gather Resources",
+    sub: "Access Capital",
+    desc: "Business credit, funding lines, and capital access — without using your personal credit as collateral.",
+    color: "#c9a84c",
+  },
+  {
+    num: "04",
+    phase: "Acceleration",
+    icon: <Zap size={28} />,
+    title: "Unlock The Engine",
+    sub: "IUL / Lifetime Line of Credit",
+    desc: "The tool banks buy by the billion for themselves. A line of credit that grows, never gets called, and funds two jobs at once.",
+    color: "#f59e0b",
+    featured: true,
+  },
+  {
+    num: "05",
+    phase: "Legacy",
+    icon: <Lock size={28} />,
+    title: "Construct the Fortress",
+    sub: "Trust & Holding Company",
+    desc: "Move assets out of your personal name. Build the structure that owns your businesses, cars, and real estate.",
+    color: "#e8c97a",
+  },
+  {
+    num: "06",
+    phase: "Legacy",
+    icon: <GitBranch size={28} />,
+    title: "Design the Transfer",
+    sub: "Trust Beneficiary Planning",
+    desc: "Decide exactly who gets what, when, and how. No probate. No guessing. No government interference.",
+    color: "#e8c97a",
+  },
+  {
+    num: "07",
+    phase: "Legacy",
+    icon: <TreePine size={28} />,
+    title: "The Generational Tree",
+    sub: "The High Score — Wealth That Never Resets",
+    desc: "The family bank. Every dollar works two jobs. Every generation starts ahead. The wealth never resets to zero.",
+    color: "#e8c97a",
+    isLast: true,
+  },
 ];
+
+const packs = [
+  {
+    tier: "Bronze",
+    name: "The Foundational Move",
+    price: "$750",
+    tagline: "Lay the groundwork. Stop the bleeding.",
+    color: "#cd7f32",
+    items: [
+      "Credit Restoration Strategy (Level 1)",
+      "LLC Formation Guidance (Level 2)",
+      "Capital Access Roadmap (Level 3)",
+      "1-on-1 Needs Analysis Session",
+      "Financial Audit & Gap Report",
+    ],
+    cta: "Start the Foundation",
+  },
+  {
+    tier: "Silver",
+    name: "The Pro-Gamer Move",
+    price: "$1,500",
+    tagline: "Add the IUL engine. Money works two jobs.",
+    color: "#c9a84c",
+    featured: true,
+    items: [
+      "Everything in Bronze",
+      "IUL / Lifetime LOC Design (Level 4)",
+      "Policy Illustration & Comparison",
+      "Banking Strategy Blueprint",
+      "Ongoing Policy Review (Year 1)",
+    ],
+    cta: "Choose Your Expansion Pack",
+  },
+  {
+    tier: "Gold",
+    name: "The Master Class",
+    price: "$5,000",
+    tagline: "Full 7-Level Blueprint. Attorney included.",
+    color: "#e8c97a",
+    items: [
+      "Everything in Silver",
+      "Trust & Holding Company Setup (Level 5)",
+      "Trust Beneficiary Design (Level 6)",
+      "Generational Transfer Plan (Level 7)",
+      "Attorney Consultation Included",
+      "Full 7-Level Blueprint Document",
+    ],
+    cta: "Unlock the Master Class",
+  },
+];
+
+const phaseColors: Record<string, string> = {
+  Foundation: "#c9a84c",
+  Acceleration: "#f59e0b",
+  Legacy: "#e8c97a",
+};
 
 export default function Home() {
   const scrollTo = (id: string) => {
@@ -56,439 +174,527 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#0a0a0a", color: "#e8d5a3" }}>
       <Navbar />
 
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
+      {/* ── HERO — GRUNT TEST ─────────────────────────────────────────── */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ backgroundColor: "#0d1f2d" }}
+        style={{ backgroundColor: "#0a0a0a" }}
       >
+        {/* Background texture */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('/manus-storage/7band-hero-bg_6c47a05e.png')`,
-            opacity: 0.28,
+            opacity: 0.08,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1f2d]/95 via-[#0d1f2d]/75 to-[#0d1f2d]/40" />
+        {/* Gold radial glow */}
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%)"
+        }} />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT — Main hook */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-[#22c55e]/20 border border-[#22c55e]/40 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#22c55e] inline-block" />
-              <span className="font-body text-[#22c55e] text-xs font-semibold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8"
+              style={{ background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.35)" }}>
+              <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "#c9a84c" }} />
+              <span className="font-body text-xs font-semibold tracking-widest uppercase" style={{ color: "#c9a84c" }}>
                 Licensed Life Insurance Agent
               </span>
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Stop Funding Their Dreams.{" "}
-              <em className="text-[#22c55e] not-italic">Start Funding Yours.</em>
+
+            <h1 className="font-display font-bold leading-tight mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#f5f0e8" }}>
+              Stop Funding{" "}
+              <span style={{ color: "#c9a84c" }}>Their Dreams.</span>
+              <br />
+              Start Funding{" "}
+              <span style={{ color: "#c9a84c" }}>Yours.</span>
             </h1>
-            <p className="font-body text-lg text-white/75 leading-relaxed mb-8 max-w-xl">
-              Every dollar you hand to a bank in interest funded their expansion, their bonuses, their buildings — not yours. We help you redirect that money back into your own life, your own investments, and your own legacy.
+
+            <p className="font-body text-lg leading-relaxed mb-4" style={{ color: "rgba(232,213,163,0.75)", maxWidth: "520px" }}>
+              Most people lose a small fortune in interest and taxes because they were never taught how to be their own bank.
             </p>
+            <p className="font-body text-base leading-relaxed mb-10" style={{ color: "rgba(232,213,163,0.55)", maxWidth: "520px" }}>
+              We provide a <strong style={{ color: "#c9a84c" }}>7-Level Generational Wealth Blueprint</strong> that helps you restore your credit, access business funding, and build a tax-free legacy — so your family's money never stops working for you.
+            </p>
+
             <div className="flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => scrollTo("#contact")}
-                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base"
+                onClick={() => scrollTo("#expansion-packs")}
+                className="font-body font-bold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base"
+                style={{ backgroundColor: "#c9a84c", color: "#0a0a0a" }}
               >
-                Book My Free Needs Analysis
+                Choose Your Expansion Pack
               </button>
-              <Link
-                href="/lifetime-loc"
-                className="border-2 border-white/60 hover:border-white text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 text-base text-center"
+              <button
+                onClick={() => scrollTo("#free-guide")}
+                className="font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base"
+                style={{ border: "1px solid rgba(201,168,76,0.5)", color: "#c9a84c", background: "transparent" }}
               >
-                See How It Works →
-              </Link>
+                Download the Free Guide ↓
+              </button>
             </div>
           </div>
-        </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-          <div className="w-px h-12 bg-white/40 animate-pulse" />
-        </div>
-      </section>
-
-      {/* ── ONE-LINER / STORY GAP ────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <p className="font-body text-sm text-gray-500 leading-relaxed max-w-3xl mb-5">
-              Every year you pay interest to a bank, you're funding someone else's dream. We help families and business owners build a private line of credit through life insurance — so the interest you pay comes back to you, and your money grows while you use it.
-            </p>
-            <p className="font-body text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
-              Which one sounds like you?
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {problems.map((p) =>
-                p.href.startsWith("/") ? (
-                  <Link
-                    key={p.label}
-                    href={p.href}
-                    className="font-body text-sm font-medium px-4 py-2 rounded-full border border-[#0d1f2d]/20 text-[#0d1f2d] hover:bg-[#0d1f2d] hover:text-white hover:border-[#0d1f2d] transition-all duration-150"
-                  >
-                    {p.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={p.label}
-                    onClick={() => scrollTo(p.href)}
-                    className="font-body text-sm font-medium px-4 py-2 rounded-full border border-[#0d1f2d]/20 text-[#0d1f2d] hover:bg-[#0d1f2d] hover:text-white hover:border-[#0d1f2d] transition-all duration-150"
-                  >
-                    {p.label}
-                  </button>
-                )
-              )}
-            </div>
-          </RevealSection>
-        </div>
-      </section>
-
-      {/* ── THE VILLAIN ──────────────────────────────────────────────── */}
-      <section id="villain" className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <div className="max-w-3xl">
-              <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                The Problem
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                Every dollar you pay in interest is funding someone else's dream. Here's what that actually costs you.
-              </h2>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
-                  <p className="font-body text-gray-600 leading-relaxed"><strong>The External Problem:</strong> When a real opportunity shows up — a deal, an investment, an emergency — you don't have fast access to capital. Banks are too slow, too expensive, or they just say no.</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
-                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Internal Problem:</strong> You feel like you're working hard but still falling behind — watching opportunities pass while your money sits idle, locked up, or quietly funding someone else's growth.</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <AlertTriangle size={18} className="text-[#f97316] mt-1 shrink-0" />
-                  <p className="font-body text-gray-600 leading-relaxed"><strong>The Real Problem:</strong> It's not just money — it's your dreams being deferred while someone else's get funded. You deserve a system that works for you, not against you.</p>
-                </div>
+          {/* RIGHT — One-liner card */}
+          <Reveal delay={200}>
+            <div className="rounded-2xl p-8" style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.25)" }}>
+              <div className="flex items-center gap-3 mb-6">
+                <Star size={20} style={{ color: "#c9a84c" }} />
+                <span className="font-body text-xs font-bold tracking-widest uppercase" style={{ color: "#c9a84c" }}>
+                  The 7-Level Blueprint
+                </span>
               </div>
-              <blockquote className="border-l-4 border-[#f97316] pl-6 py-2 italic font-display text-xl text-[#0d1f2d] mb-8">
-                "Every time you pay a bank interest, you're funding their next branch, their next bonus, their next dream. It's time to redirect that money toward yours."
-              </blockquote>
-              <button
-                onClick={() => scrollTo("#contact")}
-                className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
-              >
-                Book My Free Needs Analysis <ArrowRight size={16} />
-              </button>
-            </div>
-          </RevealSection>
-        </div>
-      </section>
-
-      {/* ── THE 3-STEP PLAN ──────────────────────────────────────────── */}
-      <section id="approach" className="py-24 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-              The Plan
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
-              Three steps to funding your own dreams.
-            </h2>
-            <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
-              Stop sending interest to a bank. Here's how we redirect it back to you.
-            </p>
-          </RevealSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                num: "1",
-                icon: <TrendingUp size={22} />,
-                title: "Design Your Bank",
-                body: "We build a custom high-cash-value life insurance policy engineered for maximum cash accumulation — not just a death benefit.",
-              },
-              {
-                num: "2",
-                icon: <Shield size={22} />,
-                title: "Fund Your Future",
-                body: "Deposit capital into your policy to create an immediate line of credit. Your money is working — growing guaranteed — from day one.",
-              },
-              {
-                num: "3",
-                icon: <CheckCircle size={22} />,
-                title: "Borrow on Your Terms",
-                body: "Access capital for any investment, expense, or opportunity — no application, no credit check, no banker's opinion. Your balance keeps compounding the whole time.",
-              },
-            ].map((step, i) => (
-              <RevealSection key={step.num}>
-                <div
-                  className="bg-white rounded-xl border border-gray-200 p-7 h-full hover:shadow-lg transition-shadow duration-300"
-                  style={{ transitionDelay: `${i * 100}ms` }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="w-10 h-10 rounded-full bg-[#22c55e]/10 border border-[#22c55e]/30 flex items-center justify-center text-[#22c55e] shrink-0">
-                      {step.icon}
-                    </span>
-                    <span className="font-display font-bold text-[#0d1f2d] text-lg">{step.num}.</span>
+              <div className="space-y-4">
+                {[
+                  { phase: "Phase 1: Foundation", levels: "Levels 1–3", desc: "Credit · LLC · Capital" },
+                  { phase: "Phase 2: Acceleration", levels: "Level 4", desc: "IUL Engine · Lifetime LOC" },
+                  { phase: "Phase 3: Legacy", levels: "Levels 5–7", desc: "Trust · Transfer · Generational Tree" },
+                ].map((p) => (
+                  <div key={p.phase} className="flex items-start gap-4 p-4 rounded-lg" style={{ background: "rgba(201,168,76,0.06)" }}>
+                    <div className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ backgroundColor: "#c9a84c" }} />
+                    <div>
+                      <p className="font-body font-bold text-sm" style={{ color: "#c9a84c" }}>{p.phase}</p>
+                      <p className="font-body text-xs" style={{ color: "rgba(232,213,163,0.5)" }}>{p.levels} · {p.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-[#0d1f2d] mb-3">{step.title}</h3>
-                  <p className="font-body text-gray-600 text-sm leading-relaxed">{step.body}</p>
-                </div>
-              </RevealSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── STAKES: SUCCESS VS FAILURE ───────────────────────────────── */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-              The Stakes
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-12">
-              Two futures. One choice.
-            </h2>
-          </RevealSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <RevealSection>
-              <div className="bg-red-50 border border-red-200 rounded-xl p-8 h-full">
-                <span className="inline-block bg-red-100 text-red-700 font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                  Without a Private Bank
-                </span>
-                <h3 className="font-display text-2xl font-bold text-red-800 mb-4">You keep funding their dreams.</h3>
-                <ul className="space-y-3 font-body text-red-700 text-sm leading-relaxed">
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Your interest payments fund bank expansions, bonuses, and buildings — not your life</li>
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Idle dollars losing ground to inflation while someone else puts them to work</li>
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Deals and opportunities pass you by because capital isn't accessible when it counts</li>
-                  <li className="flex items-start gap-2"><AlertTriangle size={16} className="mt-0.5 shrink-0" />Your family has no guaranteed safety net if something happens to you</li>
-                </ul>
+                ))}
               </div>
-            </RevealSection>
-            <RevealSection>
-              <div className="bg-green-50 border border-green-200 rounded-xl p-8 h-full">
-                <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                  With Your Private Bank
-                </span>
-                <h3 className="font-display text-2xl font-bold text-[#0d1f2d] mb-4">You start funding yours.</h3>
-                <ul className="space-y-3 font-body text-gray-700 text-sm leading-relaxed">
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Capital on your terms — fund your deals, your goals, your life</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />The interest you "pay" recycles back to you — not a bank's bottom line</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />Guaranteed growth every year, completely shielded from market crashes</li>
-                  <li className="flex items-start gap-2"><CheckCircle size={16} className="text-[#22c55e] mt-0.5 shrink-0" />A tax-free death benefit that passes your dream — and your wealth — to the next generation</li>
-                </ul>
-              </div>
-            </RevealSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ── LIFETIME LOC CALLOUT ─────────────────────────────────────── */}
-      <section className="py-20 bg-[#0d1f2d]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                  Our Main Product
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
-                  The Lifetime LOC
-                </h2>
-                <p className="font-body text-white/70 text-lg leading-relaxed mb-4">
-                  A line of credit that's guaranteed for life. It compounds safely every year, it can't be frozen or called, and it finances everything life asks of you while the balance keeps growing.
+              <div className="mt-6 pt-6" style={{ borderTop: "1px solid rgba(201,168,76,0.2)" }}>
+                <p className="font-body text-xs italic" style={{ color: "rgba(232,213,163,0.45)" }}>
+                  "Every dollar your family earns should work two jobs — funding your life and compounding simultaneously."
                 </p>
-                <p className="font-body text-white/60 leading-relaxed mb-8">
-                  The wealthy have used this for generations. Banks hold it by the billions. We teach you exactly how it works and build one designed specifically for your situation.
-                </p>
-                <Link
-                  href="/lifetime-loc"
-                  className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95"
-                >
-                  Learn About the Lifetime LOC <ArrowRight size={16} />
-                </Link>
               </div>
             </div>
-          </RevealSection>
+          </Reveal>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-40 cursor-pointer" onClick={() => scrollTo("#villain")}>
+          <ChevronDown size={28} style={{ color: "#c9a84c" }} className="animate-bounce" />
         </div>
       </section>
 
-      {/* ── PRODUCTS GRID ────────────────────────────────────────────── */}
-      <section id="services" className="py-24 bg-white">
+      {/* ── VILLAIN — THE TRADITIONAL BANKING TRAP ───────────────────── */}
+      <section id="villain" className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-              Products
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-4">
-              Coverage for every stage of life
+          <Reveal>
+            <div className="flex items-center gap-3 mb-4">
+              <AlertTriangle size={20} style={{ color: "#dc2626" }} />
+              <span className="font-body text-xs font-bold tracking-widest uppercase" style={{ color: "#dc2626" }}>
+                The Villain
+              </span>
+            </div>
+            <h2 className="font-display font-bold mb-6" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f5f0e8" }}>
+              The Traditional Banking Trap
             </h2>
-            <p className="font-body text-gray-600 text-lg leading-relaxed mb-12 max-w-2xl">
-              We work with top-rated carriers to find the right product for your family's unique situation. The design conversation always comes first.
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <Reveal>
+              <div className="space-y-5 font-body leading-relaxed" style={{ color: "rgba(232,213,163,0.7)" }}>
+                <p className="text-lg">
+                  Every dollar you pay in interest to a bank is <strong style={{ color: "#dc2626" }}>leakage</strong> — money that leaves your family's ecosystem forever and funds the bank's bonuses, buildings, and expansion.
+                </p>
+                <p>
+                  The average American household pays <strong style={{ color: "#f5f0e8" }}>$300,000+ in interest</strong> over a lifetime. That's not bad luck. That's by design.
+                </p>
+                <p>
+                  Banks hold over <strong style={{ color: "#f5f0e8" }}>$200 billion</strong> of the same financial product we teach in their own vaults — because it works. They sell you free checking. They buy something else.
+                </p>
+                <p style={{ color: "rgba(232,213,163,0.5)" }}>
+                  The 7-Level Blueprint is the exit strategy.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: "Avg. lifetime interest paid", value: "$300K+", bad: true },
+                  { label: "Bank-owned life insurance", value: "$200B+", bad: true },
+                  { label: "Families with a wealth plan", value: "< 10%", bad: true },
+                  { label: "Tax-free growth potential", value: "Unlimited", bad: false },
+                ].map((stat) => (
+                  <div key={stat.label} className="rounded-xl p-5 text-center"
+                    style={{ background: "rgba(201,168,76,0.05)", border: `1px solid ${stat.bad ? "rgba(220,38,38,0.3)" : "rgba(201,168,76,0.3)"}` }}>
+                    <p className="font-display font-bold text-2xl mb-1" style={{ color: stat.bad ? "#dc2626" : "#c9a84c" }}>
+                      {stat.value}
+                    </p>
+                    <p className="font-body text-xs" style={{ color: "rgba(232,213,163,0.5)" }}>{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7 LEVELS QUEST MAP ───────────────────────────────────────── */}
+      <section id="quest-map" className="py-24" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <span className="font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4 inline-block"
+              style={{ backgroundColor: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
+              The Quest Map
+            </span>
+            <h2 className="font-display font-bold mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f5f0e8" }}>
+              7 Levels of Mastery
+            </h2>
+            <p className="font-body text-lg mb-12" style={{ color: "rgba(232,213,163,0.6)", maxWidth: "560px" }}>
+              Not a services list. A blueprint. Each level builds on the last. Skip one and the whole structure weakens.
             </p>
-          </RevealSection>
+          </Reveal>
+
+          {/* Phase labels */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            {["Foundation (1–3)", "Acceleration (4)", "Legacy (5–7)"].map((phase, i) => {
+              const colors = ["#c9a84c", "#f59e0b", "#e8c97a"];
+              return (
+                <span key={phase} className="font-body text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full"
+                  style={{ border: `1px solid ${colors[i]}60`, color: colors[i], background: `${colors[i]}10` }}>
+                  {phase}
+                </span>
+              );
+            })}
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { title: "Term Life Insurance", desc: "Affordable, straightforward protection for a defined period. Ideal for income replacement and mortgage protection." },
-              { title: "Whole Life Insurance", desc: "Permanent coverage with guaranteed cash value growth. The foundation of the Lifetime LOC strategy." },
-              { title: "Indexed Universal Life", desc: "Growth tied to a market index with downside protection. Combines flexibility with upside potential." },
-              { title: "Final Expense Insurance", desc: "Covers end-of-life costs so your family isn't burdened. Simple approval, no medical exam required." },
-              { title: "Mortgage Protection", desc: "Ensures your family keeps the home if something happens to you. Peace of mind for your biggest asset." },
-              { title: "Children's Whole Life", desc: "Lock in your child's insurability and start their cash value growing today. The gift that compounds for life." },
-            ].map((product, i) => (
-              <RevealSection key={product.title}>
+            {levels.map((level, i) => (
+              <Reveal key={level.num} delay={i * 70}>
                 <div
-                  className="bg-gray-50 border border-gray-200 rounded-xl p-6 hover:border-[#22c55e] hover:shadow-md transition-all duration-300"
-                  style={{ transitionDelay: `${i * 60}ms` }}
+                  className={`rounded-xl p-6 h-full transition-all duration-300 hover:scale-[1.02] ${level.featured ? "ring-2" : ""}`}
+                  style={{
+                    background: level.featured ? "rgba(245,158,11,0.08)" : "rgba(201,168,76,0.04)",
+                    border: `1px solid ${level.color}35`,
+                    outline: level.featured ? `2px solid ${level.color}` : undefined,
+                  }}
                 >
-                  <CheckCircle size={20} className="text-[#22c55e] mb-3" />
-                  <h3 className="font-display text-lg font-bold text-[#0d1f2d] mb-2">{product.title}</h3>
-                  <p className="font-body text-sm text-gray-600 leading-relaxed">{product.desc}</p>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center"
+                      style={{ background: `${level.color}15`, color: level.color }}>
+                      {level.icon}
+                    </div>
+                    <span className="font-display font-bold text-3xl" style={{ color: `${level.color}30` }}>
+                      {level.num}
+                    </span>
+                  </div>
+                  <span className="font-body text-xs font-bold tracking-widest uppercase mb-2 inline-block"
+                    style={{ color: phaseColors[level.phase] }}>
+                    {level.phase}
+                  </span>
+                  <h3 className="font-display font-bold text-lg mb-1" style={{ color: "#f5f0e8" }}>
+                    {level.title}
+                  </h3>
+                  <p className="font-body text-xs font-semibold mb-3" style={{ color: level.color }}>
+                    {level.sub}
+                  </p>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(232,213,163,0.6)" }}>
+                    {level.desc}
+                  </p>
+                  {level.featured && (
+                    <div className="mt-4">
+                      <Link href="/lifetime-loc"
+                        className="inline-flex items-center gap-1.5 font-body text-xs font-bold"
+                        style={{ color: "#f59e0b" }}>
+                        Learn More <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  )}
                 </div>
-              </RevealSection>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── LEAD GEN: FREE PDF ───────────────────────────────────────── */}
-      <section className="py-16 bg-[#22c55e]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center shrink-0">
-                <Download size={28} className="text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-display text-2xl font-bold text-white mb-2">
-                  Free Download: "5 Ways You're Funding a Bank's Dream Instead of Your Own"
-                </h3>
-                <p className="font-body text-white/80 text-sm leading-relaxed">
-                  Not ready to book a call yet? Start here. This free PDF breaks down exactly how banks profit from your hard-earned money — and the simple strategy to redirect that flow back toward your own dreams.
-                </p>
-              </div>
-              <button
-                onClick={() => scrollTo("#contact")}
-                className="bg-white text-[#22c55e] hover:bg-white/90 font-body font-bold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 shrink-0 whitespace-nowrap"
-              >
-                Get the Free PDF
-              </button>
-            </div>
-          </RevealSection>
+      {/* ── EXPANSION PACKS / PRICING ─────────────────────────────────── */}
+      <section id="expansion-packs" className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <span className="font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4 inline-block"
+              style={{ backgroundColor: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
+              Pricing
+            </span>
+            <h2 className="font-display font-bold mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f5f0e8" }}>
+              Choose Your Expansion Pack
+            </h2>
+            <p className="font-body text-lg mb-14" style={{ color: "rgba(232,213,163,0.6)", maxWidth: "520px" }}>
+              Three tiers. One blueprint. Pick the level that matches where you are right now.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {packs.map((pack, i) => (
+              <Reveal key={pack.tier} delay={i * 100}>
+                <div
+                  className={`rounded-2xl p-8 h-full flex flex-col transition-all duration-300 hover:scale-[1.02] ${pack.featured ? "ring-2" : ""}`}
+                  style={{
+                    background: pack.featured ? "rgba(201,168,76,0.09)" : "rgba(201,168,76,0.04)",
+                    border: `1px solid ${pack.color}40`,
+                    outline: pack.featured ? `2px solid ${pack.color}` : undefined,
+                  }}
+                >
+                  {pack.featured && (
+                    <div className="text-center mb-4">
+                      <span className="font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full"
+                        style={{ backgroundColor: "#c9a84c", color: "#0a0a0a" }}>
+                        Most Popular
+                      </span>
+                    </div>
+                  )}
+                  <div className="mb-6">
+                    <p className="font-body text-xs font-bold tracking-widest uppercase mb-2" style={{ color: pack.color }}>
+                      {pack.tier}
+                    </p>
+                    <h3 className="font-display font-bold text-xl mb-2" style={{ color: "#f5f0e8" }}>
+                      {pack.name}
+                    </h3>
+                    <p className="font-body text-sm mb-4" style={{ color: "rgba(232,213,163,0.55)" }}>
+                      {pack.tagline}
+                    </p>
+                    <p className="font-display font-bold" style={{ fontSize: "2.5rem", color: pack.color }}>
+                      {pack.price}
+                    </p>
+                  </div>
+
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {pack.items.map((item) => (
+                      <li key={item} className="flex items-start gap-3 font-body text-sm" style={{ color: "rgba(232,213,163,0.75)" }}>
+                        <span className="mt-0.5 shrink-0" style={{ color: pack.color }}>✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="https://calendly.com/malikeast/15-minute-quick-meeting-phone-call-via-zoom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full text-center font-body font-bold py-3.5 rounded-md transition-all duration-150 active:scale-95 inline-block"
+                    style={{
+                      backgroundColor: pack.featured ? pack.color : "transparent",
+                      color: pack.featured ? "#0a0a0a" : pack.color,
+                      border: pack.featured ? "none" : `1px solid ${pack.color}60`,
+                    }}
+                  >
+                    {pack.cta}
+                  </a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── ABOUT / GUIDE ────────────────────────────────────────────── */}
-      <section id="about" className="py-24 bg-gray-50">
+      {/* ── SUCCESS vs FAILURE STAKES ─────────────────────────────────── */}
+      <section className="py-24" style={{ backgroundColor: "#0a0a0a" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <h2 className="font-display font-bold mb-4 text-center" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "#f5f0e8" }}>
+              Two Endings. You Choose.
+            </h2>
+            <p className="font-body text-lg mb-14 text-center" style={{ color: "rgba(232,213,163,0.55)" }}>
+              Every financial decision is a fork in the road. Here's where each path leads.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* HIGH SCORE */}
+            <Reveal>
+              <div className="rounded-2xl p-8 h-full" style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.3)" }}>
+                <div className="flex items-center gap-3 mb-6">
+                  <Trophy size={28} style={{ color: "#c9a84c" }} />
+                  <div>
+                    <p className="font-body text-xs font-bold tracking-widest uppercase" style={{ color: "#c9a84c" }}>The High Score Ending</p>
+                    <h3 className="font-display font-bold text-xl" style={{ color: "#f5f0e8" }}>The Multi-Generational Family Bank</h3>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "Every dollar works two jobs — funding your life and compounding simultaneously",
+                    "Business credit lines open without touching personal credit",
+                    "Tax-free death benefit recapitalizes the family bank for the next generation",
+                    "Your grandchildren start the game on Level 5 — not Level 1",
+                    "Wealth that never resets to zero",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 font-body text-sm" style={{ color: "rgba(232,213,163,0.75)" }}>
+                      <span style={{ color: "#c9a84c" }} className="shrink-0 mt-0.5">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            {/* GAME OVER */}
+            <Reveal delay={100}>
+              <div className="rounded-2xl p-8 h-full" style={{ background: "rgba(220,38,38,0.04)", border: "1px solid rgba(220,38,38,0.25)" }}>
+                <div className="flex items-center gap-3 mb-6">
+                  <AlertTriangle size={28} style={{ color: "#dc2626" }} />
+                  <div>
+                    <p className="font-body text-xs font-bold tracking-widest uppercase" style={{ color: "#dc2626" }}>Game Over</p>
+                    <h3 className="font-display font-bold text-xl" style={{ color: "#f5f0e8" }}>Broke at the Kitchen Table</h3>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    "The Tax Boss takes 30–40% before your family sees a dollar",
+                    "The Interest Villain collects $300K+ over your lifetime",
+                    "No business credit — personal credit on the line for every move",
+                    "No trust — assets go through probate, lawyers take their cut",
+                    "Every generation starts back at Level 1",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 font-body text-sm" style={{ color: "rgba(232,213,163,0.6)" }}>
+                      <span style={{ color: "#dc2626" }} className="shrink-0 mt-0.5">✗</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── GUIDE — MALIK EAST ───────────────────────────────────────── */}
+      <section className="py-24" style={{ backgroundColor: "#0f0f0f" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <RevealSection>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-[#22c55e]/10 rounded-2xl -z-10" />
-                <img
-                  src="/manus-storage/7band-about-img_8eb249fc.png"
-                  alt="7Band Financial Agency — Licensed Life Insurance Agent"
-                  className="w-full rounded-xl shadow-2xl object-cover aspect-[3/4]"
-                />
-              </div>
-            </RevealSection>
-            <RevealSection>
-              <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
+            <Reveal>
+              <span className="font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4 inline-block"
+                style={{ backgroundColor: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
                 Your Guide
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#0d1f2d] mb-6">
-                Your guide to funding your own dreams.
+              <h2 className="font-display font-bold mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.4rem)", color: "#f5f0e8" }}>
+                Malik East
               </h2>
-              <p className="font-body text-gray-600 leading-relaxed mb-4">
-                I'm Malik East — founder of 7Band Financial Agency and a licensed life insurance agent. I started this agency because I got tired of watching hardworking families hand their money to banks and institutions that used it to build their own empires.
+              <p className="font-body text-sm font-bold tracking-widest uppercase mb-6" style={{ color: "#c9a84c" }}>
+                Founder · 7Band Financial Agency · Licensed Life Insurance Agent
               </p>
-              <p className="font-body text-gray-600 leading-relaxed mb-4">
-                You deserve the same tools the wealthy use to fund their own lives — not a watered-down version, not a sales pitch. I own the policies I recommend. If it's good enough to teach, it's what I use myself.
-              </p>
-              <p className="font-body text-gray-600 leading-relaxed mb-8">
-                Every client starts with a free needs analysis. We look at where your money is going, who's benefiting from it, and whether we can redirect more of it toward your goals. No pressure. No chase-down calls. Just a straight answer.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => scrollTo("#contact")}
-                  className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95"
-                >
-                  Talk With Me, Free <Phone size={16} />
-                </button>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
-                >
-                  Read My Full Story <ArrowRight size={16} />
-                </Link>
+              <div className="space-y-4 font-body leading-relaxed" style={{ color: "rgba(232,213,163,0.7)" }}>
+                <p>
+                  You are the hero of this story. Malik is the guide — the Yoda, not the Luke. His job is to hand you the tools, show you the map, and walk with you through every level.
+                </p>
+                <p>
+                  He founded 7Band Financial Agency and 7Band Inc. in 2021 out of a genuine desire to teach. Coming from a musical past that inspired the company's name, he understands that every instrument — every financial tool — works in concert to create a complete financial symphony.
+                </p>
+                <p style={{ color: "rgba(232,213,163,0.5)" }}>
+                  Every time a client levels up, it's music to his ears.
+                </p>
               </div>
-            </RevealSection>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <Link href="/about"
+                  className="inline-flex items-center gap-2 font-body font-semibold px-6 py-3 rounded-md transition-all duration-150 active:scale-95"
+                  style={{ border: "1px solid rgba(201,168,76,0.5)", color: "#c9a84c" }}>
+                  Meet Malik <ArrowRight size={16} />
+                </Link>
+                <a
+                  href="https://calendly.com/malikeast/15-minute-quick-meeting-phone-call-via-zoom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-body font-bold px-6 py-3 rounded-md transition-all duration-150 active:scale-95"
+                  style={{ backgroundColor: "#c9a84c", color: "#0a0a0a" }}>
+                  Book Free Needs Analysis <ArrowRight size={16} />
+                </a>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className="relative">
+                <div className="absolute -inset-4 rounded-2xl" style={{ background: "radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
+                <img
+                  src="/manus-storage/malik-east-profile_b1731fac.webp"
+                  alt="Malik East — Founder & Owner, 7Band Financial Agency"
+                  className="w-full rounded-xl shadow-2xl object-cover"
+                  style={{ aspectRatio: "4/5", maxHeight: "520px", objectPosition: "top" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 rounded-b-xl px-6 py-4"
+                  style={{ background: "rgba(10,10,10,0.92)", backdropFilter: "blur(8px)" }}>
+                  <p className="font-display font-bold text-lg" style={{ color: "#f5f0e8" }}>Malik East</p>
+                  <p className="font-body text-xs font-bold tracking-widest uppercase mt-0.5" style={{ color: "#c9a84c" }}>
+                    Founder & Owner · Licensed Life Insurance Agent
+                  </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ── THE BOOK PLACEHOLDER ─────────────────────────────────────── */}
-      <section id="book" className="py-20 bg-white border-t border-gray-100">
+      {/* ── FREE GUIDE LEAD-GEN ──────────────────────────────────────── */}
+      <section id="free-guide" className="py-16" style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealSection>
-            <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className="w-40 h-52 bg-[#0d1f2d] rounded-xl flex items-center justify-center shadow-xl shrink-0">
-                <BookOpen size={48} className="text-[#22c55e]" />
+          <Reveal>
+            <div className="rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8"
+              style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.25)" }}>
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ background: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
+                  <Download size={26} />
+                </div>
+                <div>
+                  <p className="font-body text-xs font-bold tracking-widest uppercase mb-1" style={{ color: "#c9a84c" }}>
+                    Free Download
+                  </p>
+                  <h3 className="font-display font-bold text-xl mb-1" style={{ color: "#f5f0e8" }}>
+                    5 Ways You're Funding a Bank's Dream Instead of Your Own
+                  </h3>
+                  <p className="font-body text-sm" style={{ color: "rgba(232,213,163,0.55)" }}>
+                    The free guide that started it all. No email required.
+                  </p>
+                </div>
               </div>
-              <div>
-                <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-4">
-                  The Book
-                </span>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#0d1f2d] mb-3">
-                  Coming Soon
-                </h2>
-                <p className="font-body text-gray-600 leading-relaxed mb-6 max-w-xl">
-                  The full system in one place — how to move your money efficiently, build a personal banking system, and keep it working for generations. Details coming soon.
-                </p>
-                <button
-                  onClick={() => scrollTo("#contact")}
-                  className="inline-flex items-center gap-2 font-body text-[#0d1f2d] font-semibold border-2 border-[#0d1f2d] px-6 py-3 rounded-md hover:bg-[#0d1f2d] hover:text-white transition-all duration-150 active:scale-95"
-                >
-                  Get Notified at Launch <ArrowRight size={16} />
-                </button>
-              </div>
+              <a
+                href="#"
+                onClick={(e) => { e.preventDefault(); }}
+                className="shrink-0 font-body font-semibold px-7 py-3.5 rounded-md transition-all duration-150 active:scale-95 whitespace-nowrap"
+                style={{ border: "1px solid rgba(201,168,76,0.5)", color: "#c9a84c" }}
+              >
+                Download Free Guide
+              </a>
             </div>
-          </RevealSection>
+          </Reveal>
         </div>
       </section>
 
       {/* ── FINAL CTA ────────────────────────────────────────────────── */}
-      <section id="contact" className="py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <RevealSection>
-            <span className="inline-block bg-[#22c55e] text-white font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6">
-              Get Started
+      <section className="py-28" style={{ backgroundColor: "#0f0f0f" }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Reveal>
+            <span className="font-body text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-6 inline-block"
+              style={{ backgroundColor: "rgba(201,168,76,0.15)", color: "#c9a84c" }}>
+              Start Your Quest
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0d1f2d] mb-6">
-              Ready to stop funding their dreams and start funding yours?
+            <h2 className="font-display font-bold mb-6" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#f5f0e8" }}>
+              Stop Funding Their Dreams.
+              <br />
+              <span style={{ color: "#c9a84c" }}>Start Funding Yours.</span>
             </h2>
-            <p className="font-body text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Book your free needs analysis. We'll show you exactly where your money is going, who's benefiting from it right now, and how to redirect it toward your own life, your own goals, and your own legacy.
+            <p className="font-body text-lg leading-relaxed mb-10" style={{ color: "rgba(232,213,163,0.6)" }}>
+              No obligation. No sales pressure. A 15-minute call where we look at your situation honestly and tell you exactly what level to start at.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:info@7bandfinancial.com"
-                className="bg-[#f97316] hover:bg-[#ea6c0a] text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
+                href="https://calendly.com/malikeast/15-minute-quick-meeting-phone-call-via-zoom"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body font-bold px-10 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
+                style={{ backgroundColor: "#c9a84c", color: "#0a0a0a" }}
               >
-                Book My Free Needs Analysis <ArrowRight size={18} />
+                Choose Your Expansion Pack <ArrowRight size={18} />
               </a>
-              <a
-                href="tel:+1-800-000-0000"
-                className="border-2 border-[#0d1f2d] text-[#0d1f2d] hover:bg-[#0d1f2d] hover:text-white font-body font-semibold px-8 py-4 rounded-md transition-all duration-150 active:scale-95 text-base inline-flex items-center justify-center gap-2"
+              <button
+                onClick={() => scrollTo("#free-guide")}
+                className="font-body font-semibold px-10 py-4 rounded-md transition-all duration-150 active:scale-95 text-base"
+                style={{ border: "1px solid rgba(201,168,76,0.4)", color: "#c9a84c" }}
               >
-                <Phone size={18} /> Call Us Today
-              </a>
+                Download the Free Guide
+              </button>
             </div>
-            <p className="font-body text-sm text-gray-400 mt-6">
-              No obligation · No pressure · Straight answers only
-            </p>
-          </RevealSection>
+          </Reveal>
         </div>
       </section>
 
