@@ -414,6 +414,23 @@ export default function Home() {
           <p className="font-tactical text-white/60 text-lg max-w-2xl mx-auto tracking-wide mb-10">
             A proven, sequential system. Three phases. Seven levels. Each one unlocks the next — from credit restoration to multi-generational banking.
           </p>
+          {/* "Imagine someone sat you down" passage */}
+          <div className="max-w-3xl mx-auto mb-12 text-left">
+            <div className="relative border-l-2 border-[#c9a84c]/40 pl-6 py-2">
+              <p className="font-tactical text-white/80 text-base sm:text-lg leading-relaxed tracking-wide mb-4">
+                Imagine someone sat you down and gave you the game.
+              </p>
+              <p className="font-tactical text-white/55 text-sm sm:text-base leading-relaxed tracking-wide mb-3">
+                Not a sales pitch. Not a seminar. The actual game — how credit really works and how to weaponize it. How to structure a business so it operates as a separate entity with its own financial identity. How to access capital from banks and institutions the way businesses do. Why life insurance is not about death — it is about building a tax-free vault that funds your life while you are still in it.
+              </p>
+              <p className="font-tactical text-white/55 text-sm sm:text-base leading-relaxed tracking-wide mb-3">
+                How to separate yourself from your assets so no lawsuit, no creditor, no circumstance can reach what you built. And then — when all of it is in place — how to become the architect of your own financial future. Not dependent on an employer. Not subject to a bank's terms. Not leaving your family to start from zero.
+              </p>
+              <p className="font-display text-[#c9a84c] text-base sm:text-lg font-bold italic tracking-wide">
+                Master of your fate. Captain of your soul. That is what this Blueprint is built to produce.
+              </p>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             {[
               { phase: "Phase I", label: "Foundation", levels: "Levels 1–2", desc: "Credit + LLC", color: "border-[#c9a84c]/40" },
