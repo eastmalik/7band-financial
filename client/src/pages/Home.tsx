@@ -711,7 +711,7 @@ export default function Home() {
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center">
-                  <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
+                  <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-full h-full object-contain" />
                 </div>
                 <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase">
                   7Band <span className="text-[#c9a84c]">Financial</span>

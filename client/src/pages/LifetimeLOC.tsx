@@ -48,7 +48,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center group-hover:bg-[#c9a84c]/20 transition-colors">
-              <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
+              <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-full h-full object-contain" />
             </div>
             <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
               7Band <span className="text-[#c9a84c]">Financial</span>
@@ -57,7 +57,7 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             {[
               { label: "← Home", href: "/" },
-              { label: "Pricing", href: "/pricing" },
+              { label: "Game Map", href: "/game-map" },
               { label: "About", href: "/about" },
               { label: "The Book", href: "/the-book" },
             ].map((item) => (
@@ -81,7 +81,7 @@ function Navbar() {
           <div className="md:hidden bg-[#050400]/98 border-t border-[#c9a84c]/20 py-4 px-4 flex flex-col gap-4">
             {[
               { label: "← Home", href: "/" },
-              { label: "Pricing", href: "/pricing" },
+              { label: "Game Map", href: "/game-map" },
               { label: "About", href: "/about" },
               { label: "The Book", href: "/the-book" },
             ].map((item) => (

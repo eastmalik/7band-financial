@@ -139,7 +139,7 @@ function Navbar() {
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center group-hover:bg-[#c9a84c]/20 transition-colors">
-                <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
+                <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-full h-full object-contain" />
               </div>
               <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
                 7Band <span className="text-[#c9a84c]">Financial</span>
@@ -185,7 +185,7 @@ function Navbar() {
         <div className="flex items-center justify-between px-6 h-16 border-b border-[#c9a84c]/15">
           <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center">
-              <span className="font-display font-black text-[#c9a84c] text-sm">7B</span>
+              <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-full h-full object-contain" />
             </div>
             <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase">
               7Band <span className="text-[#c9a84c]">Financial</span>
@@ -507,7 +507,7 @@ export default function GameMap() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center">
-              <span className="font-display font-black text-[#c9a84c] text-xs">7B</span>
+              <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-6 h-6 object-contain" />
             </div>
             <span className="font-tactical font-bold text-white tracking-wider text-xs uppercase">
               7Band <span className="text-[#c9a84c]">Financial Agency</span>
