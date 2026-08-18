@@ -74,3 +74,34 @@ Electric green `#22c55e` — the color of growth, life, and financial protection
 - All section label badges use green background with white text
 - Primary CTA always orange; secondary CTA always dark outlined
 - Playfair Display for all headings, Inter for all body copy
+
+## Dual-Mode Experience — Chosen Direction
+
+### Design Movement
+**Dual-Realm Financial Experience.** The website intentionally supports two ways to receive the same strategy: a calm, conventional editorial experience for visitors who want direct clarity and an immersive Player 1 interface for visitors who want the full 7Band world.
+
+### Core Principles
+1. **Same truth, different entry point.** The agency, services, educational disclosures, and Calendly call to action stay consistent in both views.
+2. **Choice without judgment.** The public-facing control uses **Simple View** and **Player 1** so the visitor chooses their preferred level of immersion without being labeled.
+3. **One deliberate transformation.** A single persistent switch morphs the complete route, not merely its colors or one isolated section.
+4. **Clarity before spectacle.** Simple View prioritizes readable financial education, while Player 1 retains the game vocabulary for those who choose it.
+
+### Simple View Color Philosophy
+Simple View is a crisp financial-editorial system: deep navy (`#0B1F3A`) establishes trust, mineral blue (`#2563EB`) signals momentum and financial clarity, soft sky (`#EAF3FF`) creates breathing room, and warm brass (`#B8892E`) preserves a quiet connection to the 7Band mark. It is light, welcoming, and unmistakably professional without becoming generic.
+
+### Simple View Layout Paradigm
+An editorial path replaces the HUD: an asymmetric hero with an information panel, a clear two-service split, alternating white and pale-blue bands, and a sticky-but-unobtrusive navigation bar. Cards use restrained borders, generous white space, a left-aligned hierarchy, and minimal rounding.
+
+### Signature Elements
+1. A slender **View Mode** switch with a blue active track for Simple View and a gold active track for Player 1.
+2. A vertical brass rule or small seven-point compass motif used as an editorial marker rather than game chrome.
+3. Layered paper-blue field patterns and fine blueprint lines in Simple View.
+
+### Interaction and Animation
+Switching views uses a 220ms opacity-and-transform transition with an accessible live label. The selected view persists locally. Simple View uses short, quiet hover and reveal motion; Player 1 keeps the existing HUD glows and quest-card behavior. All nonessential motion respects reduced-motion preferences.
+
+### Typography System
+Simple View pairs **Cinzel** for decisive display headings with **Rajdhani** for labels and a calm, highly legible system sans-serif for body content. Player 1 preserves the existing Cinzel/Rajdhani hierarchy. The change is treatment and spacing rather than a confused font swap.
+
+### Brand Voice by Mode
+Simple View is plainspoken: “Build stronger credit. Explore life insurance strategies. Protect what matters.” Player 1 remains cinematic: “Learn the rules. Build your system. Fund your future.” Both modes avoid guarantees, jargon-heavy claims, and artificial urgency.

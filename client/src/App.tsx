@@ -12,8 +12,27 @@ import Lesson1 from "./pages/Lesson1";
 import Lesson2 from "./pages/Lesson2";
 import Lesson3 from "./pages/Lesson3";
 import Lesson4 from "./pages/Lesson4";
+import ViewModeToggle from "./components/ViewModeToggle";
+import { useViewMode, ViewModeProvider } from "./contexts/ViewModeContext";
+import { SimpleAbout, SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pages/SimpleViews";
 
 function Router() {
+  const { mode } = useViewMode();
+  if (mode === "simple") {
+    return (
+      <Switch>
+        <Route path={"/"} component={SimpleHome} />
+        <Route path={"/lifetime-loc"} component={SimpleLifetimeLOC} />
+        <Route path={"/about"} component={SimpleAbout} />
+        <Route path={"/game-map"} component={SimpleGameMap} />
+        <Route path={"/lesson-1"} component={() => <SimpleLesson lessonPath="/lesson-1" />} />
+        <Route path={"/lesson-2"} component={() => <SimpleLesson lessonPath="/lesson-2" />} />
+        <Route path={"/lesson-3"} component={() => <SimpleLesson lessonPath="/lesson-3" />} />
+        <Route path={"/lesson-4"} component={() => <SimpleLesson lessonPath="/lesson-4" />} />
+        <Route component={SimpleHome} />
+      </Switch>
+    );
+  }
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -31,16 +50,24 @@ function Router() {
   );
 }
 
+function PlayerModeToggle() {
+  const { mode } = useViewMode();
+  return mode === "player" ? <ViewModeToggle /> : null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
       >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <ViewModeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <PlayerModeToggle />
+            <Router />
+          </TooltipProvider>
+        </ViewModeProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
