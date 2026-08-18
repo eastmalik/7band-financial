@@ -241,10 +241,7 @@ export default function Home() {
           <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
             Every dollar you park in a bank account is a dollar working for their shareholders — not your family. The 7-Level Generational Wealth Blueprint is the strategy the wealthy use to reclaim that capital and build a legacy that compounds across lifetimes.
           </p>
-          <p className="font-tactical text-sm text-[#c9a84c]/60 tracking-widest uppercase mb-10">
-            Main Quest Objective: Become the bank that finances your family's future.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Play size={14} fill="currentColor" /> Begin Your Quest
@@ -603,7 +600,6 @@ export default function Home() {
               <p className="font-tactical text-white/40 text-xs leading-relaxed tracking-wide mb-4">
                 Stop Funding Their Dreams.<br />Start Funding Yours.
               </p>
-              <p className="status-active">Obsidian Quest Log v4.5.4</p>
             </div>
             {/* Services */}
             <div>
