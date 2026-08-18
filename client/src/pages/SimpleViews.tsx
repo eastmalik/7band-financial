@@ -230,7 +230,7 @@ export function SimpleHome() {
           <div>
             <SimpleKicker>Meet your guide</SimpleKicker>
             <h2 className="font-display text-3xl font-black leading-tight text-[#0b1f3a] sm:text-5xl">The whole picture before the policy.</h2>
-            <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#526b86]">Malik East, known as TheFlow, brings a systems-minded and people-first approach to each conversation. The goal is to make sure you understand the options, costs, trade-offs, and the role a product may — or may not — play in your plan.</p>
+            <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#526b86]">Malik East brings a systems-minded and people-first approach to each conversation. The goal is to make sure you understand the options, costs, trade-offs, and the role a product may — or may not — play in your plan.</p>
             <Link href="/about" className="mt-7 inline-flex items-center gap-2 font-tactical text-sm font-bold uppercase tracking-[0.1em] text-[#2563eb] hover:text-[#0b1f3a]">Meet Malik East <ArrowRight size={16} /></Link>
           </div>
           <SimpleCard className="p-7 sm:p-9">
