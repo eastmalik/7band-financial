@@ -161,13 +161,13 @@ export default function About() {
               </h2>
               <div className="space-y-4 font-tactical text-white/65 text-base leading-relaxed tracking-wide">
                 <p>
-                  Malik East, known as <span className="text-[#c9a84c] font-semibold">TheFlow</span>, is the founder of 7Band Financial Agency and a licensed life insurance agent since 2020. A 2019 Alcorn State University graduate with a B.S. in Computer Networking and Information Technology, he brings a systems-minded approach to financial education.
+                  Malik East, Co-Creator of The Flow, is the founder of 7Band Financial Agency and a licensed life insurance agent since 2020. He earned a B.S. in Computer Networking and Information Technology from Alcorn State University in 2019, bringing a systems-minded perspective to financial education.
                 </p>
                 <p>
-                  His journey began in a 7th-grade band room in 2007, where the saxophone taught him that progress requires timing, rhythm, and harmony. That idea became 7Band: a belief that credit, protection, business structure, and long-term planning should work together like instruments in one composition — not as disconnected moves.
+                  His story began in 7th grade, where he began learning the saxophone. Music taught him about timing, rhythm, and harmony. The same principles he learned back then now guide his work in the financial services industry, which became 7Band Inc. and 7Band Financial Agency.
                 </p>
                 <p>
-                  Alongside his wife, Mickala, who manages client screenings, Malik helps families ask better questions and understand the next right step. His approach remains simple: the whole picture before the policy. If a strategy is not the right fit, that conversation should be honest about it.
+                  Alongside his wife, Mickala, who manages client screenings, Malik helps people prepare for conversations about credit, protection, and long-term planning. His standard is simple: understand the whole picture before you decide whether a policy or strategy belongs in it.
                 </p>
               </div>
               <blockquote className="mt-8 border-l-2 border-[#c9a84c] pl-6 py-2">
