@@ -4,7 +4,7 @@ import {
   Shield, Zap, Lock, Users, ChevronRight,
   AlertTriangle, Star, Target, Building2, TreePine,
   ArrowRight, Play, CheckCircle, XCircle, DollarSign,
-  Cpu, Wifi
+  Cpu
 } from "lucide-react";
 
 // ─── SECTION LABEL ───────────────────────────────────────────
@@ -233,15 +233,6 @@ export default function Home() {
         </div>
         {/* Hero content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-28 pb-16">
-          {/* HUD status bar + Player 1 badge — unified block */}
-          <div className="flex flex-col items-center gap-3 mb-8">
-            <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
-              <span className="status-active flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />System Active</span>
-              <span className="status-active hidden sm:inline">Obsidian Quest Log v4.5.4</span>
-              <span className="status-active flex items-center gap-1.5"><Wifi size={10} className="text-[#c9a84c]/60" />Secure Connection Established</span>
-            </div>
-            <SectionLabel text="Player 1 — Initiate Sequence" />
-          </div>
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             Stop Funding<br />
             <span className="text-[#c9a84c]">Their Dreams.</span><br />
