@@ -355,16 +355,16 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left — guide profile */}
             <div>
-              <SectionLabel text="Enter Your Guide — Malik East" />
+              <SectionLabel text="Enter Your Guide — Malik East // TheFlow" />
               <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
-                A Licensed Agent Who Plays<br />
-                <span className="text-[#c9a84c]">By Different Rules.</span>
+                A Licensed Agent Who Turns<br />
+                <span className="text-[#c9a84c]">Financial Noise Into Harmony.</span>
               </h2>
               <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide mb-6">
-                Malik East is the founder of 7Band Financial Agency and a licensed life insurance agent who built this system because he lived the problem first. He watched families — including his own — lose wealth at the generational seam because nobody showed them the tools that wealthy families have used for over a century.
+                Malik East, known as TheFlow, is the founder of 7Band Financial Agency and a licensed life insurance agent since 2020. With a Computer Networking and Information Technology background from Alcorn State University, he brings a systems-minded approach to helping families understand their next financial move.
               </p>
               <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide mb-8">
-                Every time a client accomplishes one of their financial goals, it's music to his ears. That's not a metaphor — 7Band is named after the seven bands of a musical staff, and the mission is to orchestrate a financial system that plays on after you're gone.
+                TheFlow began in a 7th-grade band room, where music taught him the value of rhythm, timing, and harmony. 7Band carries that lesson forward: every financial tool should have a role in a system designed to serve the people who build it.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/about"

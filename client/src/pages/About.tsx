@@ -119,10 +119,10 @@ export default function About() {
             Malik East
           </h1>
           <p className="font-tactical text-lg text-[#c9a84c] tracking-widest uppercase font-bold mb-6">
-            Founder & Owner — 7Band Financial Agency
+            TheFlow · Founder & Owner — 7Band Financial Agency
           </p>
           <p className="font-tactical text-white/60 text-lg max-w-2xl mx-auto tracking-wide">
-            "Every time a client accomplishes one of their financial goals, it's music to my ears."
+            “Every time a client accomplishes one of their financial goals, it’s music to my ears.”
           </p>
         </div>
       </section>
@@ -136,15 +136,15 @@ export default function About() {
             <div className="flex justify-center lg:justify-start">
               <HudFrame className="p-2 bg-[#0a0800]/80 max-w-sm w-full">
                 <img
-                  src="/manus-storage/malik-east-profile_3cae5a2a.jpg"
+                  src="/manus-storage/malik-east-portrait_1eb03c6e.jpeg"
                   alt="Malik East — Founder, 7Band Financial Agency"
-                  className="w-full object-cover"
-                  style={{ maxHeight: "480px", objectPosition: "top" }}
+                  className="aspect-[4/5] w-full object-cover"
+                  style={{ objectPosition: "center 26%" }}
                 />
                 <div className="p-4">
-                  <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-1">Character Profile</div>
+                  <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-1">Character Selection</div>
                   <div className="font-display text-lg font-bold text-white">Malik East</div>
-                  <div className="font-tactical text-xs text-white/50 tracking-wide mt-1">Licensed Life Insurance Agent · Founder</div>
+                  <div className="font-tactical text-xs text-white/50 tracking-wide mt-1">TheFlow · Founder · Licensed Life Insurance Agent</div>
                   <div className="mt-3 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />
                     <span className="font-tactical text-xs text-[#c9a84c] tracking-wider">Status: Active — Taking New Clients</span>
@@ -154,25 +154,25 @@ export default function About() {
             </div>
             {/* Bio */}
             <div>
-              <SectionLabel text="Origin Story" />
+              <SectionLabel text="TheFlow — Origin Story" />
               <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
-                Built This Because He<br />
-                <span className="text-[#c9a84c]">Lived the Problem First.</span>
+                From the Band Room to<br />
+                <span className="text-[#c9a84c]">Financial Orchestration.</span>
               </h2>
               <div className="space-y-4 font-tactical text-white/65 text-base leading-relaxed tracking-wide">
                 <p>
-                  Malik East is the founder and owner of 7Band Financial Agency, a licensed life insurance agent, and the architect of the 7-Level Generational Wealth Blueprint. He built this system because he watched families — including his own — lose wealth at the generational seam because nobody showed them the tools that wealthy families have used for over a century.
+                  Malik East, known as <span className="text-[#c9a84c] font-semibold">TheFlow</span>, is the founder of 7Band Financial Agency and a licensed life insurance agent since 2020. A 2019 Alcorn State University graduate with a B.S. in Computer Networking and Information Technology, he brings a systems-minded approach to financial education.
                 </p>
                 <p>
-                  His approach is simple and non-negotiable: the whole picture before the policy. He will show you what the product does, how it works, what it costs, and where it fits in your overall financial strategy — before you ever sign an application. If it's not the right fit, he will tell you that too.
+                  His journey began in a 7th-grade band room in 2007, where the saxophone taught him that progress requires timing, rhythm, and harmony. That idea became 7Band: a belief that credit, protection, business structure, and long-term planning should work together like instruments in one composition — not as disconnected moves.
                 </p>
                 <p>
-                  The name 7Band comes from the seven bands of a musical staff. Music has always been the language Malik uses to understand the world, and he built an agency that operates the same way — every instrument in its right place, every note serving the composition. The mission is to orchestrate a financial system that plays on long after you're gone.
+                  Alongside his wife, Mickala, who manages client screenings, Malik helps families ask better questions and understand the next right step. His approach remains simple: the whole picture before the policy. If a strategy is not the right fit, that conversation should be honest about it.
                 </p>
               </div>
               <blockquote className="mt-8 border-l-2 border-[#c9a84c] pl-6 py-2">
                 <p className="font-display text-xl italic text-[#c9a84c]">
-                  "Stop Funding Their Dreams. Start Funding Yours."
+                  "Every time a client reaches a financial goal, it’s music to my ears."
                 </p>
               </blockquote>
             </div>

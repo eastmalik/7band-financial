@@ -14,7 +14,8 @@ import Lesson3 from "./pages/Lesson3";
 import Lesson4 from "./pages/Lesson4";
 import ViewModeToggle from "./components/ViewModeToggle";
 import { useViewMode, ViewModeProvider } from "./contexts/ViewModeContext";
-import { SimpleAbout, SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pages/SimpleViews";
+import { SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pages/SimpleViews";
+import SimpleAbout from "./pages/SimpleAboutReplacement";
 
 function Router() {
   const { mode } = useViewMode();
