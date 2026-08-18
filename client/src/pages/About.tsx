@@ -157,7 +157,7 @@ export default function About() {
               <SectionLabel text="TheFlow — Origin Story" />
               <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
                 From the Band Room to<br />
-                <span className="text-[#c9a84c]">Financial Orchestration.</span>
+                <span className="text-[#c9a84c]">Financial Services.</span>
               </h2>
               <div className="space-y-4 font-tactical text-white/65 text-base leading-relaxed tracking-wide">
                 <p>
