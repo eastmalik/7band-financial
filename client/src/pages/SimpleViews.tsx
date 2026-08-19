@@ -88,7 +88,6 @@ function SimpleLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="hidden xl:block"><ViewModeToggle embedded /></div>
             <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="hidden bg-[#0b1f3a] px-4 py-3 font-tactical text-xs font-bold uppercase tracking-[0.13em] text-white transition-all hover:bg-[#2563eb] active:scale-[0.97] sm:inline-flex">
               Talk With Malik
             </a>
@@ -113,7 +112,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
           </nav>
         )}
       </header>
-      <div className="xl:hidden"><ViewModeToggle /></div>
+      <ViewModeToggle />
       <main>{children}</main>
       <footer className="border-t border-[#d7e3f0] bg-[#0b1f3a] px-5 py-14 text-white sm:px-7">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">

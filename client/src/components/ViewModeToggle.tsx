@@ -1,11 +1,11 @@
 import { LayoutPanelTop, Sparkles } from "lucide-react";
 import { useViewMode } from "@/contexts/ViewModeContext";
 
-export default function ViewModeToggle({ embedded = false }: { embedded?: boolean }) {
+export default function ViewModeToggle() {
   const { mode, setMode } = useViewMode();
 
   return (
-    <div className={`view-mode-dock flex items-center gap-1 rounded-full border border-white/20 bg-[#071020]/92 p-1.5 shadow-[0_12px_34px_rgba(2,8,23,0.28)] backdrop-blur-xl transition-all duration-200 ${embedded ? "" : "fixed top-20 right-3 sm:right-5 z-[70]"}`}>
+    <div className="view-mode-dock fixed left-1/2 top-[5.1rem] z-[70] flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center gap-1 rounded-full border border-white/20 bg-[#071020]/92 p-1.5 shadow-[0_12px_34px_rgba(2,8,23,0.28)] backdrop-blur-xl transition-all duration-200 sm:top-[5.35rem]">
       <span className="sr-only" id="view-mode-label">Choose the website display style</span>
       <button
         type="button"
