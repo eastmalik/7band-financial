@@ -185,7 +185,7 @@ export function SimpleHome() {
               <CreditCard className="text-[#2563eb]" size={29} strokeWidth={1.7} />
               <h3 className="mt-8 font-display text-2xl font-bold text-[#0b1f3a]">Credit Education & Restoration</h3>
               <p className="mt-4 font-body leading-relaxed text-[#526b86]">Understand the factors that shape your credit profile, identify the steps within your control, and build a practical plan to improve your financial readiness.</p>
-              <div className="mt-7 flex items-center gap-2 font-tactical text-sm font-bold uppercase tracking-[0.1em] text-[#2563eb]"><CheckCircle2 size={16} /> Start with the foundation</div>
+              <a href="https://www.arisecreditpro.com" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 font-tactical text-sm font-bold uppercase tracking-[0.1em] text-[#2563eb] transition-colors hover:text-[#0b1f3a]" aria-label="Start with the foundation at Arise Credit Pro"><CheckCircle2 size={16} /> Start with the foundation <ArrowRight size={15} /></a>
             </SimpleCard>
             <SimpleCard className="group border-t-4 border-t-[#b8892e] p-7 sm:p-9">
               <HeartHandshake className="text-[#b8892e]" size={30} strokeWidth={1.7} />
