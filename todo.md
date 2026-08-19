@@ -9,3 +9,9 @@
 - [x] Replace the existing Malik photo and revise the Player 1 About experience using the approved biography.
 - [x] Replace the existing Malik photo and revise the Simple View About experience using the approved biography.
 - [x] Verify both public views and publish the update.
+
+## Player 1 Motion Upgrade
+- [x] Define the motion hierarchy for the mode change, hero, Game Map, and HUD interaction states.
+- [x] Add a cinematic Simple View-to-Player 1 transition and ambient hero energy movement.
+- [x] Build Game Map unlock sequencing and improved hover feedback for Player 1 controls.
+- [x] Verify desktop and mobile behavior with reduced-motion support, then publish the upgrade.

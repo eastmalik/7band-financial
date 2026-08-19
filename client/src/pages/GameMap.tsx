@@ -43,8 +43,7 @@ type LevelData = {
   icon: React.ReactNode;
 };
 
-function QuestLevelCard({ lvl, index }: { lvl: LevelData; index: number }) {
-  const [unlocked, setUnlocked] = useState(false);
+function QuestLevelCard({ lvl, index, isUnlocked, onUnlock }: { lvl: LevelData; index: number; isUnlocked: boolean; onUnlock: (level: number) => void }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -64,16 +63,25 @@ function QuestLevelCard({ lvl, index }: { lvl: LevelData; index: number }) {
     return () => observer.disconnect();
   }, [index]);
 
-  const handleUnlock = useCallback(() => {
-    setUnlocked(true);
-    setTimeout(() => setUnlocked(false), 500);
-  }, []);
+  const handleUnlock = useCallback(() => onUnlock(lvl.level), [lvl.level, onUnlock]);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleUnlock();
+    }
+  };
 
   return (
     <div
       ref={ref}
       onClick={handleUnlock}
-      className="quest-level-card p-6 bg-[#0a0800]/80 flex flex-col gap-4 cursor-pointer"
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isUnlocked}
+      aria-label={`Level ${lvl.level}: ${lvl.title}. ${isUnlocked ? "Unlocked" : "Select to unlock"}`}
+      className={`quest-level-card p-6 bg-[#0a0800]/80 flex flex-col gap-4 cursor-pointer ${visible ? "is-visible" : ""} ${isUnlocked ? "is-unlocked" : ""}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0) scale(1)" : "translateY(28px) scale(0.97)",
@@ -82,27 +90,58 @@ function QuestLevelCard({ lvl, index }: { lvl: LevelData; index: number }) {
     >
       {/* Level badge + concept */}
       <div className="flex items-center gap-3">
-        <div className={`level-badge flex-shrink-0 w-11 h-11 text-base ${unlocked ? "level-badge-unlock" : ""}`}>{lvl.level}</div>
+        <div className="level-badge flex-shrink-0 w-11 h-11 text-base">{lvl.level}</div>
         <div>
-          <div className="quest-concept-label font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase">{lvl.concept}</div>
-          <div className="font-display text-base font-bold text-white leading-tight">{lvl.title}</div>
+          <div className="quest-concept-label font-tactical text-[11px] text-[#c9a84c]/60 tracking-widest uppercase">{lvl.concept}</div>
+          <div className="font-display text-lg font-bold text-white leading-tight">{lvl.title}</div>
         </div>
       </div>
       <div className="w-full h-px bg-gradient-to-r from-[#c9a84c]/30 to-transparent" />
       {/* Action */}
       <div>
-        <div className="font-tactical text-[10px] text-[#c9a84c] font-bold tracking-widest uppercase mb-1">Mission Objective</div>
-        <p className="font-tactical text-xs text-white/65 leading-relaxed tracking-wide">{lvl.action}</p>
+        <div className="font-tactical text-[11px] text-[#c9a84c] font-bold tracking-widest uppercase mb-1">Mission Objective</div>
+        <p className="font-tactical text-sm text-white/70 leading-relaxed tracking-wide">{lvl.action}</p>
       </div>
       {/* Result */}
       <div>
-        <div className="font-tactical text-[10px] text-[#c9a84c] font-bold tracking-widest uppercase mb-1">Outcome Achieved</div>
-        <p className="font-tactical text-xs text-white/65 leading-relaxed tracking-wide">{lvl.result}</p>
+        <div className="font-tactical text-[11px] text-[#c9a84c] font-bold tracking-widest uppercase mb-1">Outcome Achieved</div>
+        <p className="font-tactical text-sm text-white/70 leading-relaxed tracking-wide">{lvl.result}</p>
       </div>
       {/* Unlocks */}
       <div className="mt-auto pt-3 border-t border-[#c9a84c]/15">
         <span className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase">Unlocks → </span>
         <span className="font-tactical text-[10px] text-[#c9a84c]/80 tracking-wide">{lvl.unlocks}</span>
+      </div>
+      <div className="map-card-status font-tactical text-[10px] font-bold tracking-[0.14em] uppercase" aria-live="polite">
+        <span className="map-card-status-dot" /> {isUnlocked ? "Level unlocked" : "Select to unlock"}
+      </div>
+    </div>
+  );
+}
+
+function PhaseConnector({ label }: { label: string }) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={`phase-connector flex justify-center py-5 ${visible ? "is-visible" : ""}`}>
+      <div className="flex flex-col items-center gap-1">
+        <div className="phase-connector-line" />
+        <ArrowDown size={14} className="phase-connector-arrow text-[#c9a84c]" />
+        <div className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase">{label}</div>
       </div>
     </div>
   );
@@ -138,10 +177,10 @@ function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center group-hover:bg-[#c9a84c]/20 transition-colors">
-                <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-full h-full object-contain" />
+              <div className="player-brand-crest group-hover:brightness-125">
+                <span className="font-display font-black text-[#c9a84c] text-base">7</span>
               </div>
-              <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
+              <span className="player-brand-wordmark font-tactical font-bold text-white tracking-wider text-sm uppercase hidden sm:block">
                 7Band <span className="text-[#c9a84c]">Financial</span>
               </span>
             </Link>
@@ -184,10 +223,10 @@ function Navbar() {
         <div className="w-full h-px bg-gradient-to-r from-transparent via-[#c9a84c]/60 to-transparent" />
         <div className="flex items-center justify-between px-6 h-16 border-b border-[#c9a84c]/15">
           <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-sm bg-[#c9a84c]/10 border border-[#c9a84c]/50 flex items-center justify-center">
-              <img src="/manus-storage/7band-logo-clean_7b539e21.png" alt="7Band Financial" className="w-full h-full object-contain" />
+            <div className="player-brand-crest">
+              <span className="font-display font-black text-[#c9a84c] text-base">7</span>
             </div>
-            <span className="font-tactical font-bold text-white tracking-wider text-sm uppercase">
+            <span className="player-brand-wordmark font-tactical font-bold text-white tracking-wider text-sm uppercase">
               7Band <span className="text-[#c9a84c]">Financial</span>
             </span>
           </Link>
@@ -306,6 +345,24 @@ const LEVELS: LevelData[] = [
 ];
 
 export default function GameMap() {
+  const [unlockedLevels, setUnlockedLevels] = useState<number[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const storedLevels = JSON.parse(window.localStorage.getItem("7band-unlocked-levels") ?? "[]");
+      return Array.isArray(storedLevels) ? storedLevels.filter((level): level is number => typeof level === "number") : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("7band-unlocked-levels", JSON.stringify(unlockedLevels));
+  }, [unlockedLevels]);
+
+  const unlockLevel = useCallback((level: number) => {
+    setUnlockedLevels((current) => current.includes(level) ? current : [...current, level]);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#050400] text-white overflow-x-hidden">
       <Navbar />
@@ -335,12 +392,15 @@ export default function GameMap() {
           <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
             A proven, sequential system built for families who are done playing by the bank's rules. Each level unlocks the next. Every level builds on the last. Complete all 7 and you become the bank that finances your family's future.
           </p>
+          <div className="player-trust-cue mx-auto mb-2">
+            <Shield size={13} strokeWidth={2.25} /> Licensed life insurance guidance · credit and protection education
+          </div>
           <p className="font-tactical text-sm text-[#c9a84c]/60 tracking-widest uppercase mb-10">
             Tap any level card to unlock it. Click to begin.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
+              className="hud-cta hud-cta-primary inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Play size={14} fill="currentColor" /> Begin Your Quest
             </a>
             <Link href="/lifetime-loc"
@@ -376,7 +436,7 @@ export default function GameMap() {
       </section>
 
       {/* PHASE I — FOUNDATION */}
-      <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
+      <section className="map-phase-section relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
@@ -388,23 +448,17 @@ export default function GameMap() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {LEVELS.slice(0, 2).map((lvl, i) => (
-              <QuestLevelCard key={lvl.level} lvl={lvl} index={i} />
+              <QuestLevelCard key={lvl.level} lvl={lvl} index={i} isUnlocked={unlockedLevels.includes(lvl.level)} onUnlock={unlockLevel} />
             ))}
           </div>
         </div>
       </section>
 
       {/* CONNECTOR */}
-      <div className="flex justify-center py-4">
-        <div className="flex flex-col items-center gap-1 opacity-40">
-          <div className="w-px h-6 bg-gradient-to-b from-[#c9a84c]/60 to-transparent" />
-          <ArrowDown size={14} className="text-[#c9a84c]" />
-          <div className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase">Phase II Unlocked</div>
-        </div>
-      </div>
+      <PhaseConnector label="Phase II unlocked" />
 
       {/* PHASE II — ACCELERATION */}
-      <section className="relative py-20 bg-gradient-to-b from-[#080600] to-[#050400] overflow-hidden">
+      <section className="map-phase-section relative py-20 bg-gradient-to-b from-[#080600] to-[#050400] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
@@ -416,7 +470,7 @@ export default function GameMap() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {LEVELS.slice(2, 5).map((lvl, i) => (
-              <QuestLevelCard key={lvl.level} lvl={lvl} index={i + 2} />
+              <QuestLevelCard key={lvl.level} lvl={lvl} index={i + 2} isUnlocked={unlockedLevels.includes(lvl.level)} onUnlock={unlockLevel} />
             ))}
           </div>
           {/* Level 4 callout */}
@@ -429,7 +483,7 @@ export default function GameMap() {
                   <p className="font-tactical text-sm text-white/60 tracking-wide">The Lifetime LOC page contains a full deep-dive into the IUL mechanic, the engine loop, and 4 detailed lessons on how to use it correctly.</p>
                 </div>
                 <Link href="/lifetime-loc"
-                  className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-[#c9a84c] text-black font-tactical font-bold text-xs tracking-widest uppercase hover:bg-[#e8c97a] transition-all">
+                  className="hud-cta flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-[#c9a84c] text-black font-tactical font-bold text-xs tracking-widest uppercase hover:bg-[#e8c97a] transition-all">
                   Read Level 4 Deep Dive <ArrowRight size={12} />
                 </Link>
               </div>
@@ -439,16 +493,10 @@ export default function GameMap() {
       </section>
 
       {/* CONNECTOR */}
-      <div className="flex justify-center py-4">
-        <div className="flex flex-col items-center gap-1 opacity-40">
-          <div className="w-px h-6 bg-gradient-to-b from-[#c9a84c]/60 to-transparent" />
-          <ArrowDown size={14} className="text-[#c9a84c]" />
-          <div className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase">Phase III Unlocked</div>
-        </div>
-      </div>
+      <PhaseConnector label="Phase III unlocked" />
 
       {/* PHASE III — LEGACY */}
-      <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
+      <section className="map-phase-section relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(201,168,76,0.05)_0%,transparent_60%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-10">
@@ -460,7 +508,7 @@ export default function GameMap() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {LEVELS.slice(5, 7).map((lvl, i) => (
-              <QuestLevelCard key={lvl.level} lvl={lvl} index={i + 5} />
+              <QuestLevelCard key={lvl.level} lvl={lvl} index={i + 5} isUnlocked={unlockedLevels.includes(lvl.level)} onUnlock={unlockLevel} />
             ))}
           </div>
         </div>

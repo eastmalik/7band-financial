@@ -483,6 +483,53 @@
 /* 7Band dual-view system: Player 1 keeps the HUD; Simple View uses an editorial financial interface. */
 .view-mode-dock {
   font-family: 'Rajdhani', system-ui, sans-serif;
+  isolation: isolate;
+}
+
+.view-mode-dock::before {
+  content: 'CHOOSE YOUR VIEW';
+  position: absolute;
+  top: -1.45rem;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: rgba(201,168,76,0.72);
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.player-brand-crest {
+  display: inline-flex;
+  width: 2.45rem;
+  height: 2.65rem;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(201,168,76,0.16), rgba(7,6,1,0.96));
+  border: 1px solid rgba(201,168,76,0.72);
+  clip-path: polygon(50% 0%, 94% 14%, 88% 68%, 50% 100%, 12% 68%, 6% 14%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 0 14px rgba(201,168,76,0.16);
+  transition: filter 180ms cubic-bezier(0.23,1,0.32,1), box-shadow 180ms cubic-bezier(0.23,1,0.32,1);
+}
+
+.player-brand-wordmark {
+  text-shadow: 0 1px 12px rgba(201,168,76,0.16);
+}
+
+.player-trust-cue {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(222,240,166,0.84);
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
 @keyframes viewModeEnter {
@@ -510,6 +557,274 @@
   pointer-events: none;
 }
 
+/* Player 1 cinematic mode shift and hero energy system. */
+.mode-shift-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  background: #050400;
+}
+
+.mode-shift-overlay::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background: repeating-linear-gradient(0deg, transparent 0 7px, rgba(255,255,255,0.09) 8px, transparent 9px 15px);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.mode-shift-player {
+  background: radial-gradient(circle at 50% 50%, rgba(201,168,76,0.55) 0%, rgba(5,4,0,0.97) 38%, #050400 72%);
+}
+
+.mode-shift-simple {
+  background: radial-gradient(circle at 50% 50%, rgba(37,99,235,0.46) 0%, rgba(9,25,46,0.96) 38%, #071020 72%);
+}
+
+.mode-shift-line {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff 34%, currentColor 50%, #fff 66%, transparent);
+  color: #c9a84c;
+  box-shadow: 0 0 22px currentColor, 0 0 68px currentColor;
+  transform: scaleX(0);
+}
+
+.mode-shift-simple .mode-shift-line { color: #60a5fa; }
+
+.mode-shift-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  box-shadow: 0 0 40px rgba(201,168,76,0.65), inset 0 0 30px rgba(255,255,255,0.12);
+}
+
+.mode-shift-simple .mode-shift-core { box-shadow: 0 0 40px rgba(96,165,250,0.65), inset 0 0 30px rgba(255,255,255,0.12); }
+
+.mode-shift-overlay.is-active {
+  visibility: visible;
+  animation: modeShiftFade 680ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.mode-shift-overlay.is-active::before { animation: modeShiftScan 460ms linear both; }
+.mode-shift-overlay.is-active .mode-shift-line { animation: modeShiftLine 480ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.mode-shift-overlay.is-active .mode-shift-core { animation: modeShiftCore 620ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+
+@keyframes modeShiftFade {
+  0% { opacity: 0; }
+  20%, 60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes modeShiftScan {
+  0% { opacity: 0; transform: translateY(-20%); }
+  26%, 64% { opacity: 0.55; }
+  100% { opacity: 0; transform: translateY(16%); }
+}
+
+@keyframes modeShiftLine {
+  0% { transform: scaleX(0); opacity: 0; }
+  36% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1.16); opacity: 0; }
+}
+
+@keyframes modeShiftCore {
+  0% { transform: translate(-50%, -50%) scale(0.4); opacity: 0; }
+  38% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+.player-hero-motion { isolation: isolate; }
+
+.hero-energy-field,
+.hero-energy-wave {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-energy-field {
+  background:
+    radial-gradient(ellipse at 50% 78%, rgba(201,168,76,0.24) 0%, rgba(201,168,76,0.08) 22%, transparent 53%),
+    radial-gradient(ellipse at 50% 44%, rgba(255,255,255,0.05) 0%, transparent 40%);
+  mix-blend-mode: screen;
+}
+
+.hero-energy-wave {
+  inset: auto -15% 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.12), rgba(245,211,122,0.8), rgba(201,168,76,0.12), transparent);
+  box-shadow: 0 0 16px rgba(201,168,76,0.4), 0 0 50px rgba(201,168,76,0.12);
+  opacity: 0;
+}
+
+.hero-energy-wave-two { bottom: 26%; opacity: 0; }
+
+.hud-cta { transform: translateZ(0); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-energy-field { animation: heroEnergyBreathe 6s ease-in-out infinite; }
+  .hero-energy-wave-one { animation: heroEnergySweep 5.5s cubic-bezier(0.23, 1, 0.32, 1) 1.05s infinite; }
+  .hero-energy-wave-two { animation: heroEnergySweep 6.6s cubic-bezier(0.23, 1, 0.32, 1) 2.7s infinite; }
+  .player-hero-title { animation: playerHeroEnter 720ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+  .player-hero-copy { animation: playerHeroEnter 640ms cubic-bezier(0.23, 1, 0.32, 1) 150ms both; }
+  .player-hero-actions { animation: playerHeroEnter 600ms cubic-bezier(0.23, 1, 0.32, 1) 250ms both; }
+  .player-hero-stats { animation: playerHeroEnter 620ms cubic-bezier(0.23, 1, 0.32, 1) 360ms both; }
+}
+
+@keyframes heroEnergyBreathe {
+  0%, 100% { opacity: 0.5; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes heroEnergySweep {
+  0% { opacity: 0; transform: translateX(-18%) scaleX(0.45); }
+  20% { opacity: 0.8; }
+  62% { opacity: 0.18; }
+  100% { opacity: 0; transform: translateX(18%) scaleX(1.2); }
+}
+
+@keyframes playerHeroEnter {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Player 1 Game Map: persistent unlock state, phase progression, and tactical controls. */
+.map-phase-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.04) 50%, transparent 100%);
+  opacity: 0.65;
+}
+
+.quest-level-card:focus-visible {
+  outline: 2px solid #e8c97a;
+  outline-offset: 4px;
+}
+
+.quest-level-card.is-unlocked {
+  border-color: rgba(201,168,76,0.78);
+  box-shadow: 0 8px 32px rgba(201,168,76,0.18), inset 0 0 28px rgba(201,168,76,0.035);
+}
+
+.quest-level-card.is-unlocked .level-badge {
+  background: radial-gradient(circle, rgba(232,201,122,0.42) 0%, rgba(201,168,76,0.11) 72%);
+  border-color: #e8c97a;
+}
+
+.map-card-status {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(201,168,76,0.48);
+}
+
+.map-card-status-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 0 rgba(201,168,76,0);
+}
+
+.quest-level-card.is-unlocked .map-card-status { color: #e8c97a; }
+
+.quest-level-card.is-unlocked .map-card-status-dot {
+  animation: mapStatusPulse 1.8s ease-in-out infinite;
+}
+
+.phase-connector { position: relative; overflow: hidden; }
+
+.phase-connector-line {
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(to bottom, rgba(201,168,76,0.75), rgba(201,168,76,0));
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+.phase-connector-arrow { opacity: 0; transform: translateY(-5px); }
+
+.phase-connector.is-visible .phase-connector-line { animation: connectorDraw 620ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.phase-connector.is-visible .phase-connector-arrow { animation: connectorArrow 420ms cubic-bezier(0.23, 1, 0.32, 1) 440ms both; }
+.phase-connector.is-visible .font-tactical { animation: playerHeroEnter 420ms cubic-bezier(0.23, 1, 0.32, 1) 520ms both; }
+
+.hud-cta {
+  position: relative;
+  overflow: hidden;
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease;
+}
+
+.hud-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 -100%;
+  width: 46%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.36), transparent);
+  transform: skewX(-18deg);
+}
+
+.hud-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,168,76,0.24); }
+.hud-cta:hover::after { animation: hudCtaSweep 520ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.hud-cta:active { transform: translateY(0) scale(0.97); }
+
+.hud-cta-primary {
+  box-shadow: inset 3px 0 0 #9bdf43, 0 0 18px rgba(201,168,76,0.22);
+}
+
+.hud-cta-primary:hover { box-shadow: inset 3px 0 0 #baff69, 0 10px 30px rgba(155,223,67,0.18), 0 0 28px rgba(201,168,76,0.22); }
+
+@keyframes mapStatusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,201,122,0.55); }
+  50% { box-shadow: 0 0 0 5px rgba(232,201,122,0); }
+}
+
+@keyframes connectorDraw {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes connectorArrow {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hudCtaSweep {
+  from { left: -100%; }
+  to { left: 155%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .view-mode-enter { animation: none; }
+  .view-mode-enter,
+  .mode-shift-overlay,
+  .mode-shift-overlay *,
+  .hero-energy-field,
+  .hero-energy-wave,
+  .player-hero-title,
+  .player-hero-copy,
+  .player-hero-actions,
+  .player-hero-stats,
+  .quest-level-card,
+  .quest-level-card *,
+  .phase-connector,
+  .phase-connector *,
+  .hud-cta,
+  .hud-cta * { animation: none !important; transition: none !important; }
 }
