@@ -244,9 +244,6 @@ export default function Home() {
           <p className="player-hero-copy font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
             Every dollar you park in a bank account is a dollar working for their shareholders — not your family. The 7-Level Generational Wealth Blueprint is the strategy the wealthy use to reclaim that capital and build a legacy that compounds across lifetimes.
           </p>
-          <div className="player-trust-cue mx-auto mb-2">
-            <Shield size={13} strokeWidth={2.25} /> Licensed life insurance guidance · educational planning · no obligation
-          </div>
           <div className="player-hero-actions mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
               className="hud-cta hud-cta-primary inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
@@ -348,7 +345,6 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left — guide profile */}
             <div>
-              <SectionLabel text="Enter Your Guide — Malik East // TheFlow" />
               <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
                 A Licensed Agent Who Turns<br />
                 <span className="text-[#c9a84c]">Financial Noise Into Harmony.</span>
@@ -400,7 +396,6 @@ export default function Home() {
       <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.05)_0%,transparent_70%)]" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <SectionLabel text="Campaign Map — The 7 Levels of Mastery" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
             The <span className="text-[#c9a84c]">Generational Wealth</span> Blueprint
           </h2>
@@ -554,7 +549,6 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.12)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <SectionLabel text="Ultimate Victory — High Score Achieved" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
             This Is What Winning Looks Like.
           </h2>
