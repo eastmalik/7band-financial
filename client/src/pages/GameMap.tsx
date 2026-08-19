@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Shield, Zap, TrendingUp, Lock, Users, ChevronRight,
   Star, Target, Building2, TreePine, ArrowRight, Play,
-  CheckCircle, DollarSign, Cpu, Wifi, ArrowDown
+  CheckCircle, DollarSign, Cpu, ArrowDown
 } from "lucide-react";
 
 function SectionLabel({ text, danger = false }: { text: string; danger?: boolean }) {
@@ -373,30 +373,13 @@ export default function GameMap() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[700px] h-[700px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
-        <div className="absolute top-20 left-0 right-0 flex justify-center">
-          <div className="flex items-center gap-6 px-6 py-2 border-b border-[#c9a84c]/20">
-            <span className="status-active flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />Campaign Map — Loaded
-            </span>
-            <span className="status-active flex items-center gap-1.5">
-              <Wifi size={10} className="text-[#c9a84c]/60" />7 Levels — Active
-            </span>
-          </div>
-        </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-32 pb-16">
-          <SectionLabel text="Campaign Map — The 7 Levels of Mastery" />
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             The Generational<br />
             <span className="text-[#c9a84c]">Wealth Blueprint</span>
           </h1>
           <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
             A proven, sequential system built for families who are done playing by the bank's rules. Each level unlocks the next. Every level builds on the last. Complete all 7 and you become the bank that finances your family's future.
-          </p>
-          <div className="player-trust-cue mx-auto mb-2">
-            <Shield size={13} strokeWidth={2.25} /> Licensed life insurance guidance · credit and protection education
-          </div>
-          <p className="font-tactical text-sm text-[#c9a84c]/60 tracking-widest uppercase mb-10">
-            Tap any level card to unlock it. Click to begin.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
@@ -432,6 +415,9 @@ export default function GameMap() {
               </HudFrame>
             ))}
           </div>
+          <p className="mt-10 text-center font-tactical text-base font-black uppercase tracking-[0.14em] text-[#c9a84c] sm:text-lg">
+            Select any level card to unlock it and begin.
+          </p>
         </div>
       </section>
 
@@ -518,7 +504,6 @@ export default function GameMap() {
       <section className="relative py-24 bg-[#050400] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.10)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <SectionLabel text="Final State — High Score Achieved" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
             This Is What Winning Looks Like.
           </h2>
