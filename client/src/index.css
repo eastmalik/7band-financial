@@ -482,7 +482,7 @@
 
 /* 7Band dual-view system: Player 1 keeps the HUD; Simple View uses an editorial financial interface. */
 .view-mode-dock {
-  position: fixed !important;
+  position: absolute !important;
   top: 5.1rem !important;
   left: 50% !important;
   z-index: 100 !important;
