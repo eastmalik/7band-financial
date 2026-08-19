@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
-import { Shield, Music, Users, Heart, ArrowRight, Star, Wifi, Building2, TreePine } from "lucide-react";
+import { Shield, Music, Users, Heart, ArrowRight, Star, Building2, TreePine } from "lucide-react";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -103,18 +103,7 @@ export default function About() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[600px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
-        <div className="absolute top-20 left-0 right-0 flex justify-center">
-          <div className="flex items-center gap-6 px-6 py-2 border-b border-[#c9a84c]/20">
-            <span className="status-active flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />Guide Profile — Active
-            </span>
-            <span className="status-active flex items-center gap-1.5">
-              <Wifi size={10} className="text-[#c9a84c]/60" />Secure Connection
-            </span>
-          </div>
-        </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
-          <SectionLabel text="Enter Your Guide" />
           <h1 className="font-display text-4xl sm:text-6xl font-black text-white leading-[1.05] mb-4 gold-text-glow-intense">
             Malik East
           </h1>
@@ -142,7 +131,6 @@ export default function About() {
                   style={{ objectPosition: "center 26%" }}
                 />
                 <div className="p-4">
-                  <div className="font-tactical text-xs text-[#c9a84c]/50 tracking-widest uppercase mb-1">Character Selection</div>
                   <div className="font-display text-lg font-bold text-white">Malik East</div>
                   <div className="font-tactical text-xs text-white/50 tracking-wide mt-1">TheFlow · Founder · Licensed Life Insurance Agent</div>
                   <div className="mt-3 flex items-center gap-2">
@@ -154,7 +142,6 @@ export default function About() {
             </div>
             {/* Bio */}
             <div>
-              <SectionLabel text="TheFlow — Origin Story" />
               <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
                 From the Band Room to<br />
                 <span className="text-[#c9a84c]">Financial Services.</span>
@@ -184,7 +171,6 @@ export default function About() {
       <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <SectionLabel text="Character Stats" />
             <h2 className="font-display text-3xl sm:text-4xl font-black text-white">
               What Malik Brings to the <span className="text-[#c9a84c]">Table.</span>
             </h2>
@@ -215,7 +201,6 @@ export default function About() {
       <section className="relative py-24 bg-[#050400] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.08)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <SectionLabel text="Begin Your Quest" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
             Ready to Work With Malik?
           </h2>
