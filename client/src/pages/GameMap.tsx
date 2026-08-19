@@ -407,7 +407,7 @@ export default function GameMap() {
                 <div className="flex items-center gap-3 mb-3">
                   {p.icon}
                   <div>
-                    <div className="font-tactical text-[10px] text-[#c9a84c]/50 tracking-widest uppercase">{p.phase} — {p.levels}</div>
+                    <div className="font-tactical text-[#c9a84c]/50 tracking-widest uppercase" style={{ fontSize: "18px" }}>{p.phase} — {p.levels}</div>
                     <div className="font-display text-lg font-bold text-white">{p.label}</div>
                   </div>
                 </div>
