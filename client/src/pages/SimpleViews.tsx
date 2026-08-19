@@ -61,7 +61,6 @@ function SimpleLayout({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/#services", label: "Services" },
     { href: "/lifetime-loc", label: "Lifetime LOC" },
     { href: "/game-map", label: "Roadmap" },
     { href: "/about", label: "About" },
