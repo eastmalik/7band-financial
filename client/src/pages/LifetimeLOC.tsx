@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import {
   Zap, TrendingUp, Lock, ChevronRight, ArrowRight,
   Play, CheckCircle, DollarSign, RefreshCw, Shield,
-  Building2, TreePine, ArrowDown, Wifi, Star
+  Building2, TreePine, ArrowDown, Star
 } from "lucide-react";
 
 function SectionLabel({ text, danger = false }: { text: string; danger?: boolean }) {
@@ -112,27 +112,13 @@ export default function LifetimeLOC() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[700px] h-[700px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
-        <div className="absolute top-20 left-0 right-0 flex justify-center">
-          <div className="flex items-center gap-6 px-6 py-2 border-b border-[#c9a84c]/20">
-            <span className="status-active flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] animate-pulse inline-block" />Level 4 Unlocked
-            </span>
-            <span className="status-active flex items-center gap-1.5">
-              <Wifi size={10} className="text-[#c9a84c]/60" />IUL Engine — Online
-            </span>
-          </div>
-        </div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
-          <p className="font-tactical text-sm text-[#c9a84c] tracking-widest uppercase mb-6 font-bold">Your Freedom Starts Now</p>
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             The Lifetime<br />
             <span className="text-[#c9a84c]">Line of Credit</span>
           </h1>
-          <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
+          <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed tracking-wide">
             A permanent, tax-advantaged line of credit built inside a life insurance policy — guaranteed to grow, guaranteed to be there, and guaranteed to pass to the next generation. This is Level 4 of the 7-Level Generational Wealth Blueprint.
-          </p>
-          <p className="font-tactical text-sm text-[#c9a84c]/60 tracking-widest uppercase mb-10">
-            The tool wealthy families have used for over 100 years. Now available to yours.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
@@ -159,7 +145,6 @@ export default function LifetimeLOC() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <SectionLabel text="What Is It — Plain Language" />
               <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
                 A Policy That Doubles as<br />
                 <span className="text-[#c9a84c]">Your Private Bank.</span>
@@ -202,7 +187,6 @@ export default function LifetimeLOC() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <SectionLabel text="The IUL Engine Loop — How It Works" />
             <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
               Your Money Works <span className="text-[#c9a84c]">Two Jobs at Once.</span>
             </h2>
@@ -328,7 +312,6 @@ export default function LifetimeLOC() {
       <section className="relative py-24 bg-gradient-to-b from-[#060500] to-[#050400] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.10)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <SectionLabel text="Lock In Your Character" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
             Ready to Build Your<br />Lifetime LOC?
           </h2>
