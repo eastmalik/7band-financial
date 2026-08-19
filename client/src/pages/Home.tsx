@@ -252,10 +252,9 @@ export default function Home() {
             </Link>
           </div>
           {/* Stat bar */}
-          <div className="mt-16 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="mt-16 grid grid-cols-2 gap-4 max-w-md mx-auto">
             {[
               { value: "7", label: "Levels of Mastery" },
-              { value: "3", label: "Expansion Packs" },
               { value: "∞", label: "Generational Reach" },
             ].map((stat) => (
               <HudFrame key={stat.label} className="p-4 bg-[#0a0800]/80">
