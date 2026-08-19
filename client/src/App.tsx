@@ -51,11 +51,6 @@ function Router() {
   );
 }
 
-function PlayerModeToggle() {
-  const { mode } = useViewMode();
-  return mode === "player" ? <ViewModeToggle /> : null;
-}
-
 function App() {
   return (
     <ErrorBoundary>
@@ -65,7 +60,7 @@ function App() {
         <ViewModeProvider>
           <TooltipProvider>
             <Toaster />
-            <PlayerModeToggle />
+            <ViewModeToggle />
             <Router />
           </TooltipProvider>
         </ViewModeProvider>

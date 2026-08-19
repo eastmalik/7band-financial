@@ -24,7 +24,6 @@ import {
   TrendingUp,
   X,
 } from "lucide-react";
-import ViewModeToggle from "@/components/ViewModeToggle";
 
 const calendlyUrl = "https://calendly.com/malikeast7band";
 const logoUrl = "/manus-storage/7band-logo-clean_7b539e21.png";
@@ -112,7 +111,6 @@ function SimpleLayout({ children }: { children: ReactNode }) {
           </nav>
         )}
       </header>
-      <ViewModeToggle />
       <main>{children}</main>
       <footer className="border-t border-[#d7e3f0] bg-[#0b1f3a] px-5 py-14 text-white sm:px-7">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">

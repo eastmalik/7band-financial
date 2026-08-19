@@ -235,7 +235,7 @@ export default function Home() {
         <div aria-hidden="true" className="hero-energy-wave hero-energy-wave-one" />
         <div aria-hidden="true" className="hero-energy-wave hero-energy-wave-two" />
         {/* Hero content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-48 pb-16 sm:pt-28">
+        <div className="relative z-10 max-w-5xl mx-auto translate-y-10 px-4 pt-48 pb-16 text-center sm:translate-y-8 sm:px-6 sm:pt-28">
           <h1 className="player-hero-title font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             Stop Funding<br />
             <span className="text-[#c9a84c]">Their Dreams.</span><br />
