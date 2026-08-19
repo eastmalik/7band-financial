@@ -57,7 +57,7 @@ function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
               Begin Quest
             </a>
@@ -81,7 +81,7 @@ function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-3 bg-[#c9a84c] text-black text-center">
               Begin Quest
             </a>
@@ -208,7 +208,7 @@ export default function About() {
             Schedule a free strategy session. No pressure, no obligation — just an honest conversation about where you are and what's possible from here.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-10 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Star size={14} fill="currentColor" /> Schedule Free Strategy Session
             </a>

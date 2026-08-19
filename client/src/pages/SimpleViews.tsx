@@ -25,7 +25,7 @@ import {
   X,
 } from "lucide-react";
 
-const calendlyUrl = "https://calendly.com/malikeast7band";
+const calendlyUrl = "https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq";
 const logoUrl = "/manus-storage/7band-logo-clean_7b539e21.png";
 
 function SimpleKicker({ children }: { children: ReactNode }) {

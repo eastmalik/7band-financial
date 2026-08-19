@@ -191,7 +191,7 @@ function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+              <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
                 className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
                 Begin Quest
               </a>
@@ -259,7 +259,7 @@ function Navbar() {
           ))}
         </div>
         <div className="px-6 pb-10 pt-4" style={{ opacity: menuOpen ? 1 : 0, transform: menuOpen ? "translateY(0)" : "translateY(12px)", transition: "opacity 0.4s cubic-bezier(0.23,1,0.32,1) 0.42s, transform 0.4s cubic-bezier(0.23,1,0.32,1) 0.42s" }}>
-          <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
+          <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
             className="w-full py-4 bg-[#c9a84c] text-black font-tactical font-black text-sm tracking-widest uppercase text-center block gold-pulse">
             ▶ BEGIN YOUR QUEST
           </a>
@@ -382,7 +382,7 @@ export default function GameMap() {
             A proven, sequential system built for families who are done playing by the bank's rules. Each level unlocks the next. Every level builds on the last. Complete all 7 and you become the bank that finances your family's future.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="hud-cta hud-cta-primary inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Play size={14} fill="currentColor" /> Begin Your Quest
             </a>
@@ -528,7 +528,7 @@ export default function GameMap() {
           <div className="font-display text-2xl sm:text-3xl font-black text-white gold-text-glow mb-10">
             "You become the bank that finances your family's future."
           </div>
-          <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+          <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 bg-[#c9a84c] text-black font-tactical font-black text-base tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
             <Star size={16} fill="currentColor" /> Lock In Your Character — Begin Now
           </a>

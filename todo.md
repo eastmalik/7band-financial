@@ -15,3 +15,9 @@
 - [x] Add a cinematic Simple View-to-Player 1 transition and ambient hero energy movement.
 - [x] Build Game Map unlock sequencing and improved hover feedback for Player 1 controls.
 - [x] Verify desktop and mobile behavior with reduced-motion support, then publish the upgrade.
+
+## GoHighLevel Calendar Migration
+- [x] Create and publish the 7Band Financial Agency appointment calendar in GoHighLevel.
+- [x] Confirm the public booking link, availability, confirmation settings, and assigned calendar.
+- [x] Replace all Calendly links across Player 1 and Simple View with the GoHighLevel booking link.
+- [x] Test the external booking path and publish the website update.

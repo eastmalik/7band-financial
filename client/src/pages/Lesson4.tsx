@@ -49,7 +49,7 @@ function LessonNavbar() {
             <Link href="/lifetime-loc" className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors hidden md:block">
               ← The Manual
             </Link>
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors">
               Begin Quest
             </a>
@@ -77,7 +77,7 @@ function LessonFooter({ prev, next }: { prev?: { href: string; label: string }; 
             {next.label} <ChevronRight size={14} />
           </Link>
         ) : (
-          <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+          <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 font-tactical text-sm text-[#c9a84c] hover:text-[#e8c97a] uppercase tracking-wider transition-colors font-bold">
             Begin Your Quest <ChevronRight size={14} />
           </a>
@@ -180,7 +180,7 @@ export default function Lesson4() {
           <div className="text-center">
             <div className="font-tactical text-xs text-[#c9a84c] tracking-widest uppercase mb-4 font-bold">You've Completed The Manual</div>
             <h3 className="font-display text-2xl font-bold text-white mb-6">Ready to Build Your Lifetime LOC?</h3>
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <BookOpen size={14} /> Schedule Your Strategy Session
             </a>

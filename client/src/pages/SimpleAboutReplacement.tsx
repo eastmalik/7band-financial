@@ -6,7 +6,7 @@
 import { ArrowRight, BadgeCheck, HeartHandshake, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 
-const calendlyUrl = "https://calendly.com/malikeast7band";
+const calendlyUrl = "https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq";
 const portraitUrl = "/manus-storage/malik-east-portrait_1eb03c6e.jpeg";
 
 function SevenPointMark({ className = "" }: { className?: string }) {

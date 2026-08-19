@@ -66,7 +66,7 @@ function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
               Begin Quest
             </a>
@@ -90,7 +90,7 @@ function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-3 bg-[#c9a84c] text-black text-center">
               Begin Quest
             </a>
@@ -121,7 +121,7 @@ export default function LifetimeLOC() {
             A permanent, tax-advantaged line of credit built inside a life insurance policy — guaranteed to grow, guaranteed to be there, and guaranteed to pass to the next generation. This is Level 4 of the 7-Level Generational Wealth Blueprint.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Play size={14} fill="currentColor" /> Build My Lifetime LOC
             </a>
@@ -319,7 +319,7 @@ export default function LifetimeLOC() {
             Schedule a free needs analysis. We'll review your current financial position, determine if an IUL is the right fit, and design a policy structure built around your specific goals — before you commit to anything.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a href="https://calendly.com/malikeast7band" target="_blank" rel="noopener noreferrer"
+            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-10 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Star size={14} fill="currentColor" /> Schedule Free Needs Analysis
             </a>
