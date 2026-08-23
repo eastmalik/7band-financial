@@ -25,6 +25,9 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - run: pnpm exec vite build
       - name: Add SPA fallback
         run: cp dist/public/index.html dist/public/404.html
