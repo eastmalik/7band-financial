@@ -99,10 +99,10 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@7bandfinancialagency.com"
+                <a href="mailto:malik@7bandfinancialagency.com"
                   className="font-body text-sm transition-colors duration-150 hover:text-[#c9a84c]"
                   style={{ color: "rgba(232,213,163,0.55)" }}>
-                  info@7bandfinancialagency.com
+                  malik@7bandfinancialagency.com
                 </a>
               </li>
               <li>

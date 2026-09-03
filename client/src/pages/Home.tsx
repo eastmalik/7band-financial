@@ -220,11 +220,6 @@ export default function Home() {
       <section className="player-hero-motion relative min-h-screen flex items-center justify-center overflow-hidden circuit-bg">
         {/* Background image */}
         <div className="absolute inset-0">
-          <img
-            src="/manus-storage/7band-hero-bg-v2_c2aa05ef.jpg"
-            alt=""
-            className="w-full h-full object-cover opacity-30"
-          />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-[#050400]/20 to-[#050400]" />
         </div>
         {/* Radial glow center */}
@@ -235,7 +230,7 @@ export default function Home() {
         <div aria-hidden="true" className="hero-energy-wave hero-energy-wave-one" />
         <div aria-hidden="true" className="hero-energy-wave hero-energy-wave-two" />
         {/* Hero content */}
-        <div className="relative z-10 max-w-5xl mx-auto translate-y-10 px-4 pt-48 pb-16 text-center sm:translate-y-8 sm:px-6 sm:pt-28">
+        <div className="relative z-10 max-w-5xl mx-auto translate-y-10 px-4 pt-48 pb-32 text-center sm:translate-y-8 sm:px-6 sm:pt-28">
           <h1 className="player-hero-title font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
             Stop Funding<br />
             <span className="text-[#c9a84c]">Their Dreams.</span><br />
@@ -268,7 +263,7 @@ export default function Home() {
           </div>
         </div>
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <div className="pointer-events-none absolute bottom-8 left-0 right-0 flex justify-center">
           <div className="flex flex-col items-center gap-2 opacity-50">
             <span className="status-active">Scroll to Continue</span>
             <div className="w-px h-8 bg-gradient-to-b from-[#c9a84c]/60 to-transparent" />
@@ -544,7 +539,6 @@ export default function Home() {
           ══════════════════════════════════════════════════════ */}
       <section className="relative py-24 bg-[#050400] overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/manus-storage/7band-victory-tree_5ae0c46c.jpg" alt="" className="w-full h-full object-cover opacity-15" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050400] via-[#050400]/70 to-[#050400]/80" />
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.12)_0%,transparent_70%)]" />
@@ -634,7 +628,7 @@ export default function Home() {
               <ul className="space-y-3">
                 <li>
                   <div className="font-tactical text-xs text-white/30 tracking-wider uppercase mb-1">Email</div>
-                  <a href="mailto:info@7bandfinancial.com" className="font-tactical text-xs text-white/60 hover:text-[#c9a84c] transition-colors">info@7bandfinancial.com</a>
+                  <a href="mailto:malik@7bandfinancialagency.com" className="font-tactical text-xs text-white/60 hover:text-[#c9a84c] transition-colors">malik@7bandfinancialagency.com</a>
                 </li>
                 <li>
                   <div className="font-tactical text-xs text-white/30 tracking-wider uppercase mb-1">Schedule</div>
