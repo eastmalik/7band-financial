@@ -281,6 +281,7 @@ toc_rows = [
     ["4", "Emergency Playbook", "The site is down. Start here."],
     ["5", "Backup & Protection Strategy", "Making this unrepeatable"],
     ["6", "Making Changes to Your Site", "How to get edits done, with or without Claude"],
+    ["7", "Security Posture", "What was audited, what protects you, what to watch"],
     ["A", "Appendix: Reference Card", "Every value, link and login location in one place"],
 ]
 tt = Table(
@@ -794,6 +795,99 @@ story.append(panel("IF YOU ARE WORKING WITH A DIFFERENT ASSISTANT", [
 story.append(PageBreak())
 
 # ============================ APPENDIX =======================================
+
+# ============================ SECTION 7 ======================================
+story += chapter("7", "Security Posture",
+                 "A full security audit of the website was carried out in "
+                 "September 2026. This section records what was checked, what "
+                 "makes the site hard to attack, and where the real risk "
+                 "actually sits.")
+
+story.append(P("Why this site is a hard target", "h2"))
+story.append(P(
+    "The website has <b>no forms, no logins, no database, and no user input of "
+    "any kind</b>. It is a set of static files served by GitHub. That single "
+    "fact removes most categories of website attack outright:", "body"))
+story.append(bullets([
+    "<b>Database attacks</b> — impossible; there is no database.",
+    "<b>Password and login attacks</b> — impossible; there is nothing to log into.",
+    "<b>Form spam and injection</b> — impossible; the site has no forms.",
+    "<b>Server compromise</b> — there is no server to compromise; GitHub serves flat files.",
+    "<b>Malicious file upload</b> — impossible; nothing accepts uploads.",
+]))
+story.append(P(
+    "The migration away from Manus happened to produce one of the most secure "
+    "architectures a business website can have.", "body"))
+
+story.append(Spacer(1, 8))
+story.append(P("What the audit checked", "h2"))
+story.append(data_table(
+    ["Check", "Result"],
+    [
+        ["Secrets or API keys in the code", "None found, across the full commit history — not just current files."],
+        ["Secrets leaking into public JavaScript", "None."],
+        ["Credential or key files ever committed", "None."],
+        ["Cross-site scripting (XSS) patterns", "None on any live page."],
+        ["Malicious link hijacking (tabnabbing)", "Protected — every external link is correctly secured."],
+        ["Source maps exposing internal code", "Not published."],
+        ["Deployment pipeline permissions", "Correctly minimal: read-only except for publishing."],
+        ["Data stored on visitors' devices", "View preference and theme only. No personal data."],
+        ["Web address parameter handling", "Safe — validated against a fixed list, never inserted into the page."],
+        ["Dependency vulnerabilities", "128 advisories, all in build tooling. None reach visitors."],
+    ],
+    [2.5 * inch, 4.2 * inch]))
+
+story.append(Spacer(1, 12))
+story.append(P("Hardening that was applied", "h2"))
+story.append(bullets([
+    "<b>Clickjacking protection.</b> GitHub Pages cannot send the security "
+    "headers that normally stop a site being wrapped inside someone else's "
+    "page, so a guard script was added instead. If anyone embeds this site in "
+    "a frame, the wrapper is replaced by the real site. Verified working.",
+    "<b>Strict referrer policy</b>, so the site does not leak full page "
+    "addresses to third parties.",
+    "<b>Dead Manus code removed.</b> An unused component read an API key from "
+    "a build variable. Nothing was ever set there, but had it been, the value "
+    "would have been compiled into the public JavaScript for anyone to read. "
+    "That trap is now gone, along with unused components still pointing at "
+    "retired Calendly booking links.",
+]))
+
+story.append(Spacer(1, 6))
+story.append(alert("WHERE THE REAL RISK SITS — READ THIS PART", [
+    P("Nobody is going to hack the web pages. An attacker would go after the "
+      "<b>accounts that control them</b>:", "panel"),
+    Spacer(1, 6),
+    P("<b>1. The GitHub account.</b> Whoever controls it controls the website. "
+      "This is now the single most critical login in the business.<br/>"
+      "<b>2. The Hostinger account.</b> Controls the domain, the DNS, and the "
+      "business email. Access here could redirect the entire domain.<br/>"
+      "<b>3. The email inbox.</b> It is the password-reset path to everything else.",
+      "panel"),
+    Spacer(1, 6),
+    P("Strong unique passwords plus two-factor authentication on those three "
+      "accounts handles the overwhelming majority of genuine risk to this "
+      "business. No amount of work on the website itself substitutes for it.",
+      "panel"),
+]))
+
+story.append(Spacer(1, 12))
+story.append(P("Ongoing habits", "h2"))
+story.append(bullets([
+    "Keep two-factor authentication switched on for GitHub, Hostinger and email, "
+    "and store the recovery codes somewhere physical.",
+    "Never paste an API key, token or password into a chat window — including "
+    "with an AI assistant. Credentials belong in a password manager.",
+    "Treat any email asking you to \u201cverify\u201d a GitHub or Hostinger login as "
+    "hostile until proven otherwise. Type the address in yourself rather than "
+    "clicking the link.",
+    "If a change to the site ever looks wrong or unfamiliar, the full version "
+    "history is in GitHub and any earlier version can be restored in minutes.",
+    "Re-run this audit after any major change to how the site is built or hosted.",
+]))
+
+story.append(PageBreak())
+
 story += chapter("A", "Appendix: Reference Card",
                  "Every value someone would need in an emergency, in one place. Print "
                  "this page and keep it somewhere that does not depend on your website "
