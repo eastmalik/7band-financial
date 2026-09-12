@@ -3,8 +3,13 @@ import { Link } from "wouter";
 
 type NavItemLinkProps = {
   href: string;
-  /** External destinations open in a new tab instead of routing in-app. */
+  /** External destinations need a plain anchor: wouter routes every href in-app. */
   external?: boolean;
+  /**
+   * External links stay in the same tab by default so the browser back
+   * button returns the visitor to the site. Set this to open a new tab.
+   */
+  newTab?: boolean;
   className?: string;
   onClick?: () => void;
   style?: React.CSSProperties;
@@ -12,13 +17,15 @@ type NavItemLinkProps = {
 };
 
 /**
- * Renders a navigation entry as an in-app route or, for external
- * destinations, as a plain link that opens in a new tab. Wouter's Link
- * treats every href as an internal path, so external URLs need an anchor.
+ * Renders a navigation entry as an in-app route, or as a plain anchor for
+ * external destinations — wouter's Link treats every href as an internal
+ * path. External links stay in the same tab unless newTab is set, so the
+ * browser back button can return the visitor to the site.
  */
 export default function NavItemLink({
   href,
   external,
+  newTab,
   className,
   onClick,
   style,
@@ -28,8 +35,7 @@ export default function NavItemLink({
     return (
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={className}
         onClick={onClick}
         style={style}

@@ -50,7 +50,7 @@ function LessonNavbar() {
             <Link href="/lifetime-loc" className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors hidden md:block">
               ← The Manual
             </Link>
-            <a href={EVENT_URL} target="_blank" rel="noopener noreferrer"
+            <a href={EVENT_URL}
               className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors hidden md:block">
               {EVENT_LABEL}
             </a>
