@@ -1,4 +1,6 @@
 import { Link } from "wouter";
+import NavItemLink from "@/components/NavItemLink";
+import { EVENT_URL } from "@/lib/links";
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Shield, Zap, TrendingUp, Lock, Users, ChevronRight,
@@ -167,6 +169,7 @@ function Navbar() {
     { label: "Lifetime LOC", href: "/lifetime-loc", desc: "The core wealth engine" },
     { label: "About", href: "/about", desc: "Meet your guide, Malik East" },
     { label: "The Book", href: "/the-book", desc: "The Generational Wealth Blueprint" },
+    { label: "Event", href: EVENT_URL, external: true, desc: "This week's live WealthQuest session" },
   ];
 
   return (
@@ -186,10 +189,10 @@ function Navbar() {
             </Link>
             <div className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href}
+                <NavItemLink key={item.href} href={item.href} external={item.external}
                   className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
                   {item.label}
-                </Link>
+                </NavItemLink>
               ))}
               <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
                 className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
@@ -239,7 +242,7 @@ function Navbar() {
         </div>
         <div className="flex-1 flex flex-col justify-center px-6 gap-1">
           {navItems.map((item, i) => (
-            <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+            <NavItemLink key={item.href} href={item.href} external={item.external} onClick={() => setMenuOpen(false)}
               className="group relative flex items-center gap-4 py-5 border-b border-[#c9a84c]/10 hover:border-[#c9a84c]/30 transition-all"
               style={{
                 opacity: menuOpen ? 1 : 0,
@@ -255,7 +258,7 @@ function Navbar() {
                 <div className="font-tactical text-[11px] text-[#c9a84c]/40 tracking-wide mt-0.5">{item.desc}</div>
               </div>
               <ChevronRight size={16} className="text-[#c9a84c]/30 group-hover:text-[#c9a84c] group-hover:translate-x-1 transition-all flex-shrink-0" />
-            </Link>
+            </NavItemLink>
           ))}
         </div>
         <div className="px-6 pb-10 pt-4" style={{ opacity: menuOpen ? 1 : 0, transform: menuOpen ? "translateY(0)" : "translateY(12px)", transition: "opacity 0.4s cubic-bezier(0.23,1,0.32,1) 0.42s, transform 0.4s cubic-bezier(0.23,1,0.32,1) 0.42s" }}>

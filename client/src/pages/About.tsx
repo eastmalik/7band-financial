@@ -1,4 +1,6 @@
 import { Link } from "wouter";
+import NavItemLink from "@/components/NavItemLink";
+import { EVENT_URL } from "@/lib/links";
 import { useState, useEffect } from "react";
 import { Shield, Music, Users, Heart, ArrowRight, Star, Building2, TreePine } from "lucide-react";
 
@@ -51,11 +53,12 @@ function Navbar() {
               { label: "Lifetime LOC", href: "/lifetime-loc" },
               { label: "Game Map", href: "/game-map" },
               { label: "The Book", href: "/the-book" },
+              { label: "Event", href: EVENT_URL, external: true },
             ].map((item) => (
-              <Link key={item.href} href={item.href}
+              <NavItemLink key={item.href} href={item.href} external={item.external}
                 className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
                 {item.label}
-              </Link>
+              </NavItemLink>
             ))}
             <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
@@ -75,11 +78,12 @@ function Navbar() {
               { label: "Lifetime LOC", href: "/lifetime-loc" },
               { label: "Game Map", href: "/game-map" },
               { label: "The Book", href: "/the-book" },
+              { label: "Event", href: EVENT_URL, external: true },
             ].map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}
+              <NavItemLink key={item.href} href={item.href} external={item.external} onClick={() => setMenuOpen(false)}
                 className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/80 hover:text-[#c9a84c] uppercase">
                 {item.label}
-              </Link>
+              </NavItemLink>
             ))}
             <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-3 bg-[#c9a84c] text-black text-center">

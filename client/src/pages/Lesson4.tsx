@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { EVENT_LABEL, EVENT_URL } from "@/lib/links";
 import { useState, useEffect } from "react";
 import { ChevronRight, ArrowLeft, CheckCircle, AlertTriangle, Zap, TrendingUp, RefreshCw, DollarSign, Shield, BookOpen } from "lucide-react";
 
@@ -49,6 +50,10 @@ function LessonNavbar() {
             <Link href="/lifetime-loc" className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors hidden md:block">
               ← The Manual
             </Link>
+            <a href={EVENT_URL} target="_blank" rel="noopener noreferrer"
+              className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors hidden md:block">
+              {EVENT_LABEL}
+            </a>
             <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
               className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors">
               Begin Quest

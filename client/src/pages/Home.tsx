@@ -1,4 +1,6 @@
 import { Link } from "wouter";
+import NavItemLink from "@/components/NavItemLink";
+import { EVENT_URL } from "@/lib/links";
 import { useState, useEffect } from "react";
 import {
   Shield, Zap, Lock, Users, ChevronRight,
@@ -68,6 +70,7 @@ function Navbar() {
     { label: "Game Map", href: "/game-map", desc: "The 7-Level Generational Wealth Blueprint" },
     { label: "About", href: "/about", desc: "Meet your guide, TheFlow" },
     { label: "The Book", href: "/the-book", desc: "The Generational Wealth Blueprint" },
+    { label: "Event", href: EVENT_URL, external: true, desc: "This week's live WealthQuest session" },
   ];
 
   return (
@@ -89,10 +92,10 @@ function Navbar() {
             {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href}
+                <NavItemLink key={item.href} href={item.href} external={item.external}
                   className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
                   {item.label}
-                </Link>
+                </NavItemLink>
               ))}
               <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
                 className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
@@ -156,9 +159,10 @@ function Navbar() {
         {/* Nav items */}
         <div className="flex-1 flex flex-col justify-center px-6 gap-1">
           {navItems.map((item, i) => (
-            <Link
+            <NavItemLink
               key={item.href}
               href={item.href}
+              external={item.external}
               onClick={() => setMenuOpen(false)}
               className="group relative flex items-center gap-4 py-5 border-b border-[#c9a84c]/10 hover:border-[#c9a84c]/30 transition-all"
               style={{
@@ -175,7 +179,7 @@ function Navbar() {
                 <div className="font-tactical text-[11px] text-[#c9a84c]/40 tracking-wide mt-0.5">{item.desc}</div>
               </div>
               <ChevronRight size={16} className="text-[#c9a84c]/30 group-hover:text-[#c9a84c] group-hover:translate-x-1 transition-all flex-shrink-0" />
-            </Link>
+            </NavItemLink>
           ))}
         </div>
 

@@ -4,6 +4,8 @@
  * sky #EAF3FF, understated brass #B8892E. Same strategy, delivered plainly.
  */
 import { Link } from "wouter";
+import NavItemLink from "@/components/NavItemLink";
+import { EVENT_LABEL, EVENT_URL } from "@/lib/links";
 import { useState, type ReactNode } from "react";
 import {
   ArrowRight,
@@ -64,6 +66,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
     { href: "/lifetime-loc", label: "Lifetime LOC" },
     { href: "/game-map", label: "Roadmap" },
     { href: "/about", label: "About" },
+    { href: EVENT_URL, label: EVENT_LABEL, external: true },
   ];
 
   return (
@@ -79,9 +82,9 @@ function SimpleLayout({ children }: { children: ReactNode }) {
 
           <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="font-tactical text-sm font-bold uppercase tracking-[0.1em] text-[#425b78] transition-colors hover:text-[#2563eb]">
+              <NavItemLink key={item.href} href={item.href} external={item.external} className="font-tactical text-sm font-bold uppercase tracking-[0.1em] text-[#425b78] transition-colors hover:text-[#2563eb]">
                 {item.label}
-              </Link>
+              </NavItemLink>
             ))}
           </nav>
 
@@ -99,9 +102,9 @@ function SimpleLayout({ children }: { children: ReactNode }) {
           <nav className="border-t border-[#dbe7f5] bg-white px-5 py-5 lg:hidden" aria-label="Mobile navigation">
             <div className="mx-auto flex max-w-7xl flex-col gap-4">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="font-tactical text-base font-bold uppercase tracking-[0.1em] text-[#26425f]">
+                <NavItemLink key={item.href} href={item.href} external={item.external} onClick={() => setMenuOpen(false)} className="font-tactical text-base font-bold uppercase tracking-[0.1em] text-[#26425f]">
                   {item.label}
-                </Link>
+                </NavItemLink>
               ))}
               <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="mt-1 bg-[#0b1f3a] px-4 py-3 text-center font-tactical text-xs font-bold uppercase tracking-[0.13em] text-white">
                 Schedule a Conversation
