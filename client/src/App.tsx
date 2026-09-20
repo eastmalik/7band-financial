@@ -16,6 +16,8 @@ import ViewModeToggle from "./components/ViewModeToggle";
 import { useViewMode, ViewModeProvider } from "./contexts/ViewModeContext";
 import { SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pages/SimpleViews";
 import SimpleAbout from "./pages/SimpleAboutReplacement";
+import TheBook from "./pages/TheBook";
+import SimpleBook from "./pages/SimpleBook";
 
 function Router() {
   const { mode } = useViewMode();
@@ -25,6 +27,7 @@ function Router() {
         <Route path={"/"} component={SimpleHome} />
         <Route path={"/lifetime-loc"} component={SimpleLifetimeLOC} />
         <Route path={"/about"} component={SimpleAbout} />
+        <Route path={"/the-book"} component={SimpleBook} />
         <Route path={"/game-map"} component={SimpleGameMap} />
         <Route path={"/lesson-1"} component={() => <SimpleLesson lessonPath="/lesson-1" />} />
         <Route path={"/lesson-2"} component={() => <SimpleLesson lessonPath="/lesson-2" />} />
@@ -39,6 +42,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/lifetime-loc"} component={LifetimeLOC} />
       <Route path={"/about"} component={About} />
+      <Route path={"/the-book"} component={TheBook} />
       <Route path={"/game-map"} component={GameMap} />
       <Route path={"/lesson-1"} component={Lesson1} />
       <Route path={"/lesson-2"} component={Lesson2} />
