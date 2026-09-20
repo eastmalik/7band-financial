@@ -14,7 +14,6 @@ import {
   BOOK_POOR_FIT,
   BOOK_STATUS,
   BOOK_SUBTITLE,
-  BOOK_TAGLINE,
   BOOK_TITLE,
 } from "@/lib/book";
 
@@ -134,9 +133,6 @@ export default function TheBook() {
               <h1 className="font-display text-4xl sm:text-6xl font-black text-white leading-[1.03] mb-5 gold-text-glow-intense">
                 The American<br /><span className="text-[#c9a84c]">Money Tree</span>
               </h1>
-              <p className="font-display text-xl sm:text-2xl font-bold text-[#c9a84c] leading-snug mb-5 gold-text-glow">
-                {BOOK_TAGLINE}
-              </p>
               <p className="font-tactical text-lg text-white/70 tracking-wide leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
                 {BOOK_SUBTITLE}
               </p>

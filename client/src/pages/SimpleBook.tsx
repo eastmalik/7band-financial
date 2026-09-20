@@ -13,7 +13,6 @@ import {
   BOOK_POOR_FIT,
   BOOK_STATUS,
   BOOK_SUBTITLE,
-  BOOK_TAGLINE,
   BOOK_TITLE,
 } from "@/lib/book";
 
@@ -100,10 +99,7 @@ export default function SimpleBook() {
             <h1 className="font-display text-4xl font-black leading-[1.05] text-[#0b1f3a] sm:text-6xl">
               The American <span className="text-[#2563eb]">Money Tree</span>
             </h1>
-            <p className="mt-6 font-display text-xl font-bold leading-snug text-[#2563eb] sm:text-2xl">
-              {BOOK_TAGLINE}
-            </p>
-            <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-[#526b86]">
+            <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#526b86]">
               {BOOK_SUBTITLE}
             </p>
             <p className="mt-4 font-tactical text-xs font-bold uppercase tracking-[0.12em] text-[#2563eb]">
