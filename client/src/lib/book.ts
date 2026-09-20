@@ -10,6 +10,9 @@ export const BOOK_TITLE = "The American Money Tree";
 export const BOOK_SUBTITLE =
   "A Plain-Language Owner's Manual for Indexed Universal Life Insurance";
 export const BOOK_AUTHOR = "Malik East";
+
+/** Marketing tagline for the book. */
+export const BOOK_TAGLINE = "Don't focus on what it is. Focus on what it does.";
 export const BOOK_COVER = "/manus-storage/american-money-tree-cover.png";
 
 /** Shown as the release status. Change when a date is confirmed. */

@@ -66,6 +66,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
     { href: "/lifetime-loc", label: "Lifetime LOC" },
     { href: "/game-map", label: "Roadmap" },
     { href: "/about", label: "About" },
+    { href: "/the-book", label: "Book" },
     { href: EVENT_URL, label: EVENT_LABEL, external: true },
   ];
 
