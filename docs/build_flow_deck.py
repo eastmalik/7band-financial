@@ -62,11 +62,22 @@ def _alpha(clr_el, opacity):
         a.set("val", str(int(opacity * 100000)))
 
 
+BLEND_BG = "0C0906"
+
+
+def blend(hex_, opacity, bg=BLEND_BG):
+    """Mix a colour over the dark background. Canva drops shape transparency
+    on import, so translucent fills and lines are baked to solid colours."""
+    if opacity is None or opacity >= 1:
+        return hex_
+    a = [int(hex_[i:i + 2], 16) for i in (0, 2, 4)]
+    b = [int(bg[i:i + 2], 16) for i in (0, 2, 4)]
+    return "".join(f"{round(x * opacity + y * (1 - opacity)):02X}" for x, y in zip(a, b))
+
+
 def fill(shape, hex_, opacity=None):
     shape.fill.solid()
-    shape.fill.fore_color.rgb = RGBColor.from_string(hex_)
-    clr = shape.fill._xPr.find(qn("a:solidFill")).find(qn("a:srgbClr"))
-    _alpha(clr, opacity)
+    shape.fill.fore_color.rgb = RGBColor.from_string(blend(hex_, opacity))
 
 
 def no_fill(shape):
@@ -77,10 +88,9 @@ def line(shape, hex_=None, width=1.0, opacity=None, dash=None):
     if hex_ is None:
         shape.line.fill.background()
         return
-    shape.line.color.rgb = RGBColor.from_string(hex_)
+    shape.line.color.rgb = RGBColor.from_string(blend(hex_, opacity))
     shape.line.width = Pt(width)
     ln = shape._element.spPr.find(qn("a:ln"))
-    _alpha(ln.find(qn("a:solidFill")).find(qn("a:srgbClr")), opacity)
     if dash:
         d = etree.SubElement(ln, qn("a:prstDash"))
         d.set("val", dash)
@@ -204,10 +214,48 @@ def LBL(t, size=13, color=GOLD, spc=4, **kw):
 
 
 # ---- decorative system -----------------------------------------------------
+_CACHE = {}
+TMP = None
+
+
+def _radial_mask(size, power=1.0, scale=255):
+    from PIL import ImageOps
+    rg = ImageOps.invert(Image.radial_gradient("L"))          # 255 centre -> 0 edge
+    rg = rg.point(lambda v: int(((v / 255) ** power) * scale))
+    return rg.resize(size, Image.BICUBIC)
+
+
+def bg_image(center):
+    key = ("bg", center)
+    if key not in _CACHE:
+        px_w, px_h = 1920, 1080
+        im = Image.new("RGB", (px_w, px_h), "#030302")
+        cx, cy = int(px_w * center[0] / 100), int(px_h * center[1] / 100)
+        for col, rad, pw in [("#0C0905", 1500, 0.8), ("#1A1309", 1000, 1.2),
+                             ("#23190B", 560, 1.6)]:
+            layer = Image.new("RGB", (2 * rad, 2 * rad), col)
+            mask = _radial_mask((2 * rad, 2 * rad), pw)
+            im.paste(layer, (cx - rad, cy - rad), mask)
+        path = TMP / f"bg_{center[0]}_{center[1]}.jpg"
+        im.save(path, quality=90)
+        _CACHE[key] = path
+    return _CACHE[key]
+
+
+def glow_image(opacity):
+    key = ("glow", round(opacity, 2))
+    if key not in _CACHE:
+        n = 600
+        im = Image.new("RGBA", (n, n), "#" + GOLD)
+        im.putalpha(_radial_mask((n, n), 1.7, int(255 * opacity)))
+        path = TMP / f"glow_{int(opacity * 100)}.png"
+        im.save(path)
+        _CACHE[key] = path
+    return _CACHE[key]
+
+
 def background(slide, seed, glow=(50, 42)):
-    bg = shape(slide, MSO_SHAPE.RECTANGLE, 0, 0, W, H, INK)
-    gradient(bg, [(0, "21180A", None), (55, "0C0905", None), (100, "030302", None)],
-             center=glow)
+    slide.shapes.add_picture(str(bg_image(glow)), 0, 0, Inches(W), Inches(H))
     rnd = random.Random(seed)
     for _ in range(26):
         sz = rnd.choice([0.03, 0.04, 0.05, 0.06, 0.08])
@@ -279,9 +327,8 @@ def divider(slide, y, width=3.2):
 
 
 def glow(slide, cx, cy, r, opacity=0.35):
-    g = shape(slide, MSO_SHAPE.OVAL, cx - r, cy - r, 2 * r, 2 * r, GOLD)
-    gradient(g, [(0, GOLD, opacity), (45, GOLD, opacity * 0.45), (100, GOLD, 0.0)],
-             center=(50, 50))
+    slide.shapes.add_picture(str(glow_image(opacity)), Inches(cx - r), Inches(cy - r),
+                             Inches(2 * r), Inches(2 * r))
 
 
 def ring(slide, cx, cy, r, nodes=7, node_r=0.16, op=0.55, labels=None):
@@ -890,9 +937,8 @@ def build(assets):
               extra=book_cta, extra_h=0.65)
 
     def enroll(s, y=5.7):
-        b = shape(s, MSO_SHAPE.ROUNDED_RECTANGLE, 3.1, y, W - 6.2, 0.8, GOLD)
-        gradient(b, [(0, GOLD_HI, None), (100, GOLD_DEEP, None)], radial=False,
-                 angle=90)
+        b = shape(s, MSO_SHAPE.ROUNDED_RECTANGLE, 3.1, y, W - 6.2, 0.8, GOLD_HI,
+                  line_hex=GOLD_DEEP, lw=2)
         b.adjustments[0] = 0.3
         text(s, 3.1, y, W - 6.2, 0.8,
              [dict(t="ENROLL  ·  arisecreditpro.com  ·  link in the chat", font=HEAD,
@@ -971,7 +1017,8 @@ def prepare_assets(tmp):
 
 if __name__ == "__main__":
     import tempfile
-    build(prepare_assets(Path(tempfile.mkdtemp())))
+    TMP = Path(tempfile.mkdtemp())
+    build(prepare_assets(TMP))
     notes = load_notes()
     assert len(prs.slides) == len(notes) == 55, (len(prs.slides), len(notes))
     for i, slide in enumerate(prs.slides, 1):
