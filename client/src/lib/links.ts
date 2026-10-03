@@ -10,13 +10,11 @@ export const BOOKING_URL =
   "https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq";
 
 /**
- * The weekly WealthQuest event.
- *
- * Update this single value when the event link changes each week — both
- * Player 1 and Simple View read from here.
+ * THE FLOW — the weekly webinar registration page (its own repository,
+ * eastmalik/wealth-quest-webinar). Player 1, Simple View and the lessons
+ * all read from here.
  */
-export const EVENT_URL =
-  "https://wealthquest-rdwda2zi.manus.space/?code=eNU4NxSLZEtwCaMq8gGJcP";
+export const EVENT_URL = "https://theflow.7bandfinancialagency.com";
 
 /** Label used for the event in navigation menus. */
 export const EVENT_LABEL = "Event";
