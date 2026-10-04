@@ -11,7 +11,7 @@ Built on the four-section structure in `Webinar-Playbook-Notes.md`:
 | 3 · Process & Proof | 37–43 | ~15 min | Show, don't tell — a live win and a live demo |
 | 4 · Clear Offer | 44–55 | ~10 min + Q&A | The Restoration Program — the obvious next step |
 
-**The offer this webinar sells:** The Restoration Program — $152.60/month all-in, billed at the end
+**The offer this webinar sells:** The Restoration Program — $152.86/month all-in, billed at the end
 of each month after the work is done. Nothing is charged today.
 
 **How to read this script.** *On screen* is what the slide shows. *Say* is written to be read aloud
@@ -27,7 +27,7 @@ Anything in **[brackets]** is a fact only you can fill in. Don't present until e
 - [ ] **Slide 39** uses a **sample or fully redacted** report — never a real person's file
 - [ ] **Slide 18 gift** link works (Ultimate Budget Guide)
 - [ ] **Slide 51 capacity** number is the number you can actually serve
-- [ ] Enrollment link on **slide 53** delivers the CROA written contract, Consumer Credit File Rights statement and 3-business-day cancellation before any work starts, and shows the $152.60 total + IdentityIQ commission **before** checkout
+- [ ] Enrollment link on **slide 53** delivers the CROA written contract, Consumer Credit File Rights statement and 3-business-day cancellation before any work starts, and shows the $152.86 total + IdentityIQ commission **before** checkout
 - [ ] Booking link on **slide 52** works
 - [ ] Slides 32–36 (life insurance content) submitted to your carriers for advertising review
 - [ ] If this runs as a recording: it's labelled **replay** on the registration page and on slide 1
@@ -291,14 +291,14 @@ Anything in **[brackets]** is a fact only you can fill in. Don't present until e
 **Say:** Here's the Restoration Program. I work your file every month, and you only pay for the month I worked. You get the full tri-bureau audit. Monthly dispute rounds — up to thirty items a cycle, across all three bureaus — drafted and submitted for you. A monitoring dashboard. A written report every month. The Financial Literacy Academy. And if you want it, a fifteen-minute check-in with me every month.
 
 ## Slide 47 — What It's Worth
-**On screen:** WHAT IT'S WORTH · File audit, every item labelled — $150 · Monthly dispute work — $100/mo · Credit monitoring — $32.60/mo · Academy — $29/mo · Stacked: $311 first month · $161.60/mo after
+**On screen:** WHAT IT'S WORTH · File audit, every item labelled — $150 · Monthly dispute work — $100/mo · Credit monitoring — $32.86/mo · Academy — $29/mo · Stacked: $311.86 first month · $161.86/mo after
 
-**Say:** If you bought these separately: a full file audit runs about a hundred and fifty. The monthly dispute work, about a hundred a month. Monitoring is thirty-two sixty. A community like the Academy, about twenty-nine. That's three hundred eleven the first month and a hundred sixty-one sixty after that. I'm not going to tell you it's worth ten thousand dollars. It's worth what it's worth.
+**Say:** If you bought these separately: a full file audit runs about a hundred and fifty. The monthly dispute work, about a hundred a month. Monitoring is thirty-two eighty-six. A community like the Academy, about twenty-nine. That's about three hundred twelve the first month and a hundred sixty-one eighty-six after that. I'm not going to tell you it's worth ten thousand dollars. It's worth what it's worth.
 
 ## Slide 48 — Your Total Cost
-**On screen:** YOUR TOTAL COST: $152.60 / MONTH · $120.00 — Arise Credit Pro, for the dispute work · $32.60 — IdentityIQ credit monitoring, required · IdentityIQ bills you directly · 7-day free trial · I earn a commission when you enroll
+**On screen:** YOUR TOTAL COST: $152.86 / MONTH · $120.00 — Arise Credit Pro, for the dispute work · $32.86 — IdentityIQ credit monitoring, required · IdentityIQ bills you directly · 7-day trial for $1 · I earn a commission when you enroll
 
-**Say:** Your total cost is one fifty-two sixty a month, and I'm going to show you every dollar. One twenty goes to Arise Credit Pro for the work. Thirty-two sixty goes to IdentityIQ for credit monitoring. That monitoring is required — I can't work your file without live access to all three reports. IdentityIQ bills you directly, there's a seven-day free trial, and I want you to know I earn a commission when you sign up for it. You can cancel either one any time.
+**Say:** Your total cost is one fifty-two eighty-six a month, and I'm going to show you every dollar. One twenty goes to Arise Credit Pro for the work. Thirty-two eighty-six goes to IdentityIQ for credit monitoring. That monitoring is required — I can't work your file without live access to all three reports. IdentityIQ bills you directly, there's a seven-day trial for a dollar, and I want you to know I earn a commission when you sign up for it. You can cancel either one any time.
 
 ## Slide 49 — Nothing Is Charged Today
 **On screen:** NOTHING IS CHARGED TODAY. · You're billed at the end of each month — after the work is done · No setup fee · No contract · Cancel anytime · Written agreement + 3-business-day right to cancel

@@ -254,7 +254,7 @@ facts = Table([
     [Paragraph("OTO", S["cell_head"]), Paragraph("The Dispute Engine", S["cell_b"]),
      Paragraph("$67 one-time", S["cell"])],
     [Paragraph("MID", S["cell_head"]), Paragraph("The Restoration Program", S["cell_b"]),
-     Paragraph("$152.60 / month", S["cell"])],
+     Paragraph("$152.86 / month", S["cell"])],
     [Paragraph("HIGH", S["cell_head"]), Paragraph("The Capital Architecture Program", S["cell_b"]),
      Paragraph("$2,997 staged", S["cell"])],
     [Paragraph("—", S["cell_head"]), Paragraph("The insurance conversation", S["cell_b"]),
@@ -312,7 +312,7 @@ ladder.append(data_table(
       "Education. No service obligation, so it can be sold upfront."],
      ["OTO", "The Dispute Engine", "$67 one-time",
       "Education, delivered instantly. No subscription required."],
-     ["Mid", "The Restoration Program", "$152.60/mo",
+     ["Mid", "The Restoration Program", "$152.86/mo",
       "Service billed <b>after</b> each month’s work. No advance fee."],
      ["High", "Capital Architecture Program", "$2,997",
       "Consulting and education, paid in stages as each phase is delivered."],
@@ -477,7 +477,7 @@ story += chapter("4", "Mid Ticket — The Restoration Program",
                  "The done-for-you service. This is the existing $120/month plan, restructured "
                  "so the billing and the disclosure both sit where they belong.")
 
-story.append(tier_header("Mid", "The Restoration Program", "$152.60 / mo"))
+story.append(tier_header("Mid", "The Restoration Program", "$152.86 / mo"))
 
 story += F("Delivery method",
            "Done-for-you service plus client portal and monthly reporting. Disputes drafted and "
@@ -509,7 +509,7 @@ story.append(data_table(
       "Up to 30 dispute items per cycle across all three bureaus. Professional letters, "
       "submissions and follow-up handled for you."],
      ["Billing",
-      "$152.60/month, charged at the <b>end</b> of each service month, after that month’s "
+      "$152.86/month, charged at the <b>end</b> of each service month, after that month’s "
       "work is performed. Cancel any time, no contract, no termination fee."],
      ["Not included",
       "Rent/mortgage tradeline reporting, LLC structuring, funding access. Those live in the "
@@ -535,30 +535,30 @@ story.append(features([
     ("Monthly dispute rounds, up to 30 items, all three bureaus, drafted and submitted for you",
      "$100 / mo"),
     ("Credit monitoring, daily tri-bureau updates (IdentityIQ) — pass-through, not marked up",
-     "$32.60 / mo"),
+     "$32.86 / mo"),
     ("Financial Literacy Academy (Skool) — ongoing", "$29 / mo"),
-], "$311 first month · $161.60/mo after"))
+], "$311.86 first month · $161.86/mo after"))
 
 story.append(Spacer(1, 10))
 story.append(warn("DO NOT INFLATE THE STACK", [
-    P("A $311 stack against a $152.60 price is a <b>credible</b> 2x. A “$2,000 value” "
-      "against $152.60 reads like every other credit repair funnel and it undercuts the one "
+    P("A $311.86 stack against a $152.86 price is a <b>credible</b> 2x. A “$2,000 value” "
+      "against $152.86 reads like every other credit repair funnel and it undercuts the one "
       "thing that makes this business different. Keep it honest and let the math be modest.",
       "panel"),
 ]))
 
 story.append(PageBreak())
 
-story += F("Price · $152.60 / month, all-in, billed in arrears")
+story += F("Price · $152.86 / month, all-in, billed in arrears")
 story.append(data_table(
     ["COMPONENT", "AMOUNT", "BILLED BY"],
     [["Arise Credit Pro service fee", "$120.00", "Arise Credit Pro, at month end"],
-     ["IdentityIQ credit monitoring — <b>required</b>", "$32.60", "IdentityIQ, directly"],
-     ["<b>Total monthly cost to the client</b>", "<b>$152.60</b>", ""]],
+     ["IdentityIQ credit monitoring — <b>required</b>", "$32.86", "IdentityIQ, directly"],
+     ["<b>Total monthly cost to the client</b>", "<b>$152.86</b>", ""]],
     [W - 2.9 * inch, 0.9 * inch, 2.0 * inch]))
 story.append(Spacer(1, 8))
-story.append(P("<b>Show the $152.60 number first, then break it down.</b> Do not advertise $120 "
-               "and reveal $32.60 on the thank-you page. That is the single biggest fix in this "
+story.append(P("<b>Show the $152.86 number first, then break it down.</b> Do not advertise $120 "
+               "and reveal $32.86 on the thank-you page. That is the single biggest fix in this "
                "tier.", "body"))
 
 story += F("Payment options")
@@ -566,7 +566,7 @@ story.append(bullets([
     "Month-to-month only. Charged at the close of each service month.",
     "No setup fee. No advance payment. No contract term. Cancel any time before the next cycle "
     "and nothing further is owed.",
-    "IdentityIQ is billed separately by IdentityIQ — 7-day free trial, then $32.60/month, "
+    "IdentityIQ is billed separately by IdentityIQ — 7-day trial for $1, then $32.86/month, "
     "cancelled directly with them.",
 ]))
 
@@ -585,7 +585,7 @@ story.append(warn("RETIRE THE PREPAID PACKAGES AT THIS TIER", [
 story += F("Price rationale",
            "Credit repair in this market runs $89–$149/month plus a $99–$199 "
            "“setup” or “first work” fee, and almost all of it is prepaid. At "
-           "$152.60 all-in with no setup fee and nothing collected in advance, a client who "
+           "$152.86 all-in with no setup fee and nothing collected in advance, a client who "
            "stays six months pays $915.60 — versus roughly $1,000–$1,100 at a "
            "competitor who charged them before doing anything.")
 story.append(P("The price is also deliberately not the cheapest. The cheap end of this industry "
@@ -861,10 +861,10 @@ story += chapter("7", "Disclosure Copy Library",
 
 story.append(P("Mid tier — above the checkout button", "h2"))
 story.append(box(None, [
-    P("<b>Total monthly cost: $152.60.</b> That’s $120.00 to Arise Credit Pro for dispute "
-      "work, plus $32.60 to IdentityIQ for credit monitoring. Monitoring is <b>required</b> "
+    P("<b>Total monthly cost: $152.86.</b> That’s $120.00 to Arise Credit Pro for dispute "
+      "work, plus $32.86 to IdentityIQ for credit monitoring. Monitoring is <b>required</b> "
       "— we can’t work your file without live tri-bureau access. IdentityIQ bills you "
-      "directly (7-day free trial, then $32.60/month) and <b>we earn a commission when you "
+      "directly (7-day trial for $1, then $32.86/month) and <b>we earn a commission when you "
       "enroll.</b> You can cancel either one at any time.", "disc"),
     P("You are charged by Arise Credit Pro at the <b>end</b> of each service month, after that "
       "month’s work is performed. No setup fee, no prepayment, no contract.", "disc"),
@@ -941,7 +941,7 @@ story.append(data_table(
 story.append(Spacer(1, 14))
 story.append(warn("THE ONE ITEM THAT IS LIVE AND WRONG TODAY", [
     P("Right now a client pays, <i>then</i> learns on the thank-you page that they also need a "
-      "$32.60/month subscription to receive what they bought. A required recurring cost of "
+      "$32.86/month subscription to receive what they bought. A required recurring cost of "
       "getting the service has to be disclosed <b>before</b> payment, and the free-trial-then-"
       "auto-bill structure is a negative option with its own disclosure rules. The commission "
       "is a material connection and belongs at the point of recommendation.", "panel"),

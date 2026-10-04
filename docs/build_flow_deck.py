@@ -865,7 +865,7 @@ def build(assets):
          anchor="middle")
     rows = [("File audit, every item labelled", "$150"),
             ("Monthly dispute work", "$100 / mo"),
-            ("Credit monitoring", "$32.60 / mo"),
+            ("Credit monitoring", "$32.86 / mo"),
             ("Financial Literacy Academy", "$29 / mo")]
     panel(s, 2.4, 2.45, 8.5, 3.55)
     for i, (k, v) in enumerate(rows):
@@ -875,7 +875,7 @@ def build(assets):
              anchor="middle")
         hline(s, 2.8, y + 0.6, 10.5, GOLD, 0.5, 0.35)
     text(s, 2.8, 5.25, 7.7, 0.6,
-         [dict(t="Stacked: $311 first month  ·  $161.60 / mo after", font=HEAD, size=21,
+         [dict(t="Stacked: $311.86 first month  ·  $161.86 / mo after", font=HEAD, size=21,
                color=GOLD_HI, bold=True)], anchor="middle")
 
     # 48 — total cost
@@ -883,17 +883,17 @@ def build(assets):
     label(s, "YOUR TOTAL COST")
     glow(s, W / 2, 2.2, 2.4, 0.3)
     text(s, 1.0, 1.2, W - 2.0, 1.5,
-         [dict(t="$152.60 / month", font=HEAD, size=72, color=GOLD_HI, bold=True)],
+         [dict(t="$152.86 / month", font=HEAD, size=72, color=GOLD_HI, bold=True)],
          anchor="middle")
     panel(s, 2.4, 2.95, 8.5, 2.0)
     for i, (v, k) in enumerate([("$120.00", "Arise Credit Pro — for the dispute work"),
-                                ("$32.60", "IdentityIQ credit monitoring — required")]):
+                                ("$32.86", "IdentityIQ credit monitoring — required")]):
         y = 3.2 + i * 0.8
         text(s, 2.8, y, 1.9, 0.6, [P(v, 24, GOLD_HI, bold=True)], align="left",
              anchor="middle")
         text(s, 4.7, y, 6.0, 0.6, [P(k, 21)], align="left", anchor="middle")
     text(s, 1.5, 5.15, W - 3.0, 1.0,
-         [P("IdentityIQ bills you directly  ·  7-day free trial  ·  "
+         [P("IdentityIQ bills you directly  ·  7-day trial for $1  ·  "
             "I earn a commission when you enroll", 18, MUTED, italic=True)])
 
     # 49 — nothing charged today
