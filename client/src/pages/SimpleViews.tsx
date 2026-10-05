@@ -43,8 +43,8 @@ function SimpleCard({ children, className = "" }: { children: ReactNode; classNa
   return <div className={`border border-[#dbe7f5] bg-white shadow-[0_14px_34px_rgba(11,31,58,0.07)] ${className}`}>{children}</div>;
 }
 
-function SimpleSection({ children, className = "", id }: { children: ReactNode; className?: string; id?: string }) {
-  return <section id={id} className={`relative px-5 py-20 sm:px-7 lg:py-28 ${className}`}>{children}</section>;
+function SimpleSection({ children, className = "", id, tour }: { children: ReactNode; className?: string; id?: string; tour?: string }) {
+  return <section id={id} data-tour={tour} className={`relative px-5 py-20 sm:px-7 lg:py-28 ${className}`}>{children}</section>;
 }
 
 function SevenPointMark({ className = "" }: { className?: string }) {
@@ -81,7 +81,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
+          <nav data-tour="nav" className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
             {navItems.map((item) => (
               <NavItemLink key={item.href} href={item.href} external={item.external} className="font-tactical text-sm font-bold uppercase tracking-[0.1em] text-[#425b78] transition-colors hover:text-[#2563eb]">
                 {item.label}
@@ -90,10 +90,10 @@ function SimpleLayout({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="hidden bg-[#0b1f3a] px-4 py-3 font-tactical text-xs font-bold uppercase tracking-[0.13em] text-white transition-all hover:bg-[#2563eb] active:scale-[0.97] sm:inline-flex">
+            <a data-tour="nav-cta" href={calendlyUrl} target="_blank" rel="noopener noreferrer" className="hidden bg-[#0b1f3a] px-4 py-3 font-tactical text-xs font-bold uppercase tracking-[0.13em] text-white transition-all hover:bg-[#2563eb] active:scale-[0.97] sm:inline-flex">
               Talk With Malik
             </a>
-            <button type="button" onClick={() => setMenuOpen((current) => !current)} className="inline-flex p-2 text-[#0b1f3a] lg:hidden" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen}>
+            <button data-tour="menu" type="button" onClick={() => setMenuOpen((current) => !current)} className="inline-flex p-2 text-[#0b1f3a] lg:hidden" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen}>
               {menuOpen ? <X size={23} /> : <Menu size={23} />}
             </button>
           </div>
@@ -115,7 +115,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
         )}
       </header>
       <main>{children}</main>
-      <footer className="border-t border-[#d7e3f0] bg-[#0b1f3a] px-5 py-14 text-white sm:px-7">
+      <footer data-tour="footer" className="border-t border-[#d7e3f0] bg-[#0b1f3a] px-5 py-14 text-white sm:px-7">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
             <div className="mb-4 flex items-center gap-3">
@@ -152,7 +152,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
 export function SimpleHome() {
   return (
     <SimpleLayout>
-      <section className="relative overflow-hidden bg-[#edf5ff] px-5 pb-20 pt-36 sm:px-7 sm:pt-44 lg:pb-28">
+      <section data-tour="hero" className="relative overflow-hidden bg-[#edf5ff] px-5 pb-20 pt-36 sm:px-7 sm:pt-44 lg:pb-28">
         <div className="absolute right-0 top-0 h-full w-[46%] bg-[linear-gradient(135deg,transparent_0%,rgba(37,99,235,0.08)_55%,rgba(184,137,46,0.12)_100%)]" />
         <SevenPointMark className="absolute right-[9%] top-28 h-28 w-28 text-[#2563eb]/15 sm:h-40 sm:w-40" />
         <div className="absolute bottom-0 left-[8%] h-px w-3/4 bg-gradient-to-r from-transparent via-[#b8892e]/55 to-transparent" />
@@ -177,7 +177,7 @@ export function SimpleHome() {
         </div>
       </section>
 
-      <SimpleSection id="services" className="bg-white">
+      <SimpleSection id="services" tour="services" className="bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl">
             <SimpleKicker>Start with what matters now</SimpleKicker>
@@ -201,7 +201,7 @@ export function SimpleHome() {
         </div>
       </SimpleSection>
 
-      <SimpleSection className="overflow-hidden bg-[#0b1f3a]">
+      <SimpleSection tour="roadmap" className="overflow-hidden bg-[#0b1f3a]">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <SimpleKicker>Your financial roadmap</SimpleKicker>
@@ -225,7 +225,7 @@ export function SimpleHome() {
         </div>
       </SimpleSection>
 
-      <SimpleSection className="bg-[#f8fbff]">
+      <SimpleSection tour="guide" className="bg-[#f8fbff]">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <SimpleKicker>Meet your guide</SimpleKicker>
@@ -241,7 +241,7 @@ export function SimpleHome() {
         </div>
       </SimpleSection>
 
-      <SimpleSection className="bg-white">
+      <SimpleSection tour="contact" className="bg-white">
         <div className="mx-auto max-w-4xl text-center">
           <SimpleKicker>Ready when you are</SimpleKicker>
           <h2 className="font-display text-3xl font-black leading-tight text-[#0b1f3a] sm:text-5xl">Let’s talk about the next right step.</h2>

@@ -13,6 +13,7 @@ import Lesson2 from "./pages/Lesson2";
 import Lesson3 from "./pages/Lesson3";
 import Lesson4 from "./pages/Lesson4";
 import ViewModeToggle from "./components/ViewModeToggle";
+import SiteGuide from "./components/SiteGuide";
 import { useViewMode, ViewModeProvider } from "./contexts/ViewModeContext";
 import { SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pages/SimpleViews";
 import SimpleAbout from "./pages/SimpleAboutReplacement";
@@ -66,6 +67,7 @@ function App() {
             <Toaster />
             <ViewModeToggle />
             <Router />
+            <SiteGuide />
           </TooltipProvider>
         </ViewModeProvider>
       </ThemeProvider>
