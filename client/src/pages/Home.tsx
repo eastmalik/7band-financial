@@ -90,20 +90,20 @@ function Navbar() {
               </span>
             </Link>
             {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-6">
+            <div data-tour="nav" className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
                 <NavItemLink key={item.href} href={item.href} external={item.external}
                   className="font-tactical text-sm font-semibold tracking-wider text-[#c9a84c]/70 hover:text-[#c9a84c] uppercase transition-colors">
                   {item.label}
                 </NavItemLink>
               ))}
-              <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+              <a data-tour="nav-cta" href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
                 className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
                 Begin Quest
               </a>
             </div>
             {/* Mobile HUD hamburger button */}
-            <button
+            <button data-tour="menu"
               className="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 border border-[#c9a84c]/40 bg-[#0a0800]/80 hover:border-[#c9a84c]/80 transition-colors z-50"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -221,7 +221,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 1 — HERO: PLAYER PROFILE / QUEST OBJECTIVE
           ══════════════════════════════════════════════════════ */}
-      <section className="player-hero-motion relative min-h-screen flex items-center justify-center overflow-hidden circuit-bg">
+      <section data-tour="hero" className="player-hero-motion relative min-h-screen flex items-center justify-center overflow-hidden circuit-bg">
         {/* Background image */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-[#050400]/20 to-[#050400]" />
@@ -278,7 +278,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 2 — BOSS FIGHT: THE BANKING TRAP VILLAIN
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-24 bg-gradient-to-b from-[#050400] to-[#0f0202] overflow-hidden">
+      <section data-tour="problem" className="relative py-24 bg-gradient-to-b from-[#050400] to-[#0f0202] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.06)_0%,transparent_70%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -338,7 +338,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 3 — ENTER YOUR GUIDE
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-24 bg-[#050400] circuit-bg overflow-hidden">
+      <section data-tour="guide" className="relative py-24 bg-[#050400] circuit-bg overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -392,7 +392,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 5 — DIAGNOSTIC MATRIX: NPC vs PLAYER 1
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
+      <section data-tour="blueprint" className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.05)_0%,transparent_70%)]" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
@@ -441,7 +441,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 5 — DIAGNOSTIC MATRIX: NPC vs PLAYER 1
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-24 bg-[#060500] circuit-bg overflow-hidden">
+      <section data-tour="compare" className="relative py-24 bg-[#060500] circuit-bg overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <SectionLabel text="Diagnostic Matrix" />
@@ -505,7 +505,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 7 — SYSTEM WARNING: COST OF INACTION
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-20 bg-gradient-to-b from-[#050400] to-[#0f0202] overflow-hidden">
+      <section data-tour="warning" className="relative py-20 bg-gradient-to-b from-[#050400] to-[#0f0202] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.08)_0%,transparent_70%)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel text="System Warning — Cost of Inaction" danger />
@@ -541,7 +541,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           SECTION 8 — ULTIMATE VICTORY: HIGH SCORE ACHIEVED
           ══════════════════════════════════════════════════════ */}
-      <section className="relative py-24 bg-[#050400] overflow-hidden">
+      <section data-tour="winning" className="relative py-24 bg-[#050400] overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-t from-[#050400] via-[#050400]/70 to-[#050400]/80" />
         </div>
@@ -581,7 +581,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════
           FOOTER
           ══════════════════════════════════════════════════════ */}
-      <footer className="bg-[#030200] border-t border-[#c9a84c]/15 py-16">
+      <footer data-tour="footer" className="bg-[#030200] border-t border-[#c9a84c]/15 py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
             {/* Brand */}
