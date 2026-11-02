@@ -236,9 +236,9 @@ export default function Home() {
         {/* Hero content */}
         <div className="relative z-10 max-w-5xl mx-auto translate-y-10 px-4 pt-48 pb-32 text-center sm:translate-y-8 sm:px-6 sm:pt-28">
           <h1 className="player-hero-title font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 gold-text-glow-intense">
-            Stop Funding<br />
+            Stop Building<br />
             <span className="text-[#c9a84c]">Their Dreams.</span><br />
-            Start Funding Yours.
+            Start Building Yours.
           </h1>
           <p className="player-hero-copy font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed tracking-wide">
             Every dollar you park in a bank account is a dollar working for their shareholders — not your family. The 7-Level Generational Wealth Blueprint is the strategy the wealthy use to reclaim that capital and build a legacy that compounds across lifetimes.
@@ -595,7 +595,7 @@ export default function Home() {
                 </span>
               </div>
               <p className="font-tactical text-white/40 text-xs leading-relaxed tracking-wide mb-4">
-                Stop Funding Their Dreams.<br />Start Funding Yours.
+                Stop Building Their Dreams.<br />Start Building Yours.
               </p>
             </div>
             {/* Services */}

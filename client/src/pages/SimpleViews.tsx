@@ -170,7 +170,7 @@ export function SimpleHome() {
           <SimpleCard className="relative overflow-hidden p-7 sm:p-9">
             <div className="absolute left-0 top-0 h-1 w-full bg-[#b8892e]" />
             <p className="font-tactical text-xs font-bold uppercase tracking-[0.15em] text-[#2563eb]">The 7Band perspective</p>
-            <p className="mt-5 font-display text-2xl font-bold leading-snug text-[#0b1f3a]">“Stop funding their dreams. Start funding yours.”</p>
+            <p className="mt-5 font-display text-2xl font-bold leading-snug text-[#0b1f3a]">“Stop building their dreams. Start building yours.”</p>
             <div className="my-7 h-px bg-[#dbe7f5]" />
             <p className="font-body text-sm leading-relaxed text-[#526b86]">The point is not to chase a one-size-fits-all product. It is to learn how credit, protection, access to capital, and long-term planning may fit together in a way that serves your household.</p>
           </SimpleCard>
