@@ -1,6 +1,6 @@
 # THE FLOW — Webinar Script (20-minute version)
 
-**The Generational Wealth Quest** · Presenter: Malik East · Saturdays 10:30 AM CT / 11:30 AM ET
+**The Generational Wealth Quest** · Presenter: Malik East · Launch Saturday, December 12, 2026, then Saturdays · 8:30 AM PT / 10:30 AM CT / 11:30 AM ET
 Runtime: **~20 min teaching + ~10 min Q&A = 30 min** — built to fit free Zoom's 40-minute limit with room to spare.
 
 Canva deck: **THE FLOW — Webinar (20 min)** (26 slides; the speaker notes in Canva match this script). The full 75-minute deck, **THE FLOW — Webinar (Final)**, is unchanged.
@@ -10,7 +10,7 @@ The full 75-minute script is `The-Flow-Webinar-Script.md`.
 
 | Clock | Slides | Part | Job |
 |---|---|---|---|
-| Before start | 1 | Waiting screen | On screen while people join early |
+| 10:25–10:30 CT | 1 | Waiting screen | On screen while people arrive |
 | 0:00–3:25 | 2–8 | Opening | Welcome, rules, who's in the room, the problem, who this is for / not for |
 | 3:25–4:50 | 9–12 | The guide | The reset, who I am, the one question, the three secrets |
 | 4:50–7:45 | 13–14 | Secret I · The Order | The map and why sequence matters |
@@ -38,7 +38,7 @@ drifted off. Each takes about 10 seconds: ask, wait, read two or three names out
 ## Before you go live — checklist
 
 - [ ] Every **[bracket]** on slide 10 filled in with something true
-- [ ] Zoom meeting open **about an hour early**, sharing the waiting screen (slide 1); chat on
+- [ ] Start the Zoom meeting at **10:25 AM CT** (not earlier: free Zoom's 40 minutes start when the meeting starts), sharing the waiting screen (slide 1); chat on
 - [ ] At 10:29: **Record → Record on this computer**
 - [ ] Booking link (free 30-minute call) copied and ready to paste in the chat
 - [ ] Ultimate Budget Guide link copied and ready to paste in the chat
@@ -51,9 +51,9 @@ drifted off. Each takes about 10 seconds: ask, wait, read two or three names out
 # WAITING SCREEN · before 10:30
 
 ## Slide 1 — Waiting Screen  *(before start)*
-**On screen:** WELCOME — WE START SHORTLY · THE FLOW · Live at 10:30 AM CT · 11:30 AM ET · Grab a pen and paper while you wait · SAY HI IN THE CHAT
+**On screen:** WELCOME — WE START SHORTLY · THE FLOW · 8:30 AM PT · 10:30 AM CT · 11:30 AM ET · SAY HI IN THE CHAT
 
-**Do:** Open the Zoom meeting about an hour early and share this slide. People join early; this tells them they're in the right place and when it starts. Mute yourself or step away. At 10:29, start recording, then move to slide 2 at 10:30.
+**Do:** Start the Zoom meeting at 10:25 AM CT and share this slide. Free Zoom gives you 40 minutes from the moment the meeting starts, so 10:25 runs until 11:05. Anyone earlier sees "waiting for the host" (keep "join before host" off). At 10:29, start recording, then move to slide 2 at 10:30.
 
 ---
 
