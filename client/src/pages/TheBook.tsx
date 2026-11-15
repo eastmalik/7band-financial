@@ -111,7 +111,7 @@ export default function TheBook() {
 
       {/* HERO — cover + title */}
       <section className="relative overflow-hidden circuit-bg pt-32 pb-20 sm:pt-40">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/80 via-[#050400]/40 to-[#050400]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050400]/80 via-[#050400]/40 to-[#050400]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[620px] h-[620px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
@@ -156,7 +156,7 @@ export default function TheBook() {
 
       {/* THE PREMISE */}
       <section className="relative py-24 bg-gradient-to-b from-[#050400] to-[#0a0800] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.06)_0%,transparent_70%)]" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel text="Why This Book Exists" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-6 leading-tight">
@@ -263,7 +263,7 @@ export default function TheBook() {
 
       {/* THE UNUSUAL CHAPTER */}
       <section className="relative py-24 bg-[#050400] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.07)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.07)_0%,transparent_70%)]" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <SectionLabel text="Chapter 10" />
@@ -327,7 +327,7 @@ export default function TheBook() {
 
       {/* NOTIFY */}
       <section className="relative py-24 bg-[#050400] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.1)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.1)_0%,transparent_70%)]" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <BookOpen size={32} className="text-[#c9a84c] mx-auto mb-6" />
           <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-5 gold-text-glow-intense">

@@ -101,7 +101,7 @@ export default function Lesson3() {
       <LessonNavbar />
       {/* HERO */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden circuit-bg pt-16">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-[#050400]/30 to-[#050400]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-[#050400]/30 to-[#050400]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[500px] h-[500px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
