@@ -6,8 +6,8 @@ export default function NotFound() {
     <div className="relative min-h-screen w-full overflow-hidden bg-[#050400] flex items-center justify-center px-4">
       {/* Ambient gold glow, matching the site's hero treatment */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.10)_0%,transparent_70%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-transparent to-[#050400]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.10)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-transparent to-[#050400]" />
       </div>
 
       <div className="relative z-10 w-full max-w-xl text-center">

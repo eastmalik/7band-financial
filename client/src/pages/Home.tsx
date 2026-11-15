@@ -224,7 +224,7 @@ export default function Home() {
       <section data-tour="hero" className="player-hero-motion relative min-h-screen flex items-center justify-center overflow-hidden circuit-bg">
         {/* Background image */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-[#050400]/20 to-[#050400]" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050400]/60 via-[#050400]/20 to-[#050400]" />
         </div>
         {/* Radial glow center */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -279,7 +279,7 @@ export default function Home() {
           SECTION 2 — BOSS FIGHT: THE BANKING TRAP VILLAIN
           ══════════════════════════════════════════════════════ */}
       <section data-tour="problem" className="relative py-24 bg-gradient-to-b from-[#050400] to-[#0f0202] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.06)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.06)_0%,transparent_70%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <SectionLabel text="Boss Fight — Identify the Enemy" danger />
@@ -339,7 +339,7 @@ export default function Home() {
           SECTION 3 — ENTER YOUR GUIDE
           ══════════════════════════════════════════════════════ */}
       <section data-tour="guide" className="relative py-24 bg-[#050400] circuit-bg overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left — guide profile */}
@@ -393,7 +393,7 @@ export default function Home() {
           SECTION 5 — DIAGNOSTIC MATRIX: NPC vs PLAYER 1
           ══════════════════════════════════════════════════════ */}
       <section data-tour="blueprint" className="relative py-20 bg-gradient-to-b from-[#050400] to-[#080600] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.05)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.05)_0%,transparent_70%)]" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-5xl font-black text-white mb-4">
             The <span className="text-[#c9a84c]">Generational Wealth</span> Blueprint
@@ -506,7 +506,7 @@ export default function Home() {
           SECTION 7 — SYSTEM WARNING: COST OF INACTION
           ══════════════════════════════════════════════════════ */}
       <section data-tour="warning" className="relative py-20 bg-gradient-to-b from-[#050400] to-[#0f0202] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.08)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.08)_0%,transparent_70%)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel text="System Warning — Cost of Inaction" danger />
           <h2 className="font-display text-3xl sm:text-4xl font-black text-white mb-10 glitch-text">
@@ -543,9 +543,9 @@ export default function Home() {
           ══════════════════════════════════════════════════════ */}
       <section data-tour="winning" className="relative py-24 bg-[#050400] overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050400] via-[#050400]/70 to-[#050400]/80" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050400] via-[#050400]/70 to-[#050400]/80" />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.12)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.12)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
             This Is What Winning Looks Like.

@@ -103,7 +103,7 @@ export default function About() {
 
       {/* HERO */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden circuit-bg">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050400]/80 via-[#050400]/40 to-[#050400]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050400]/80 via-[#050400]/40 to-[#050400]" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[600px] h-[600px] rounded-full bg-[#c9a84c]/5 blur-3xl" />
         </div>
@@ -122,7 +122,7 @@ export default function About() {
 
       {/* PROFILE + PHOTO */}
       <section className="relative py-24 bg-[#050400] circuit-bg overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,168,76,0.04)_0%,transparent_60%)]" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Photo */}
@@ -203,7 +203,7 @@ export default function About() {
 
       {/* CTA */}
       <section className="relative py-24 bg-[#050400] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.08)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.08)_0%,transparent_70%)]" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="font-display text-3xl sm:text-5xl font-black text-[#c9a84c] mb-4 gold-text-glow-intense">
             Ready to Work With Malik?
