@@ -1,3 +1,4 @@
+import LegalLinks from "@/components/LegalLinks";
 import { Link } from "wouter";
 import NavItemLink from "@/components/NavItemLink";
 import { EVENT_URL } from "@/lib/links";
@@ -97,7 +98,7 @@ function Navbar() {
                   {item.label}
                 </NavItemLink>
               ))}
-              <a data-tour="nav-cta" href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+              <a data-tour="nav-cta" href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
                 className="font-tactical text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#c9a84c] text-black hover:bg-[#e8c97a] transition-colors gold-pulse">
                 Begin Quest
               </a>
@@ -193,7 +194,7 @@ function Navbar() {
           }}
         >
           <a
-            href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq"
+            href="https://theflow.7bandfinancialagency.com/call"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
@@ -244,7 +245,7 @@ export default function Home() {
             Every dollar you park in a bank account is a dollar working for their shareholders — not your family. The 7-Level Generational Wealth Blueprint is the strategy the wealthy use to reclaim that capital and build a legacy that compounds across lifetimes.
           </p>
           <div className="player-hero-actions mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+            <a href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
               className="hud-cta hud-cta-primary inline-flex items-center gap-2 px-8 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
               <Play size={14} fill="currentColor" /> Begin Your Quest
             </a>
@@ -359,7 +360,7 @@ export default function Home() {
                   className="inline-flex items-center gap-2 px-6 py-3 border border-[#c9a84c]/50 text-[#c9a84c] font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#c9a84c]/10 transition-all">
                   View Full Profile <ArrowRight size={14} />
                 </Link>
-                <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+                <a href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all">
                   Schedule Session <ChevronRight size={14} />
                 </a>
@@ -531,7 +532,7 @@ export default function Home() {
           <div className="font-tactical font-bold text-red-500 text-2xl tracking-widest animate-pulse mb-8">
             [ CONTINUE? 9… 8… 7… ]
           </div>
-          <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+          <a href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-4 bg-[#c9a84c] text-black font-tactical font-bold text-sm tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
             <Play size={14} fill="currentColor" /> Yes — Begin My Quest
           </a>
@@ -571,7 +572,7 @@ export default function Home() {
           <div className="font-display text-2xl sm:text-3xl font-black text-white gold-text-glow mb-10">
             "You become the bank that finances your family's future."
           </div>
-          <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+          <a href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 bg-[#c9a84c] text-black font-tactical font-black text-base tracking-widest uppercase hover:bg-[#e8c97a] transition-all gold-pulse">
             <Star size={16} fill="currentColor" /> Lock In Your Character — Begin Now
           </a>
@@ -636,7 +637,7 @@ export default function Home() {
                 </li>
                 <li>
                   <div className="font-tactical text-xs text-white/30 tracking-wider uppercase mb-1">Schedule</div>
-                  <a href="https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq" target="_blank" rel="noopener noreferrer"
+                  <a href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
                     className="font-tactical text-xs text-[#c9a84c] hover:text-[#e8c97a] transition-colors">
                     Book a Free Strategy Call →
                   </a>
@@ -648,6 +649,7 @@ export default function Home() {
             <p className="font-tactical text-xs text-white/25 tracking-wide">
               © {new Date().getFullYear()} 7Band Financial Agency. All rights reserved.
             </p>
+            <LegalLinks className="text-center" />
             <p className="font-tactical text-xs text-white/20 tracking-wide text-center max-w-lg">
               Life insurance products are subject to underwriting. Results vary. This is not financial, legal, or tax advice. Consult a licensed professional for your specific situation.
             </p>

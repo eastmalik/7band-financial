@@ -3,6 +3,7 @@
  * Calm financial-editorial experience: navy #0B1F3A, mineral blue #2563EB,
  * sky #EAF3FF, understated brass #B8892E. Same strategy, delivered plainly.
  */
+import LegalLinks from "@/components/LegalLinks";
 import { Link } from "wouter";
 import NavItemLink from "@/components/NavItemLink";
 import { EVENT_LABEL, EVENT_URL } from "@/lib/links";
@@ -27,7 +28,7 @@ import {
   X,
 } from "lucide-react";
 
-const calendlyUrl = "https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq";
+const calendlyUrl = "https://theflow.7bandfinancialagency.com/call";
 const logoUrl = "/manus-storage/7band-logo-clean_7b539e21.png";
 
 function SimpleKicker({ children }: { children: ReactNode }) {
@@ -144,6 +145,7 @@ function SimpleLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-6 font-tactical text-xs leading-relaxed tracking-wide text-white/45">
           © {new Date().getFullYear()} 7Band Financial Agency. Licensed life insurance agent. Content is educational only and is not financial, legal, or tax advice. Policy benefits, costs, and availability depend on the specific policy and individual circumstances.
         </div>
+        <LegalLinks className="mx-auto mt-3 max-w-7xl" />
       </footer>
     </div>
   );

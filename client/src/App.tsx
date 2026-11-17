@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -19,6 +19,8 @@ import { SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pa
 import SimpleAbout from "./pages/SimpleAboutReplacement";
 import TheBook from "./pages/TheBook";
 import SimpleBook from "./pages/SimpleBook";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function Router() {
   const { mode } = useViewMode();
@@ -34,6 +36,10 @@ function Router() {
         <Route path={"/lesson-2"} component={() => <SimpleLesson lessonPath="/lesson-2" />} />
         <Route path={"/lesson-3"} component={() => <SimpleLesson lessonPath="/lesson-3" />} />
         <Route path={"/lesson-4"} component={() => <SimpleLesson lessonPath="/lesson-4" />} />
+        <Route path={"/privacy-policy"} component={PrivacyPolicy} />
+        <Route path={"/privacy"} component={PrivacyPolicy} />
+        <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
+        <Route path={"/terms"} component={TermsAndConditions} />
         <Route component={SimpleHome} />
       </Switch>
     );
@@ -49,10 +55,28 @@ function Router() {
       <Route path={"/lesson-2"} component={Lesson2} />
       <Route path={"/lesson-3"} component={Lesson3} />
       <Route path={"/lesson-4"} component={Lesson4} />
+      <Route path={"/privacy-policy"} component={PrivacyPolicy} />
+      <Route path={"/privacy"} component={PrivacyPolicy} />
+      <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
+      <Route path={"/terms"} component={TermsAndConditions} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
+  );
+}
+
+/** Legal pages stay plain: no view switch or welcome guide on top of them. */
+const LEGAL_PATHS = ["/privacy-policy", "/privacy", "/terms-and-conditions", "/terms"];
+
+function SiteChrome() {
+  const [location] = useLocation();
+  if (LEGAL_PATHS.includes(location.replace(/\/$/, ""))) return null;
+  return (
+    <>
+      <ViewModeToggle />
+      <SiteGuide />
+    </>
   );
 }
 
@@ -65,9 +89,8 @@ function App() {
         <ViewModeProvider>
           <TooltipProvider>
             <Toaster />
-            <ViewModeToggle />
+            <SiteChrome />
             <Router />
-            <SiteGuide />
           </TooltipProvider>
         </ViewModeProvider>
       </ThemeProvider>
