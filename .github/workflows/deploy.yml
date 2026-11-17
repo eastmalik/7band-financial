@@ -30,7 +30,12 @@ jobs:
           enablement: true
       - run: pnpm exec vite build
       - name: Add SPA fallback
-        run: cp dist/public/index.html dist/public/404.html
+        run: |
+          cp dist/public/index.html dist/public/404.html
+          for page in privacy-policy terms-and-conditions; do
+            mkdir -p dist/public/$page
+            cp dist/public/index.html dist/public/$page/index.html
+          done
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/public

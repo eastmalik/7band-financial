@@ -5,9 +5,15 @@
  * hunt through every page.
  */
 
-/** Booking calendar (GoHighLevel). */
-export const BOOKING_URL =
-  "https://api.leadconnectorhq.com/widget/booking/kclfxyrhhmxucq9DWuZq";
+/**
+ * Free call: the GoHighLevel form "THE FLOW | Free Call" (name, email, phone,
+ * optional SMS consent), which then opens the booking calendar. Linking here
+ * instead of straight to the calendar keeps the SMS opt-in in front of every booking.
+ */
+export const BOOKING_URL = "https://theflow.7bandfinancialagency.com/call";
+
+/** Contact email shown on the legal pages. */
+export const CONTACT_EMAIL = "malik@7bandfinancialagency.com";
 
 /**
  * THE FLOW — the weekly webinar registration page (its own repository,
