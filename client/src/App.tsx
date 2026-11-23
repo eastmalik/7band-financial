@@ -1,82 +1,50 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
 import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import LifetimeLOC from "./pages/LifetimeLOC";
-import About from "./pages/About";
-import GameMap from "./pages/GameMap";
-import Lesson1 from "./pages/Lesson1";
-import Lesson2 from "./pages/Lesson2";
-import Lesson3 from "./pages/Lesson3";
-import Lesson4 from "./pages/Lesson4";
-import ViewModeToggle from "./components/ViewModeToggle";
 import SiteGuide from "./components/SiteGuide";
-import { useViewMode, ViewModeProvider } from "./contexts/ViewModeContext";
+import { ViewModeProvider } from "./contexts/ViewModeContext";
 import { SimpleGameMap, SimpleHome, SimpleLesson, SimpleLifetimeLOC } from "./pages/SimpleViews";
 import SimpleAbout from "./pages/SimpleAboutReplacement";
-import TheBook from "./pages/TheBook";
 import SimpleBook from "./pages/SimpleBook";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 
+/**
+ * The hub is the 7Band Financial Agency life insurance site, in one plain
+ * view. The game version (Player 1) and its quest storyline moved to THE
+ * FLOW site: theflow.7bandfinancialagency.com/map.
+ */
 function Router() {
-  const { mode } = useViewMode();
-  if (mode === "simple") {
-    return (
-      <Switch>
-        <Route path={"/"} component={SimpleHome} />
-        <Route path={"/lifetime-loc"} component={SimpleLifetimeLOC} />
-        <Route path={"/about"} component={SimpleAbout} />
-        <Route path={"/the-book"} component={SimpleBook} />
-        <Route path={"/game-map"} component={SimpleGameMap} />
-        <Route path={"/lesson-1"} component={() => <SimpleLesson lessonPath="/lesson-1" />} />
-        <Route path={"/lesson-2"} component={() => <SimpleLesson lessonPath="/lesson-2" />} />
-        <Route path={"/lesson-3"} component={() => <SimpleLesson lessonPath="/lesson-3" />} />
-        <Route path={"/lesson-4"} component={() => <SimpleLesson lessonPath="/lesson-4" />} />
-        <Route path={"/privacy-policy"} component={PrivacyPolicy} />
-        <Route path={"/privacy"} component={PrivacyPolicy} />
-        <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
-        <Route path={"/terms"} component={TermsAndConditions} />
-        <Route component={SimpleHome} />
-      </Switch>
-    );
-  }
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/lifetime-loc"} component={LifetimeLOC} />
-      <Route path={"/about"} component={About} />
-      <Route path={"/the-book"} component={TheBook} />
-      <Route path={"/game-map"} component={GameMap} />
-      <Route path={"/lesson-1"} component={Lesson1} />
-      <Route path={"/lesson-2"} component={Lesson2} />
-      <Route path={"/lesson-3"} component={Lesson3} />
-      <Route path={"/lesson-4"} component={Lesson4} />
+      <Route path={"/"} component={SimpleHome} />
+      <Route path={"/lifetime-loc"} component={SimpleLifetimeLOC} />
+      <Route path={"/about"} component={SimpleAbout} />
+      <Route path={"/the-book"} component={SimpleBook} />
+      <Route path={"/game-map"} component={SimpleGameMap} />
+      <Route path={"/lesson-1"} component={() => <SimpleLesson lessonPath="/lesson-1" />} />
+      <Route path={"/lesson-2"} component={() => <SimpleLesson lessonPath="/lesson-2" />} />
+      <Route path={"/lesson-3"} component={() => <SimpleLesson lessonPath="/lesson-3" />} />
+      <Route path={"/lesson-4"} component={() => <SimpleLesson lessonPath="/lesson-4" />} />
       <Route path={"/privacy-policy"} component={PrivacyPolicy} />
       <Route path={"/privacy"} component={PrivacyPolicy} />
       <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
       <Route path={"/terms"} component={TermsAndConditions} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
+      <Route component={SimpleHome} />
     </Switch>
   );
 }
 
-/** Legal pages stay plain: no view switch or welcome guide on top of them. */
+/** Legal pages stay plain: no welcome guide on top of them. */
 const LEGAL_PATHS = ["/privacy-policy", "/privacy", "/terms-and-conditions", "/terms"];
 
 function SiteChrome() {
   const [location] = useLocation();
   if (LEGAL_PATHS.includes(location.replace(/\/$/, ""))) return null;
   return (
-    <>
-      <ViewModeToggle />
-      <SiteGuide />
-    </>
+    <SiteGuide />
   );
 }
 

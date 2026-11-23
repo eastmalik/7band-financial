@@ -22,5 +22,8 @@ export const CONTACT_EMAIL = "malik@7bandfinancialagency.com";
  */
 export const EVENT_URL = "https://theflow.7bandfinancialagency.com";
 
+/** The 7-level quest storyline lives on THE FLOW site now. */
+export const QUEST_MAP_URL = "https://theflow.7bandfinancialagency.com/map";
+
 /** Label used for the event in navigation menus. */
 export const EVENT_LABEL = "Event";
