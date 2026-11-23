@@ -175,10 +175,10 @@ export default function Lesson3() {
               The most powerful mechanic in the entire system is also the most overlooked: <span className="text-[#c9a84c] font-semibold">repaying your policy loan with interest</span>. This is called the Honest Banker Rule.
             </p>
             <p className="font-tactical text-white/65 leading-relaxed tracking-wide mb-4">
-              When you borrow from a bank, the interest you pay leaves your financial ecosystem permanently. It goes to the bank's shareholders. When you borrow from your IUL and repay with interest, that interest goes back into your cash value — <span className="text-[#c9a84c] font-semibold">recapitalizing your own pool</span>.
+              When you borrow from a bank, the interest you pay leaves your financial ecosystem permanently. It goes to the bank's shareholders. When you borrow against your IUL, you pay loan interest to the insurance company, but your cash value stays in the policy and, depending on the loan type, can keep being credited while the loan is out. Repaying the loan <span className="text-[#c9a84c] font-semibold">restores your borrowing capacity</span>.
             </p>
             <p className="font-tactical text-white/65 leading-relaxed tracking-wide">
-              Over time, this creates a compounding effect where every deal you finance makes your pool larger, not smaller. This is the mechanic that allows the Family Bank to grow across generations instead of depleting.
+              Used carefully, this lets you finance purchases while your cash value keeps working. It is not free money: unpaid loans and interest reduce the death benefit, and borrowing too much can make a policy lapse and create a tax bill.
             </p>
           </HudFrame>
 

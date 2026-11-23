@@ -179,7 +179,7 @@ export default function Lesson1() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
             {[
-              { icon: <TrendingUp size={22} className="text-[#c9a84c]" />, title: "Index Gains", body: "Cash value earns based on S&P 500 performance with a 0% floor. You never lose principal to a market crash." },
+              { icon: <TrendingUp size={22} className="text-[#c9a84c]" />, title: "Index Gains", body: "Cash value is credited based on S&P 500 performance, up to a cap, with a floor on the index credit. Policy charges still come out every year, so cash value can still go down." },
               { icon: <Zap size={22} className="text-[#c9a84c]" />, title: "Loan Access", body: "Borrow up to 90% of cash value with no credit check, no approval, and no mandatory repayment schedule." },
               { icon: <RefreshCw size={22} className="text-[#c9a84c]" />, title: "Simultaneous Growth", body: "The full cash value balance continues compounding while your loan is deployed in an outside asset." },
             ].map((card) => (
