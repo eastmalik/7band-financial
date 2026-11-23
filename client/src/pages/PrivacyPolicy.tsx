@@ -7,7 +7,7 @@
 
 import { Link } from "wouter";
 import LegalPage, { type LegalSection } from "@/components/LegalPage";
-import { BOOKING_URL, CONTACT_EMAIL, EVENT_URL } from "@/lib/links";
+import { CONTACT_EMAIL, EVENT_URL, FLOW_CALL_FORM_URL } from "@/lib/links";
 
 const WEBSITE = "https://www.7bandfinancialagency.com";
 
@@ -28,7 +28,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          When you fill out our <a href={BOOKING_URL}>free call form</a>, register for THE FLOW webinar, or book a
+          When you fill out our <a href={FLOW_CALL_FORM_URL}>free call form</a>, register for THE FLOW webinar, or book a
           call, we collect the information you give us, such as your name, email address, phone number, and any details
           you choose to share.
         </p>

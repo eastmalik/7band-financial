@@ -6,9 +6,9 @@
 import LegalLinks from "@/components/LegalLinks";
 import { ArrowRight, BadgeCheck, HeartHandshake, Sparkles } from "lucide-react";
 import { Link } from "wouter";
-import { EVENT_LABEL, EVENT_URL } from "@/lib/links";
+import { BOOKING_URL, EVENT_LABEL, EVENT_URL } from "@/lib/links";
 
-const calendlyUrl = "https://theflow.7bandfinancialagency.com/call";
+const calendlyUrl = BOOKING_URL;
 const portraitUrl = "/manus-storage/malik-east-portrait_1eb03c6e.jpeg";
 
 function SevenPointMark({ className = "" }: { className?: string }) {
