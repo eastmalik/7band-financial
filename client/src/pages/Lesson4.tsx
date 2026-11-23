@@ -137,12 +137,12 @@ export default function Lesson4() {
               {
                 objection: "IUL fees are too high. The internal charges eat into returns.",
                 fairKernel: "An off-the-shelf IUL does have significant internal charges that reduce net returns. This is a legitimate concern for poorly designed policies.",
-                whatItMisses: "A high-cash-value design (Lesson 2) minimizes cost-of-insurance charges by reducing the death benefit to the IRS minimum. The net return on a properly designed policy, combined with the tax-free loan access and uninterrupted compounding mechanic, consistently outperforms taxable alternatives when measured on an after-tax, after-cost basis.",
+                whatItMisses: "A high-cash-value design (Lesson 2) minimizes cost-of-insurance charges by reducing the death benefit to the IRS minimum. Whether it beats the alternatives depends on the design, the funding and the policy's costs. Compare a real illustration against your other options on an after-tax, after-cost basis before you decide.",
               },
               {
                 objection: "I can get better returns in the stock market.",
                 fairKernel: "In a strong bull market, a direct S&P 500 index fund will outperform the credited rate of an IUL. The cap on gains is real.",
-                whatItMisses: "The comparison ignores three variables: (1) the 0% floor means you never lose principal in a crash — a 40% market drop requires a 67% gain just to break even; (2) the tax-free loan access means you never pay capital gains tax to access your money; (3) the uninterrupted compounding mechanic means your money earns returns while simultaneously deployed in other assets. No brokerage account can do that.",
+                whatItMisses: "The comparison often leaves out three things: (1) the floor limits index losses in a crash, though policy fees still apply; (2) policy loans are generally not taxed while the policy stays in force, though loans accrue interest and a lapse can create a tax bill; (3) depending on the loan type, cash value can keep being credited while a loan is out. Weigh those against caps, fees and the long-term commitment.",
               },
               {
                 objection: "This sounds too complicated. I don't understand it.",

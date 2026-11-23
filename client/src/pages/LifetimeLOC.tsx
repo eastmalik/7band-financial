@@ -123,7 +123,7 @@ export default function LifetimeLOC() {
             <span className="text-[#c9a84c]">Line of Credit</span>
           </h1>
           <p className="font-tactical text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed tracking-wide">
-            A permanent, tax-advantaged line of credit built inside a life insurance policy — guaranteed to grow, guaranteed to be there, and guaranteed to pass to the next generation. This is Level 4 of the 7-Level Generational Wealth Blueprint.
+            A permanent life insurance policy designed to build cash value you can borrow against, with a death benefit for your family. It has real costs, and it only works when it is designed and funded well. This is Level 4 of the 7-Level Generational Wealth Blueprint.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://theflow.7bandfinancialagency.com/call" target="_blank" rel="noopener noreferrer"
@@ -155,7 +155,7 @@ export default function LifetimeLOC() {
                 <span className="text-[#c9a84c]">Your Private Bank.</span>
               </h2>
               <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide mb-5">
-                An Indexed Universal Life (IUL) policy is a permanent life insurance contract with a cash value component that grows based on a stock market index — but with a floor of zero, meaning you never lose principal to a market crash.
+                An Indexed Universal Life (IUL) policy is a permanent life insurance contract with a cash value component that grows based on a stock market index. A floor (often 0%) means a market drop doesn't reduce that year's index credit, but policy fees and charges still come out, so cash value can go down, and a cap limits how much of the market's gains you get.
               </p>
               <p className="font-tactical text-white/65 text-base leading-relaxed tracking-wide mb-5">
                 The Lifetime LOC is the borrowing mechanic built into that policy. Once your cash value reaches a threshold, you can borrow against it — with no credit check, no approval process, and no mandatory repayment schedule. Your baseline capital keeps compounding as if the loan never happened.
@@ -166,8 +166,8 @@ export default function LifetimeLOC() {
             </div>
             <div className="space-y-4">
               {[
-                { icon: <TrendingUp size={18} className="text-[#c9a84c]" />, label: "Growth", value: "Indexed to the S&P 500 with a 0% floor — you participate in market gains, never market losses." },
-                { icon: <Lock size={18} className="text-[#c9a84c]" />, label: "Protection", value: "Guaranteed death benefit passes to your beneficiaries income-tax-free, bypassing probate entirely." },
+                { icon: <TrendingUp size={18} className="text-[#c9a84c]" />, label: "Growth", value: "Credited based on an index such as the S&P 500, up to a cap, with a floor on the index credit. Policy fees still apply in down years." },
+                { icon: <Lock size={18} className="text-[#c9a84c]" />, label: "Protection", value: "The death benefit is generally paid to your beneficiaries income-tax-free, and naming beneficiaries keeps it out of probate. Estate taxes can still apply." },
                 { icon: <DollarSign size={18} className="text-[#c9a84c]" />, label: "Access", value: "Borrow against your cash value with no credit check, no approval, and no mandatory repayment." },
                 { icon: <RefreshCw size={18} className="text-[#c9a84c]" />, label: "Recapture", value: "When you repay the loan, the interest goes back into your policy — not to a bank." },
                 { icon: <TreePine size={18} className="text-[#c9a84c]" />, label: "Legacy", value: "The death benefit recapitalizes the Family Bank, ensuring Generation 2 starts at Level 4, not Level 1." },
@@ -201,7 +201,7 @@ export default function LifetimeLOC() {
           </div>
           <div className="flex flex-col items-center gap-2">
             {[
-              { step: "01", title: "Fund the Policy", body: "You contribute premium payments into your IUL. These build your cash value, indexed to the S&P 500 with a 0% floor.", icon: <DollarSign size={20} className="text-[#c9a84c]" /> },
+              { step: "01", title: "Fund the Policy", body: "You contribute premium payments into your IUL. These build your cash value, credited based on an index such as the S&P 500, minus the policy's costs.", icon: <DollarSign size={20} className="text-[#c9a84c]" /> },
               { step: "02", title: "Cash Value Grows", body: "Your cash value compounds tax-deferred. In strong market years it captures index gains. In down years, the floor protects your principal.", icon: <TrendingUp size={20} className="text-[#c9a84c]" /> },
               { step: "03", title: "Borrow Against It", body: "You take a policy loan against your cash value. No credit check. No approval. No mandatory repayment schedule. Funds arrive in days.", icon: <Zap size={20} className="text-[#c9a84c]" /> },
               { step: "04", title: "Deploy the Capital", body: "You use the loan to buy assets: real estate, business inventory, a vehicle, your child's education — any capital deployment that generates a return.", icon: <Building2 size={20} className="text-[#c9a84c]" /> },
@@ -253,7 +253,7 @@ export default function LifetimeLOC() {
             {[
               { q: "Is this the right product for everyone?", a: "No. The Lifetime LOC mechanic requires patience — cash value takes 3–5 years to build to a meaningful borrowing threshold. If you need liquidity in the next 12 months, this is not the right starting point. We'll tell you that in our first session." },
               { q: "What if I can't keep up with premium payments?", a: "IUL policies have flexibility built in. If your income changes, premium payments can be reduced or paused using accumulated cash value. We design every policy with this flexibility in mind from day one." },
-              { q: "How is this different from whole life insurance?", a: "Whole life has fixed, guaranteed growth. IUL is indexed — it captures market upside with a floor protecting your downside. IUL also offers more premium flexibility. The right choice depends on your specific situation, which is why we do a needs analysis first." },
+              { q: "How is this different from whole life insurance?", a: "Whole life has fixed, guaranteed growth. IUL is indexed — it credits part of the market's gains, up to a cap, with a floor that limits index losses. Policy fees still apply. IUL also offers more premium flexibility. The right choice depends on your specific situation, which is why we do a needs analysis first." },
               { q: "What if I borrow against the policy and the market crashes?", a: "Your floor protects your cash value from market losses. However, if your loan balance grows faster than your cash value, the policy can lapse. We design policies with loan management built into the strategy to prevent this." },
               { q: "Do I need to qualify medically?", a: "Yes. Life insurance requires underwriting. Your health, age, and lifestyle affect your premium rates. We work with multiple carriers to find the most competitive rates for your specific profile." },
             ].map((item) => (

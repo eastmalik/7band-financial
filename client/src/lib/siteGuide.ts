@@ -64,7 +64,8 @@ const GUIDE_BUTTON_STEP: GuideStep = {
   body: "Tap Guide whenever you want this tour again, a list of every page, or a reminder of what each button does.",
 };
 
-const BOOK_CALL = "Opens Malik's booking calendar in a new tab to book a free 30-minute strategy call.";
+const BOOK_CALL =
+  "Opens the free-call page in a new tab: share your details, then pick a time for a free 30-minute call with Malik.";
 
 export const HOME_TOUR: Record<ViewMode, GuideStep[]> = {
   player: [
@@ -232,7 +233,7 @@ export const GUIDE_BUTTONS: Record<ViewMode, GuideButton[]> = {
   player: [
     {
       label: "Begin Quest · Begin Your Quest · Schedule Session · Yes, Begin My Quest · Lock In Your Character",
-      does: "All of these book a free 30-minute strategy call with Malik. They open his booking calendar in a new tab.",
+      does: "All of these book a free 30-minute strategy call with Malik. They open the free-call page in a new tab, where you pick a time.",
     },
     { label: "Event", does: "THE FLOW, the free weekly webinar. Opens in a new tab." },
     { label: "Unlock Lifetime LOC", does: "Opens the Lifetime LOC page." },
@@ -243,7 +244,7 @@ export const GUIDE_BUTTONS: Record<ViewMode, GuideButton[]> = {
   simple: [
     {
       label: "Talk with Malik · Schedule a Conversation · Talk Through the Roadmap",
-      does: "All of these book a free 30-minute strategy call with Malik. They open his booking calendar in a new tab.",
+      does: "All of these book a free 30-minute strategy call with Malik. They open the free-call page in a new tab, where you pick a time.",
     },
     { label: "Event", does: "THE FLOW, the free weekly webinar. Opens in a new tab." },
     { label: "Start With the Foundation", does: "Opens Arise Credit Pro, the 7Band credit company, in a new tab." },

@@ -409,10 +409,10 @@ export default function Home() {
                 Imagine someone sat you down and gave you the game.
               </p>
               <p className="font-tactical text-white/55 text-sm sm:text-base leading-relaxed tracking-wide mb-3">
-                Not a sales pitch. Not a seminar. The actual game — how credit really works and how to weaponize it. How to structure a business so it operates as a separate entity with its own financial identity. How to access capital from banks and institutions the way businesses do. Why life insurance is not about death — it is about building a tax-free vault that funds your life while you are still in it.
+                Not a sales pitch. Not a seminar. The actual game — how credit really works and how to weaponize it. How to structure a business so it operates as a separate entity with its own financial identity. How to access capital from banks and institutions the way businesses do. Why life insurance is not about death — it can also build cash value you can borrow against while you are still alive.
               </p>
               <p className="font-tactical text-white/55 text-sm sm:text-base leading-relaxed tracking-wide mb-3">
-                How to separate yourself from your assets so no lawsuit, no creditor, no circumstance can reach what you built. And then — when all of it is in place — how to become the architect of your own financial future. Not dependent on an employer. Not subject to a bank's terms. Not leaving your family to start from zero.
+                How to use the right legal structures, set up with an attorney, to protect what you build. And then — when all of it is in place — how to become the architect of your own financial future. Not dependent on an employer. Not subject to a bank's terms. Not leaving your family to start from zero.
               </p>
               <p className="font-display text-[#c9a84c] text-base sm:text-lg font-bold italic tracking-wide">
                 Master of your fate. Captain of your soul. That is what this Blueprint is built to produce.
@@ -480,7 +480,7 @@ export default function Home() {
             {
               category: "Estate / Legacy",
               npc: "Vulnerable. Wealth resets upon death due to estate taxes and probate.",
-              player: "Fortress. Wealth passes tax-free, recapitalizing the family bank.",
+              player: "Fortress. A plan for passing wealth on, with beneficiaries and structures chosen on purpose.",
             },
             {
               category: "Capital Access",
