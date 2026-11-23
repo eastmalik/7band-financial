@@ -12,10 +12,8 @@ import {
   ArrowRight,
   Compass,
   ExternalLink,
-  LayoutPanelTop,
   Map as MapIcon,
   MousePointerClick,
-  Sparkles,
   X,
 } from "lucide-react";
 import {
@@ -32,7 +30,6 @@ import {
   GUIDE_PAGES,
   GUIDE_WELCOME,
   HOME_TOUR,
-  VIEW_INFO,
   type GuideStep,
 } from "@/lib/siteGuide";
 
@@ -356,7 +353,7 @@ function Tour({
 }
 
 export default function SiteGuide() {
-  const { mode, setMode, isTransitioning } = useViewMode();
+  const { mode, isTransitioning } = useViewMode();
   const [location, navigate] = useLocation();
   const [welcomeOpen, setWelcomeOpen] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -364,7 +361,7 @@ export default function SiteGuide() {
   const [pendingTour, setPendingTour] = useState(false);
   const t = theme[mode];
 
-  // First visit: a short welcome that explains the two views.
+  // First visit: a short welcome with an offer of the tour.
   useEffect(() => {
     if (readFlag(WELCOME_KEY)) return;
     const timer = window.setTimeout(() => setWelcomeOpen(true), 1200);
@@ -377,12 +374,10 @@ export default function SiteGuide() {
   };
 
   const beginTour = useCallback(() => {
-    const steps = HOME_TOUR[mode].filter(
-      s => !s.optional || findTarget(s.targets)
-    );
+    const steps = HOME_TOUR.filter(s => !s.optional || findTarget(s.targets));
     window.scrollTo({ top: 0 });
     setTourSteps(steps);
-  }, [mode]);
+  }, []);
 
   const startTour = () => {
     writeFlag(WELCOME_KEY);
@@ -405,13 +400,6 @@ export default function SiteGuide() {
     }, 400);
     return () => window.clearTimeout(timer);
   }, [pendingTour, location, beginTour]);
-
-  // Switching views mid-tour would point at the wrong page; end it.
-  useEffect(() => {
-    setTourSteps(null);
-  }, [mode]);
-
-  const otherMode: ViewMode = mode === "player" ? "simple" : "player";
 
   return (
     <>
@@ -454,42 +442,6 @@ export default function SiteGuide() {
               {GUIDE_WELCOME.body}
             </SheetDescription>
           </SheetHeader>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {(["simple", "player"] as ViewMode[]).map(m => (
-              <button
-                key={m}
-                type="button"
-                onClick={() => setMode(m)}
-                aria-pressed={mode === m}
-                className={`flex flex-col items-start gap-1.5 border p-4 text-left transition-colors ${t.row} ${
-                  mode === m
-                    ? m === "player"
-                      ? "border-[#c9a84c]"
-                      : "border-[#2563eb]"
-                    : ""
-                }`}
-              >
-                <span
-                  className={`inline-flex items-center gap-2 font-tactical text-sm font-bold uppercase tracking-[0.12em] ${t.label}`}
-                >
-                  {m === "simple" ? (
-                    <LayoutPanelTop size={15} />
-                  ) : (
-                    <Sparkles size={15} />
-                  )}{" "}
-                  {VIEW_INFO[m].name}
-                  {mode === m && (
-                    <span className={`text-[10px] ${t.muted}`}>
-                      · you're here
-                    </span>
-                  )}
-                </span>
-                <span className={`text-sm leading-snug ${t.body}`}>
-                  {VIEW_INFO[m].summary}
-                </span>
-              </button>
-            ))}
-          </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
@@ -509,7 +461,7 @@ export default function SiteGuide() {
         </SheetContent>
       </Sheet>
 
-      {/* The Guide panel: views, tour, pages, buttons */}
+      {/* The Guide panel: tour, pages, buttons */}
       <Sheet open={panelOpen} onOpenChange={setPanelOpen}>
         <SheetContent
           side="right"
@@ -527,43 +479,6 @@ export default function SiteGuide() {
           </SheetHeader>
 
           <div className="shrink-0 space-y-8 px-6 pb-10 pt-4">
-            <section>
-              <h3
-                className={`text-[11px] font-bold uppercase tracking-[0.16em] ${t.label}`}
-              >
-                Two ways to see this site
-              </h3>
-              <div className="mt-3 space-y-2">
-                {(["simple", "player"] as ViewMode[]).map(m => (
-                  <div key={m} className={`border p-4 ${t.row}`}>
-                    <p
-                      className={`font-tactical text-sm font-bold uppercase tracking-[0.12em] ${mode === "player" ? "text-white" : "text-[#0b1f3a]"}`}
-                    >
-                      {VIEW_INFO[m].name}{" "}
-                      {mode === m && (
-                        <span className={`ml-1 text-[10px] ${t.muted}`}>
-                          · you're here
-                        </span>
-                      )}
-                    </p>
-                    <p className={`mt-1 text-sm leading-snug ${t.body}`}>
-                      {VIEW_INFO[m].summary}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setPanelOpen(false);
-                  setMode(otherMode);
-                }}
-                className={`mt-3 w-full px-4 py-2.5 font-tactical text-xs font-bold uppercase tracking-[0.14em] ${t.secondary}`}
-              >
-                Switch to {VIEW_INFO[otherMode].name}
-              </button>
-            </section>
-
             <section>
               <h3
                 className={`text-[11px] font-bold uppercase tracking-[0.16em] ${t.label}`}
@@ -593,7 +508,7 @@ export default function SiteGuide() {
                 className="mt-3 divide-y border-y"
                 style={{ borderColor: "inherit" }}
               >
-                {GUIDE_PAGES[mode].map(page => (
+                {GUIDE_PAGES.map(page => (
                   <li key={page.path} className={t.row}>
                     <Link
                       href={page.path}
@@ -642,7 +557,7 @@ export default function SiteGuide() {
               >
                 What the buttons do
               </h3>
-              <ButtonList buttons={GUIDE_BUTTONS[mode]} mode={mode} />
+              <ButtonList buttons={GUIDE_BUTTONS} mode={mode} />
             </section>
           </div>
         </SheetContent>

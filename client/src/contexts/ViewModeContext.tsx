@@ -1,72 +1,38 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo } from "react";
 
+/**
+ * The hub used to offer two views: Simple and Player 1 (a game version).
+ * Player 1 and its quest storyline moved to THE FLOW site, so the hub is
+ * always in Simple View now. The context stays so components that style by
+ * mode keep working; "player" is kept in the type for those style maps.
+ */
 export type ViewMode = "simple" | "player";
 
 type ViewModeContextValue = {
   mode: ViewMode;
-  setMode: (mode: ViewMode) => void;
-  toggleMode: () => void;
   isTransitioning: boolean;
 };
 
 const ViewModeContext = createContext<ViewModeContextValue | undefined>(undefined);
 
 export function ViewModeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setActiveMode] = useState<ViewMode>(() => {
-    if (typeof window === "undefined") return "player";
-    const requestedMode = new URLSearchParams(window.location.search).get("view");
-    if (requestedMode === "simple" || requestedMode === "player") return requestedMode;
-    return window.localStorage.getItem("7band-view-mode") === "simple" ? "simple" : "player";
-  });
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [transitionTarget, setTransitionTarget] = useState<ViewMode>(mode);
-
   useEffect(() => {
-    window.localStorage.setItem("7band-view-mode", mode);
-    document.documentElement.dataset.viewMode = mode;
-  }, [mode]);
-
-  const setMode = useCallback((nextMode: ViewMode) => {
-    if (nextMode === mode) return;
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const commitMode = () => {
-      setActiveMode(nextMode);
-      const nextUrl = new URL(window.location.href);
-      nextUrl.searchParams.set("view", nextMode);
-      window.history.replaceState({}, "", nextUrl);
-    };
-
-    if (prefersReducedMotion) {
-      commitMode();
-      return;
+    document.documentElement.dataset.viewMode = "simple";
+    try {
+      window.localStorage.removeItem("7band-view-mode");
+    } catch {
+      /* storage blocked: nothing to clean up */
     }
+    // Old links may carry ?view=player; drop it so the address is clean.
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("view")) {
+      url.searchParams.delete("view");
+      window.history.replaceState({}, "", url);
+    }
+  }, []);
 
-    setTransitionTarget(nextMode);
-    setIsTransitioning(true);
-    window.setTimeout(commitMode, 220);
-    window.setTimeout(() => setIsTransitioning(false), 680);
-  }, [mode]);
-
-  const value = useMemo(
-    () => ({
-      mode,
-      setMode,
-      toggleMode: () => setMode(mode === "player" ? "simple" : "player"),
-      isTransitioning,
-    }),
-    [isTransitioning, mode, setMode],
-  );
-
-  return (
-    <ViewModeContext.Provider value={value}>
-      {children}
-      <div aria-hidden="true" className={`mode-shift-overlay ${isTransitioning ? "is-active" : ""} mode-shift-${transitionTarget}`}>
-        <span className="mode-shift-line" />
-        <span className="mode-shift-core" />
-      </div>
-    </ViewModeContext.Provider>
-  );
+  const value = useMemo<ViewModeContextValue>(() => ({ mode: "simple", isTransitioning: false }), []);
+  return <ViewModeContext.Provider value={value}>{children}</ViewModeContext.Provider>;
 }
 
 export function useViewMode() {
