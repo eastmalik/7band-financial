@@ -1,13 +1,14 @@
 /*
  * 7Band Financial Agency — Terms & Conditions (/terms-and-conditions)
- * Copied from East Consulting LLC's Terms & Conditions (owner's request), with 7Band's facts.
+ * Covers 7bandfinancialagency.com and its strategy-session booking calendar only.
+ * THE FLOW webinar site has its own Terms at theflow.7bandfinancialagency.com/terms.
  * Includes the text-messaging (SMS) program terms A2P 10DLC reviewers require.
  * The opt-in described here must match the consent checkbox on the GoHighLevel forms.
  */
 
 import { Link } from "wouter";
 import LegalPage, { type LegalSection } from "@/components/LegalPage";
-import { CONTACT_EMAIL, EVENT_URL, FLOW_CALL_FORM_URL } from "@/lib/links";
+import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/links";
 
 const WEBSITE = "https://www.7bandfinancialagency.com";
 
@@ -16,10 +17,10 @@ const sections: LegalSection[] = [
     heading: "About these terms",
     body: (
       <p>
-        These Terms &amp; Conditions apply to your use of <a href={WEBSITE}>{WEBSITE}</a> and{" "}
-        <a href={EVENT_URL}>{EVENT_URL}</a>, and to the services provided by 7Band Financial Agency ("7Band", "we",
-        "us"). By using these websites, booking a call, registering for THE FLOW webinar, or opting in to our text
-        messages, you agree to these terms.
+        These Terms &amp; Conditions apply to your use of <a href={WEBSITE}>{WEBSITE}</a>, our booking calendar, and
+        the services provided by 7Band Financial Agency ("7Band", "we", "us"). By using this website, booking a call,
+        or opting in to our text messages, you agree to these terms. THE FLOW webinar has its own terms on its
+        website.
       </p>
     ),
   },
@@ -27,8 +28,7 @@ const sections: LegalSection[] = [
     heading: "Age requirement (18+)",
     body: (
       <p>
-        You must be at least 18 years old to use this website, book a call, register for the webinar, or opt in to our
-        text messages. By using our website or services, you confirm that you are 18 or older.
+        You must be at least 18 years old to use this website, book a call, or opt in to our text messages. By using our website or services, you confirm that you are 18 or older.
       </p>
     ),
   },
@@ -37,8 +37,9 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          7Band Financial Agency is a life insurance agency led by a licensed life insurance agent. We also provide
-          financial education, including THE FLOW webinar and free calls to help you find your next step.
+          7Band Financial Agency is a life insurance agency led by Malik East, a licensed life insurance agent. We
+          also provide financial education, including free 30-minute strategy sessions to help you find your next
+          step.
         </p>
         <p>
           Our content is educational. It is not financial, legal, or tax advice. For advice about your specific
@@ -51,8 +52,7 @@ const sections: LegalSection[] = [
     heading: "Calls and booking",
     body: (
       <p>
-        You can request a call through our <a href={FLOW_CALL_FORM_URL}>free call form</a> and then choose a time on our
-        calendar. If you need to reschedule or cancel, please contact us as early as you can at{" "}
+        You can book a <a href={BOOKING_URL}>free 30-minute strategy session</a> on our calendar. If you need to reschedule or cancel, please contact us as early as you can at{" "}
         <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
       </p>
     ),
@@ -75,12 +75,11 @@ const sections: LegalSection[] = [
         </p>
         <p>
           <strong>How you opt in.</strong> You opt in by checking the optional text-message consent box on our{" "}
-          <a href={FLOW_CALL_FORM_URL}>free call form</a> or THE FLOW webinar registration form. The box is not pre-checked.
-          Consent is not a condition of booking, registering, or any purchase. You must be 18 or older to opt in.
+          <a href={BOOKING_URL}>strategy session booking form</a>. The box is not pre-checked. Consent is not a
+          condition of booking or of any purchase. You must be 18 or older to opt in.
         </p>
         <p>
-          <strong>What we send.</strong> Confirmations, reminders, and updates about your call or the webinar you
-          registered for. We do not send marketing or promotional text messages.
+          <strong>What we send.</strong> Confirmations, reminders, and updates about your strategy session. We do not send marketing or promotional text messages.
         </p>
         <p>
           <strong>Message frequency and rates.</strong> Message frequency varies. Message and data rates may apply.
@@ -88,7 +87,7 @@ const sections: LegalSection[] = [
         <p>
           <strong>How to opt out.</strong> Reply <strong>STOP</strong> to any message to stop receiving texts. We will
           send one message confirming that you have been unsubscribed, and then no further texts. To join again, reply{" "}
-          <strong>START</strong> or opt in again on one of our forms.
+          <strong>START</strong> or opt in again when you book.
         </p>
         <p>
           <strong>How to get help.</strong> Reply <strong>HELP</strong> to any message, or email{" "}
@@ -154,5 +153,5 @@ const sections: LegalSection[] = [
 ];
 
 export default function TermsAndConditions() {
-  return <LegalPage title="Terms & Conditions" lastUpdated="November 17, 2026" sections={sections} />;
+  return <LegalPage title="Terms & Conditions" lastUpdated="November 23, 2026" sections={sections} />;
 }
