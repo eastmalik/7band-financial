@@ -11,12 +11,6 @@
  */
 export const BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/7band-30-minute-strategy-session";
 
-/**
- * THE FLOW's free-call form (with the SMS consent checkbox). Only the legal
- * pages mention it, since they cover both sites.
- */
-export const FLOW_CALL_FORM_URL = "https://theflow.7bandfinancialagency.com/call";
-
 /** Contact email shown on the legal pages. */
 export const CONTACT_EMAIL = "malik@7bandfinancialagency.com";
 
