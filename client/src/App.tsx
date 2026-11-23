@@ -14,7 +14,7 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 /**
  * The hub is the 7Band Financial Agency life insurance site, in one plain
  * view. The game version (Player 1) and its quest storyline moved to THE
- * FLOW site: theflow.7bandfinancialagency.com/map.
+ * FLOW site (theflow.7bandfinancialagency.com), reached from the Event link.
  */
 function Router() {
   return (

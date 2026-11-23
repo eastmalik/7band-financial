@@ -7,7 +7,7 @@
 
 import { Link } from "wouter";
 import LegalPage, { type LegalSection } from "@/components/LegalPage";
-import { BOOKING_URL, CONTACT_EMAIL, EVENT_URL } from "@/lib/links";
+import { CONTACT_EMAIL, EVENT_URL, FLOW_CALL_FORM_URL } from "@/lib/links";
 
 const WEBSITE = "https://www.7bandfinancialagency.com";
 
@@ -51,7 +51,7 @@ const sections: LegalSection[] = [
     heading: "Calls and booking",
     body: (
       <p>
-        You can request a call through our <a href={BOOKING_URL}>free call form</a> and then choose a time on our
+        You can request a call through our <a href={FLOW_CALL_FORM_URL}>free call form</a> and then choose a time on our
         calendar. If you need to reschedule or cancel, please contact us as early as you can at{" "}
         <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
       </p>
@@ -75,7 +75,7 @@ const sections: LegalSection[] = [
         </p>
         <p>
           <strong>How you opt in.</strong> You opt in by checking the optional text-message consent box on our{" "}
-          <a href={BOOKING_URL}>free call form</a> or THE FLOW webinar registration form. The box is not pre-checked.
+          <a href={FLOW_CALL_FORM_URL}>free call form</a> or THE FLOW webinar registration form. The box is not pre-checked.
           Consent is not a condition of booking, registering, or any purchase. You must be 18 or older to opt in.
         </p>
         <p>

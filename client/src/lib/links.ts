@@ -6,24 +6,26 @@
  */
 
 /**
- * Free call: the GoHighLevel form "THE FLOW | Free Call" (name, email, phone,
- * optional SMS consent), which then opens the booking calendar. Linking here
- * instead of straight to the calendar keeps the SMS opt-in in front of every booking.
+ * Talk with Malik: the 7Band 30-minute strategy session calendar in
+ * GoHighLevel. Every booking button on this site opens it.
  */
-export const BOOKING_URL = "https://theflow.7bandfinancialagency.com/call";
+export const BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/7band-30-minute-strategy-session";
+
+/**
+ * THE FLOW's free-call form (with the SMS consent checkbox). Only the legal
+ * pages mention it, since they cover both sites.
+ */
+export const FLOW_CALL_FORM_URL = "https://theflow.7bandfinancialagency.com/call";
 
 /** Contact email shown on the legal pages. */
 export const CONTACT_EMAIL = "malik@7bandfinancialagency.com";
 
 /**
  * THE FLOW — the weekly webinar registration page (its own repository,
- * eastmalik/wealth-quest-webinar). Player 1, Simple View and the lessons
- * all read from here.
+ * eastmalik/wealth-quest-webinar). The Event link is the only way from this
+ * site to THE FLOW.
  */
 export const EVENT_URL = "https://theflow.7bandfinancialagency.com";
-
-/** The 7-level quest storyline lives on THE FLOW site now. */
-export const QUEST_MAP_URL = "https://theflow.7bandfinancialagency.com/map";
 
 /** Label used for the event in navigation menus. */
 export const EVENT_LABEL = "Event";

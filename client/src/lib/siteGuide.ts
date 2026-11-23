@@ -41,7 +41,7 @@ const GUIDE_BUTTON_STEP: GuideStep = {
 };
 
 const BOOK_CALL =
-  "Opens the free-call page in a new tab: share your details, then pick a time for a free 30-minute call with Malik.";
+  "Opens Malik's booking calendar in a new tab, where you pick a time for a free 30-minute strategy session.";
 
 export const HOME_TOUR: GuideStep[] = [
   {
@@ -142,7 +142,7 @@ export const GUIDE_BUTTONS: GuideButton[] = [
   {
     label:
       "Talk with Malik · Schedule a Conversation · Talk Through the Roadmap",
-    does: "All of these book a free 30-minute strategy call with Malik. They open the free-call page in a new tab, where you pick a time.",
+    does: "All of these book a free 30-minute strategy call with Malik. They open Malik's booking calendar in a new tab, where you pick a time.",
   },
   {
     label: "Event",
@@ -158,8 +158,4 @@ export const GUIDE_BUTTONS: GuideButton[] = [
   },
   { label: "View the Roadmap", does: "Opens the Roadmap." },
   { label: "Meet Malik East", does: "Opens the About page." },
-  {
-    label: "See the Quest Map",
-    does: "Opens the seven-level Quest Map on THE FLOW site, in a new tab.",
-  },
 ];
